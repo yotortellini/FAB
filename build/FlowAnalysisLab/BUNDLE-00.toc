@@ -1,0 +1,4 @@
+([('FlowAnalysisLab',
+   '/Users/ymorocz/Documents/Juncker Lab/Data/Python '
+   'Scripts/flow_analysis/dist/FlowAnalysisLab',
+   'EXECUTABLE')],)

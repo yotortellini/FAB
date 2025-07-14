@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "video-processing-gui"
+version = "0.1.0"
+description = "A guided wizard UI for video analysis"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+opencv-python = "^4.7"
+numpy = "^1.25"
+matplotlib = "^3.7"
+pillow = "^10.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.3"
+black = "^23.3"
+mypy = "^1.5"
+
+[tool.poetry.scripts]
+video-gui = "main:launch_app"  # or "video_processing_gui.main:launch_app" if using a package
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
