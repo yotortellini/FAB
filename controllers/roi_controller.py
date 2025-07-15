@@ -1,262 +1,276 @@
 # controllers/roi_controller.py
 
-import tkinter as tk
-from tkinter import ttk, messagebox, simpledialog
 import cv2
-from PIL import Image, ImageTk
-from typing import Callable, Optional
+import numpy as np
+from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
+                            QLabel, QLineEdit, QListWidget, QMessageBox)
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen, QColor
 
 from models.video_session import VideoSession
 from models.roi import ROI
 from engine.video_engine import VideoEngine
 
-class ROIController:
-    PREVIEW_SIZE = (800, 450)
+class ROIController(QWidget):
+    """
+    Controller for Step 4: ROI Definition
+    Allows drawing and naming rectangular ROIs on the video frame.
+    """
 
     def __init__(
         self,
-        parent: tk.Frame,
+        parent: QWidget,
         session: VideoSession,
         engine: VideoEngine,
-        on_complete: Callable[[], None]
+        on_complete=None
     ):
-        self.parent = parent
+        super().__init__(parent)
         self.session = session
         self.engine = engine
-        self.on_complete = on_complete
+        self.on_complete = on_complete or (lambda: None)
 
-        if not hasattr(self.session, 'rois'):
-            self.session.rois = {}
-
-        # Prepare deskewed frame once
-        frame = self.engine.get_frame(self.session.start_frame)
-        if self.session.rotation_matrix is not None:
-            frame = engine.apply_rotation(frame, self.session.rotation_matrix)
-        h0, w0 = frame.shape[:2]
-        pw, ph = self.PREVIEW_SIZE
-        self._scale = min(pw/w0, ph/h0)
-        self._xoff  = int((pw - w0*self._scale)//2)
-        self._yoff  = int((ph - h0*self._scale)//2)
-        pil = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-        disp = pil.resize((int(w0*self._scale), int(h0*self._scale)), Image.LANCZOS)
-        canvas_im = Image.new("RGB", self.PREVIEW_SIZE, (0,0,0))
-        canvas_im.paste(disp, (self._xoff, self._yoff))
-        self._photo_disp = ImageTk.PhotoImage(canvas_im)
-
-        # State
-        self._rect_id = None
-        self._overlay_ids = []
-        self.selected_name: Optional[str] = None
-
-        # Build UI
-        self.frame = tk.Frame(self.parent)
+        self.drawing = False
+        self.start_point = None
+        self.current_point = None
+        self.rois = {}  # name -> ROI
         self._build_ui()
-        self._refresh_list()
-        self._draw_all_rois()
 
     def _build_ui(self):
-        pw, ph = self.PREVIEW_SIZE
-        main = ttk.Frame(self.frame)
-        main.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        layout = QVBoxLayout()
+        self.setLayout(layout)
 
-        # Instruction
-        ttk.Label(main,
-                  text="Draw a rectangle on the image to create a new ROI",
-                  font=(None, 12, 'italic')).pack(pady=(0,10))
+        # Title
+        title = QLabel("Step 4: Define ROIs")
+        title.setStyleSheet("font-size: 16pt;")
+        layout.addWidget(title)
 
-        # Left: list + delete
-        left = ttk.Frame(main)
-        left.pack(side=tk.LEFT, fill=tk.Y)
-        ttk.Label(left, text="ROIs").pack()
-        self.listbox = tk.Listbox(left, height=12)
-        self.listbox.pack(fill=tk.Y, expand=True)
-        self.listbox.bind('<<ListboxSelect>>', self._on_select)
-        ttk.Button(left, text="Delete ROI", command=self._on_delete).pack(pady=5)
+        # Frame display
+        self.frame_label = QLabel()
+        self.frame_label.setMouseTracking(True)
+        self.frame_label.mousePressEvent = self._on_mouse_press
+        self.frame_label.mouseMoveEvent = self._on_mouse_move
+        self.frame_label.mouseReleaseEvent = self._on_mouse_release
+        layout.addWidget(self.frame_label)
 
-        # Right: canvas + form + save
-        right = ttk.Frame(main)
-        right.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10)
+        # ROI controls
+        controls = QHBoxLayout()
+        
+        # ROI list
+        self.roi_list = QListWidget()
+        self.roi_list.currentRowChanged.connect(self._on_roi_selected)
+        controls.addWidget(self.roi_list)
 
-        # Video canvas
-        self.canvas = tk.Canvas(right, width=pw, height=ph, bg='black')
-        self.canvas.pack()
-        self.canvas_img = self.canvas.create_image(0,0,anchor='nw',image=self._photo_disp)
-        self.canvas.bind("<ButtonPress-1>",   self._on_canvas_press)
-        self.canvas.bind("<B1-Motion>",       self._on_canvas_drag)
-        self.canvas.bind("<ButtonRelease-1>", self._on_canvas_release)
+        # ROI input area
+        input_layout = QVBoxLayout()
+        
+        # Name input
+        name_layout = QHBoxLayout()
+        name_layout.addWidget(QLabel("ROI Name:"))
+        self.name_input = QLineEdit()
+        name_layout.addWidget(self.name_input)
+        input_layout.addLayout(name_layout)
 
-        # Form for editing parameters
-        form = ttk.Frame(right)
-        form.pack(fill=tk.X, pady=5)
-        save_frame = ttk.Frame(right)
-        save_frame.pack(fill=tk.X, pady=(5,0))
-        ttk.Button(save_frame, text="Save ROI", command=self._save_edits).pack(side=tk.RIGHT)
+        # Volume input
+        volume_layout = QHBoxLayout()
+        volume_layout.addWidget(QLabel("Volume (µL):"))
+        self.volume_input = QLineEdit()
+        volume_layout.addWidget(self.volume_input)
+        input_layout.addLayout(volume_layout)
 
-        # Name (read‐only; renaming via popup)
-        ttk.Label(form, text="Name").grid(row=0, column=0, sticky="e")
-        self.name_var = tk.StringVar()
-        ttk.Entry(form, textvariable=self.name_var, state="readonly")\
-            .grid(row=0, column=1, sticky="w")
+        # Buttons
+        button_layout = QHBoxLayout()
+        self.add_btn = QPushButton("Add ROI")
+        self.add_btn.clicked.connect(self._on_add)
+        self.delete_btn = QPushButton("Delete ROI")
+        self.delete_btn.clicked.connect(self._on_delete)
+        self.confirm_btn = QPushButton("Confirm ROIs")
+        self.confirm_btn.clicked.connect(self._on_confirm)
+        
+        button_layout.addWidget(self.add_btn)
+        button_layout.addWidget(self.delete_btn)
+        button_layout.addWidget(self.confirm_btn)
+        
+        input_layout.addLayout(button_layout)
+        controls.addLayout(input_layout)
+        layout.addLayout(controls)
 
-        # Channel
-        ttk.Label(form, text="Channel").grid(row=1, column=0, sticky="e", pady=(5,0))
-        self.channel_var = tk.StringVar(value='R')
-        ttk.OptionMenu(form, self.channel_var, 'R','R','G','B')\
-            .grid(row=1, column=1, sticky="w", pady=(5,0))
+        # Initial setup
+        self._update_frame()
+        self.delete_btn.setEnabled(False)
+        self.confirm_btn.setEnabled(False)
 
-        # Total Volume
-        ttk.Label(form, text="Total Volume (µL)").grid(row=2, column=0, sticky="e", pady=(5,0))
-        self.vol_var = tk.DoubleVar(value=0.0)
-        ttk.Entry(form, textvariable=self.vol_var, width=8)\
-            .grid(row=2, column=1, sticky="w", pady=(5,0))
+    def _get_image_position(self, pos):
+        """Convert screen coordinates to image coordinates"""
+        if not self.frame_label.pixmap():
+            return None
 
-        # Start frac
-        ttk.Label(form, text="Start frac").grid(row=3, column=0, sticky="e", pady=(5,0))
-        self.start_frac = tk.DoubleVar(value=0.0)
-        ttk.Spinbox(form, from_=0.0, to=1.0, increment=0.01,
-                    textvariable=self.start_frac, width=6)\
-            .grid(row=3, column=1, sticky="w", pady=(5,0))
+        # Get the scaled pixmap that's actually displayed
+        pixmap = self.frame_label.pixmap()
+        label_rect = self.frame_label.rect()
+        scaled_rect = pixmap.rect()
+        scaled_rect.moveCenter(label_rect.center())
 
-        # End frac
-        ttk.Label(form, text="End frac").grid(row=4, column=0, sticky="e", pady=(5,0))
-        self.end_frac = tk.DoubleVar(value=1.0)
-        ttk.Spinbox(form, from_=0.0, to=1.0, increment=0.01,
-                    textvariable=self.end_frac, width=6)\
-            .grid(row=4, column=1, sticky="w", pady=(5,0))
+        # Check if click is within the image area
+        if not scaled_rect.contains(pos):
+            return None
 
-        self.frame.pack(fill=tk.BOTH, expand=True)
+        # Calculate the scaling factors
+        original_size = self.engine.get_frame(self.session.start_frame).shape[:2]
+        scale_x = original_size[1] / scaled_rect.width()
+        scale_y = original_size[0] / scaled_rect.height()
 
-    def _on_canvas_press(self, e):
-        self._press = (e.x, e.y)
-        if self._rect_id:
-            self.canvas.delete(self._rect_id)
-            self._rect_id = None
+        # Convert screen coordinates to original image coordinates
+        image_x = (pos.x() - scaled_rect.left()) * scale_x
+        image_y = (pos.y() - scaled_rect.top()) * scale_y
 
-    def _on_canvas_drag(self, e):
-        x0, y0 = self._press
-        if self._rect_id:
-            self.canvas.delete(self._rect_id)
-        self._rect_id = self.canvas.create_rectangle(
-            x0, y0, e.x, e.y, outline='red', width=2
-        )
+        return QPoint(int(image_x), int(image_y))
 
-    def _on_canvas_release(self, e):
-        if not self._rect_id:
+    def _on_mouse_press(self, event):
+        pos = self._get_image_position(event.pos())
+        if pos and event.button() == Qt.LeftButton:
+            self.drawing = True
+            self.start_point = pos
+            self.current_point = pos
+            self._update_frame()
+
+    def _on_mouse_move(self, event):
+        if self.drawing:
+            pos = self._get_image_position(event.pos())
+            if pos:
+                self.current_point = pos
+                self._update_frame()
+
+    def _on_mouse_release(self, event):
+        if event.button() == Qt.LeftButton and self.drawing:
+            self.drawing = False
+            pos = self._get_image_position(event.pos())
+            if pos:
+                self.current_point = pos
+                self._update_frame()
+
+    def _on_add(self):
+        """Add a new ROI with the current drawing"""
+        if not (self.start_point and self.current_point):
+            QMessageBox.warning(self, "Error", "Please draw an ROI first")
             return
 
-        # Name prompt
-        name = simpledialog.askstring("New ROI", "Enter a name for this ROI:")
+        name = self.name_input.text().strip()
         if not name:
-            self.canvas.delete(self._rect_id)
-            self._rect_id = None
+            QMessageBox.warning(self, "Error", "Please enter an ROI name")
             return
 
-        # Map rectangle to original coords
-        x0, y0, x1, y1 = self.canvas.coords(self._rect_id)
-        ox = int((x0 - self._xoff)/self._scale)
-        oy = int((y0 - self._yoff)/self._scale)
-        ow = int((x1 - x0)/self._scale)
-        oh = int((y1 - y0)/self._scale)
+        if name in self.rois:
+            QMessageBox.warning(self, "Error", "An ROI with this name already exists")
+            return
 
-        # Create ROI with defaults
-        roi = ROI(
-            name=name,
-            rect=(ox, oy, ow, oh),
-            channel='R',
-            total_volume=0.0,
-            start_frac=0.0,
-            end_frac=1.0,
-            interval=1,
-            smoothing_window=1
-        )
-        self.session.rois[name] = roi
-        self.selected_name = name
+        try:
+            volume = float(self.volume_input.text() or 0)
+        except ValueError:
+            QMessageBox.warning(self, "Error", "Please enter a valid volume number")
+            return
 
-        # Refresh display & select it
-        self._refresh_list()
-        self._draw_all_rois()
-        self._load_selected(name)
+        # Calculate ROI bounds in image coordinates
+        x = min(self.start_point.x(), self.current_point.x())
+        y = min(self.start_point.y(), self.current_point.y())
+        w = abs(self.current_point.x() - self.start_point.x())
+        h = abs(self.current_point.y() - self.start_point.y())
 
-        # Unlock Next on first ROI
-        if len(self.session.rois) == 1:
-            self.on_complete()
-
-    def _refresh_list(self):
-        self.listbox.delete(0, tk.END)
-        for nm in self.session.rois:
-            self.listbox.insert(tk.END, nm)
-
-    def _draw_all_rois(self):
-        for oid in self._overlay_ids:
-            self.canvas.delete(oid)
-        self._overlay_ids.clear()
-        for roi in self.session.rois.values():
-            x,y,w,h = roi.rect
-            cx,cy = x*self._scale + self._xoff, y*self._scale + self._yoff
-            cw,ch = w*self._scale, h*self._scale
-            oid = self.canvas.create_rectangle(
-                cx, cy, cx+cw, cy+ch,
-                outline='green', width=2
+        try:
+            # Create ROI with default values for analysis parameters
+            roi = ROI(
+                name=name,
+                rect=(int(x), int(y), int(w), int(h)),
+                channel='auto',
+                total_volume=volume,
+                start_frac=0.0,
+                end_frac=1.0,
+                interval=1,
+                smoothing_window=5
             )
-            self._overlay_ids.append(oid)
-
-    def _on_select(self, event):
-        sel = self.listbox.curselection()
-        if not sel:
-            return
-        name = self.listbox.get(sel[0])
-        self._load_selected(name)
-
-    def _load_selected(self, name: str):
-        roi = self.session.rois[name]
-        self.selected_name = name
-
-        # Populate form
-        self.name_var.set(roi.name)
-        self.channel_var.set(roi.channel)
-        self.vol_var.set(roi.total_volume)
-        self.start_frac.set(roi.start_frac)
-        self.end_frac.set(roi.end_frac)
-
-        # Highlight its rectangle
-        if self._rect_id:
-            self.canvas.delete(self._rect_id)
-        x,y,w,h = roi.rect
-        cx,cy = x*self._scale + self._xoff, y*self._scale + self._yoff
-        cw,ch = w*self._scale, h*self._scale
-        self._rect_id = self.canvas.create_rectangle(
-            cx, cy, cx+cw, cy+ch,
-            outline='red', width=2
-        )
-
-    def _save_edits(self):
-        """Save changes to the currently selected ROI."""
-        if not self.selected_name:
-            messagebox.showerror("Error", "Select an ROI first before saving.")
-            return
-
-        roi = self.session.rois[self.selected_name]
-        # Update fields
-        roi.channel      = self.channel_var.get()
-        roi.total_volume = self.vol_var.get()
-        roi.start_frac   = float(self.start_frac.get())
-        roi.end_frac     = float(self.end_frac.get())
-
-        # Redraw overlays
-        self._refresh_list()
-        self._draw_all_rois()
+            self.rois[name] = roi
+            
+            # Update UI
+            self.roi_list.addItem(name)
+            self.name_input.clear()
+            self.volume_input.clear()
+            self.start_point = None
+            self.current_point = None
+            
+            # Enable buttons
+            self.delete_btn.setEnabled(True)
+            self.confirm_btn.setEnabled(len(self.rois) > 0)
+            
+            self._update_frame()
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to create ROI: {str(e)}")
 
     def _on_delete(self):
-        sel = self.listbox.curselection()
-        if not sel:
+        current = self.roi_list.currentItem()
+        if current:
+            name = current.text()
+            del self.rois[name]
+            self.roi_list.takeItem(self.roi_list.row(current))
+            self.confirm_btn.setEnabled(len(self.rois) > 0)
+            self._update_frame()
+
+    def _on_roi_selected(self, row):
+        self.delete_btn.setEnabled(row >= 0)
+
+    def _on_confirm(self):
+        self.session.rois = self.rois
+        self.on_complete()
+
+    def _update_frame(self):
+        """Update the frame display with current video frame and ROIs"""
+        if not self.engine.cap:
             return
-        name = self.listbox.get(sel[0])
-        del self.session.rois[name]
-        self.selected_name = None
-        # clear form & rectangle
-        self.name_var.set("")
-        if self._rect_id:
-            self.canvas.delete(self._rect_id)
-            self._rect_id = None
-        self._refresh_list()
-        self._draw_all_rois()
+
+        # Get the frame
+        frame = self.engine.get_frame(self.session.start_frame)
+        if frame is None:
+            return
+
+        # Convert frame to RGB for Qt
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        h, w, ch = rgb_frame.shape
+        bytes_per_line = ch * w
+        image = QImage(rgb_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
+        pixmap = QPixmap.fromImage(image)
+
+        # Create a painter for drawing
+        painter = QPainter(pixmap)
+        
+        # Draw existing ROIs
+        pen = QPen(QColor(255, 0, 0))
+        pen.setWidth(2)
+        painter.setPen(pen)
+        for name, roi in self.rois.items():
+            x, y, w, h = roi.rect
+            painter.drawRect(x, y, w, h)
+            # Draw name above the ROI
+            font = painter.font()
+            font.setPointSize(12)
+            painter.setFont(font)
+            painter.drawText(x, y - 5, name)
+
+        # Draw current ROI if drawing
+        if self.drawing and self.start_point and self.current_point:
+            pen = QPen(QColor(0, 255, 0))
+            pen.setWidth(2)
+            painter.setPen(pen)
+            x = min(self.start_point.x(), self.current_point.x())
+            y = min(self.start_point.y(), self.current_point.y())
+            w = abs(self.current_point.x() - self.start_point.x())
+            h = abs(self.current_point.y() - self.start_point.y())
+            painter.drawRect(int(x), int(y), int(w), int(h))
+
+        painter.end()
+
+        # Scale the pixmap to fit the label while maintaining aspect ratio
+        scaled_pixmap = pixmap.scaled(
+            self.frame_label.size(),
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation
+        )
+        self.frame_label.setPixmap(scaled_pixmap)
+        self.frame_label.setAlignment(Qt.AlignCenter)

@@ -1,0 +1,121 @@
+2025-07-14 22:31:35,692 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:31:36,176 - __main__ - INFO - Main window displayed
+2025-07-14 22:33:27,723 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:33:27,987 - __main__ - INFO - Main window displayed
+2025-07-14 22:34:22,103 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:34:22,354 - __main__ - INFO - Main window displayed
+2025-07-14 22:36:26,061 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:36:26,204 - __main__ - ERROR - Failed to launch application
+Traceback (most recent call last):
+  File "/Users/ymorocz/Documents/GitHub/FAB/main.py", line 54, in launch_app
+    window = UIController(session=session, engine=engine)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 41, in __init__
+    self._build_ui()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 86, in _build_ui
+    self.scan_ctrl = ScanController(
+                     ^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/scan_controller.py", line 96, in __init__
+    self._setup_worker()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/scan_controller.py", line 167, in _setup_worker
+    self.worker = ScanWorker(self.engine, self.session,
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ScanWorker.__init__() takes 4 positional arguments but 5 were given
+2025-07-14 22:36:26,205 - __main__ - CRITICAL - Fatal error launching application: ScanWorker.__init__() takes 4 positional arguments but 5 were given
+2025-07-14 22:39:13,129 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:39:13,396 - __main__ - INFO - Main window displayed
+2025-07-14 22:42:05,982 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:42:06,234 - __main__ - INFO - Main window displayed
+2025-07-14 22:46:47,537 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:46:47,746 - __main__ - INFO - Main window displayed
+2025-07-14 22:52:57,520 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:52:57,806 - __main__ - INFO - Main window displayed
+2025-07-14 22:54:42,214 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:54:42,480 - __main__ - INFO - Main window displayed
+2025-07-14 22:59:27,865 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 22:59:28,069 - __main__ - INFO - Main window displayed
+2025-07-14 23:05:59,913 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:06:00,146 - __main__ - ERROR - Failed to launch application
+Traceback (most recent call last):
+  File "/Users/ymorocz/Documents/GitHub/FAB/main.py", line 54, in launch_app
+    window = UIController(session=session, engine=engine)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 35, in __init__
+    self._build_ui()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 103, in _build_ui
+    self.show_step(1)
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 126, in show_step
+    if step == self.total_steps:
+               ^^^^^^^^^^^^^^^^
+AttributeError: 'UIController' object has no attribute 'total_steps'
+2025-07-14 23:06:00,146 - __main__ - CRITICAL - Fatal error launching application: 'UIController' object has no attribute 'total_steps'
+2025-07-14 23:06:04,340 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:06:04,465 - __main__ - ERROR - Failed to launch application
+Traceback (most recent call last):
+  File "/Users/ymorocz/Documents/GitHub/FAB/main.py", line 54, in launch_app
+    window = UIController(session=session, engine=engine)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 35, in __init__
+    self._build_ui()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 103, in _build_ui
+    self.show_step(1)
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 126, in show_step
+    if step == self.total_steps:
+               ^^^^^^^^^^^^^^^^
+AttributeError: 'UIController' object has no attribute 'total_steps'
+2025-07-14 23:06:04,465 - __main__ - CRITICAL - Fatal error launching application: 'UIController' object has no attribute 'total_steps'
+2025-07-14 23:06:06,447 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:06:06,573 - __main__ - ERROR - Failed to launch application
+Traceback (most recent call last):
+  File "/Users/ymorocz/Documents/GitHub/FAB/main.py", line 54, in launch_app
+    window = UIController(session=session, engine=engine)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 35, in __init__
+    self._build_ui()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 103, in _build_ui
+    self.show_step(1)
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 126, in show_step
+    if step == self.total_steps:
+               ^^^^^^^^^^^^^^^^
+AttributeError: 'UIController' object has no attribute 'total_steps'
+2025-07-14 23:06:06,574 - __main__ - CRITICAL - Fatal error launching application: 'UIController' object has no attribute 'total_steps'
+2025-07-14 23:07:20,255 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:07:20,467 - __main__ - INFO - Main window displayed
+2025-07-14 23:09:19,572 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:09:19,785 - __main__ - INFO - Main window displayed
+2025-07-14 23:11:36,740 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:11:36,910 - __main__ - INFO - Main window displayed
+2025-07-14 23:14:17,059 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:14:17,193 - __main__ - ERROR - Failed to launch application
+Traceback (most recent call last):
+  File "/Users/ymorocz/Documents/GitHub/FAB/main.py", line 60, in launch_app
+    window = UIController(session=session, engine=engine)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 36, in __init__
+    self._build_ui()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 83, in _build_ui
+    self.rotate_ctrl = RotateController(
+                       ^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/rotate_controller.py", line 44, in __init__
+    self._build_ui()
+    ^^^^^^^^^^^^^^
+AttributeError: 'RotateController' object has no attribute '_build_ui'
+2025-07-14 23:14:17,194 - __main__ - CRITICAL - Fatal error launching application: 'RotateController' object has no attribute '_build_ui'
+2025-07-14 23:14:25,463 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:14:25,568 - __main__ - ERROR - Failed to launch application
+Traceback (most recent call last):
+  File "/Users/ymorocz/Documents/GitHub/FAB/main.py", line 60, in launch_app
+    window = UIController(session=session, engine=engine)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 36, in __init__
+    self._build_ui()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 83, in _build_ui
+    self.rotate_ctrl = RotateController(
+                       ^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/rotate_controller.py", line 44, in __init__
+    self._build_ui()
+    ^^^^^^^^^^^^^^
+AttributeError: 'RotateController' object has no attribute '_build_ui'
+2025-07-14 23:14:25,569 - __main__ - CRITICAL - Fatal error launching application: 'RotateController' object has no attribute '_build_ui'
+2025-07-14 23:16:04,568 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-14 23:16:04,805 - __main__ - INFO - Main window displayed

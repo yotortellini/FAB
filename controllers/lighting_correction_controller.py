@@ -1,17 +1,20 @@
 # controllers/lighting_correction_controller.py
 
-import tkinter as tk
-from tkinter import ttk, messagebox
+from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
+                            QLabel, QMessageBox)
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen, QColor
 from typing import Callable, Optional, Tuple
 
-from PIL import Image, ImageTk
 import numpy as np
+from PIL import Image
+import cv2
 
 from engine.video_engine import VideoEngine
 from models.video_session import VideoSession
 from helpers.lighting_correction import sample_background_profile, apply_lighting_correction
 
-class LightingCorrectionController:
+class LightingCorrectionController(QWidget):
     """
     Step 6: Lighting Correction
     - Uses a fixed 800×450 canvas.
@@ -22,40 +25,49 @@ class LightingCorrectionController:
 
     def __init__(
         self,
-        parent: tk.Frame,
+        parent: QWidget,
         session: VideoSession,
         engine: VideoEngine,
         on_complete: Optional[Callable[[], None]] = None,
     ):
-        self.parent = parent
+        super().__init__(parent)
         self.session = session
         self.engine = engine
         self.on_complete = on_complete or (lambda: None)
 
-        self.canvas = tk.Canvas(
-            parent, width=self.PREVIEW_SIZE[0],
-            height=self.PREVIEW_SIZE[1],
-            cursor="cross", bg="black"
-        )
-        self.canvas.pack()
+        # Drawing state
+        self.start_point = None
+        self.current_point = None
+        self.drawing = False
+        self.rect = None
+        self.preview_image = None
 
-        btns = ttk.Frame(parent)
-        btns.pack(pady=5)
-        # both buttons now simply advance the wizard
-        ttk.Button(btns, text="Apply Correction", command=self._on_apply).pack(side=tk.LEFT, padx=5)
-        ttk.Button(btns, text="Skip",             command=self._on_skip).pack(side=tk.LEFT, padx=5)
-
-        # drawing state
-        self.start_x = self.start_y = 0
-        self.curr_rect_id = None
-        self.rect: Optional[Tuple[int,int,int,int]] = None
-
-        self._tk_image = None
+        self._build_ui()
         self._load_frame()
 
-        self.canvas.bind("<ButtonPress-1>",    self._on_mouse_down)
-        self.canvas.bind("<B1-Motion>",        self._on_mouse_drag)
-        self.canvas.bind("<ButtonRelease-1>",  self._on_mouse_up)
+    def _build_ui(self):
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        # Preview area
+        self.preview_label = QLabel()
+        self.preview_label.setFixedSize(*self.PREVIEW_SIZE)
+        self.preview_label.setMouseTracking(True)
+        self.preview_label.mousePressEvent = self._on_mouse_down
+        self.preview_label.mouseMoveEvent = self._on_mouse_drag
+        self.preview_label.mouseReleaseEvent = self._on_mouse_up
+        layout.addWidget(self.preview_label)
+
+        # Buttons
+        btn_layout = QHBoxLayout()
+        self.apply_btn = QPushButton("Apply Correction")
+        self.apply_btn.clicked.connect(self._on_apply)
+        self.skip_btn = QPushButton("Skip")
+        self.skip_btn.clicked.connect(self._on_skip)
+        
+        btn_layout.addWidget(self.apply_btn)
+        btn_layout.addWidget(self.skip_btn)
+        layout.addLayout(btn_layout)
 
     def _load_frame(self):
         frame = self.engine.get_frame(self.session.start_frame)
@@ -68,45 +80,79 @@ class LightingCorrectionController:
         nw, nh = int(w0*scale), int(h0*scale)
         xoff, yoff = (pw-nw)//2, (ph-nh)//2
 
-        pil = Image.fromarray(frame[:,:,::-1])
-        disp = pil.resize((nw, nh), Image.LANCZOS)
-        canvas_img = Image.new("RGB", self.PREVIEW_SIZE, (0,0,0))
-        canvas_img.paste(disp, (xoff, yoff))
+        # Convert frame to RGB
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        
+        # Create QImage and scale it
+        image = QImage(rgb_frame.data, w0, h0, w0 * 3, QImage.Format_RGB888)
+        pixmap = QPixmap.fromImage(image)
+        scaled_pixmap = pixmap.scaled(nw, nh, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        
+        # Create background pixmap
+        self.preview_pixmap = QPixmap(pw, ph)
+        self.preview_pixmap.fill(Qt.black)
+        
+        # Draw scaled image centered
+        painter = QPainter(self.preview_pixmap)
+        painter.drawPixmap(xoff, yoff, scaled_pixmap)
+        painter.end()
+        
+        self.preview_label.setPixmap(self.preview_pixmap)
+        self._scale = scale
+        self._xoff = xoff
+        self._yoff = yoff
 
-        self._base = canvas_img
-        self._xoff, self._yoff, self._scale = xoff, yoff, scale
+    def _on_mouse_down(self, event):
+        self.drawing = True
+        self.start_point = QPoint(event.x(), event.y())
+        self.current_point = self.start_point
 
-        self._tk_image = ImageTk.PhotoImage(canvas_img)
-        self.canvas.create_image(0,0,anchor="nw",image=self._tk_image)
-
-    def _on_mouse_down(self, e):
-        self.start_x, self.start_y = e.x, e.y
-        if self.curr_rect_id:
-            self.canvas.delete(self.curr_rect_id)
-            self.curr_rect_id = None
-
-    def _on_mouse_drag(self, e):
-        if self.curr_rect_id:
-            self.canvas.delete(self.curr_rect_id)
-        self.curr_rect_id = self.canvas.create_rectangle(
-            self.start_x, self.start_y, e.x, e.y,
-            outline="blue", width=2
-        )
-
-    def _on_mouse_up(self, e):
-        if not self.curr_rect_id:
+    def _on_mouse_drag(self, event):
+        if not self.drawing:
             return
-        x0, y0, x1, y1 = self.canvas.coords(self.curr_rect_id)
+            
+        self.current_point = QPoint(event.x(), event.y())
+        
+        # Create copy of base pixmap and draw rectangle
+        preview = self.preview_pixmap.copy()
+        painter = QPainter(preview)
+        painter.setPen(QPen(QColor(0, 0, 255), 2))  # Blue pen
+        
+        x = min(self.start_point.x(), self.current_point.x())
+        y = min(self.start_point.y(), self.current_point.y())
+        w = abs(self.current_point.x() - self.start_point.x())
+        h = abs(self.current_point.y() - self.start_point.y())
+        
+        painter.drawRect(x, y, w, h)
+        painter.end()
+        
+        self.preview_label.setPixmap(preview)
+
+    def _on_mouse_up(self, event):
+        if not self.drawing:
+            return
+            
+        self.drawing = False
+        self.current_point = QPoint(event.x(), event.y())
+        
+        # Convert to original image coordinates
+        x0 = min(self.start_point.x(), self.current_point.x())
+        y0 = min(self.start_point.y(), self.current_point.y())
+        x1 = max(self.start_point.x(), self.current_point.x())
+        y1 = max(self.start_point.y(), self.current_point.y())
+        
         ox = int((x0 - self._xoff)/self._scale)
         oy = int((y0 - self._yoff)/self._scale)
         ow = int((x1 - x0)/self._scale)
         oh = int((y1 - y0)/self._scale)
+        
         self.rect = (ox, oy, ow, oh)
         self._preview_correction()
 
     def _preview_correction(self):
         if not self.rect:
             return
+            
         profile = sample_background_profile(self.session, self.engine, self.rect)
         mid = (self.session.start_frame + self.session.end_frame)//2
         orig = self.engine.get_frame(mid)
@@ -114,30 +160,41 @@ class LightingCorrectionController:
             orig = self.engine.apply_rotation(orig, self.session.rotation_matrix)
         corr = apply_lighting_correction(orig, profile, mid)
 
+        # Create side-by-side preview
         combined = np.concatenate([orig, corr], axis=1)
         h2, w2 = combined.shape[:2]
         pw, ph = self.PREVIEW_SIZE
         scale = min(pw/w2, ph/h2)
         nw, nh = int(w2*scale), int(h2*scale)
-        pil = Image.fromarray(combined[:,:,::-1])
-        disp = pil.resize((nw, nh), Image.LANCZOS)
-        canvas_img = Image.new("RGB", self.PREVIEW_SIZE, (0,0,0))
+        
+        # Convert to Qt image
+        rgb = cv2.cvtColor(combined, cv2.COLOR_BGR2RGB)
+        image = QImage(rgb.data, w2, h2, w2 * 3, QImage.Format_RGB888)
+        pixmap = QPixmap.fromImage(image)
+        scaled_pixmap = pixmap.scaled(nw, nh, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        
+        # Create preview with black background
+        preview = QPixmap(pw, ph)
+        preview.fill(Qt.black)
+        
+        # Draw scaled image centered
         xoff, yoff = (pw-nw)//2, (ph-nh)//2
-        canvas_img.paste(disp, (xoff, yoff))
-
-        self._tk_image = ImageTk.PhotoImage(canvas_img)
-        self.canvas.create_image(0,0,anchor="nw",image=self._tk_image)
+        painter = QPainter(preview)
+        painter.drawPixmap(xoff, yoff, scaled_pixmap)
+        painter.end()
+        
+        self.preview_label.setPixmap(preview)
 
     def _on_apply(self):
         if self.rect is None:
-            messagebox.showerror("Error", "Please draw a blank region first.")
+            QMessageBox.critical(self, "Error", "Please draw a blank region first.")
             return
+            
         profile = sample_background_profile(self.session, self.engine, self.rect)
         self.session.background_profile = profile
         self.session.background_rect = self.rect
-        messagebox.showinfo("Lighting Correction", "Background profile stored.")
+        QMessageBox.information(self, "Lighting Correction", "Background profile stored.")
         self.on_complete()
 
     def _on_skip(self):
-        # no crash, just advance
         self.on_complete()

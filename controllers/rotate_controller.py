@@ -1,219 +1,301 @@
 # controllers/rotate_controller.py
 
-import tkinter as tk
-from tkinter import ttk
 import cv2
 import numpy as np
-from PIL import Image, ImageTk
+from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
+                            QLabel, QSpinBox, QSlider, QGroupBox)
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen, QColor
+from typing import Optional, Callable
 
 from models.video_session import VideoSession
 from engine.video_engine import VideoEngine
 
-class RotateController:
+class RotateController(QWidget):
     """
-    Step 4: Rotate / Deskew
-    - Click+drag across a horizontal feature to measure its angle.
-    - Deskews by rotating by the negative of that measured angle,
-      so your red guideline stays aligned.
-    - The red line + its end-point dots rotate together.
-    - Reset or Confirm to lock in the rotation_matrix.
+    Controller for Step 3: Rotate Video
+    Allows rotating video frames by:
+    - Drawing a line that should be horizontal
+    - Fine-tuning with angle slider
     """
-    PREVIEW_SIZE = (800, 450)
 
-    def __init__(self,
-                 parent: tk.Frame,
-                 session: VideoSession,
-                 engine: VideoEngine,
-                 on_complete: callable):
-        self.parent = parent
+    def __init__(
+        self,
+        parent: QWidget,
+        session: VideoSession,
+        engine: VideoEngine,
+        on_complete: Optional[Callable[[], None]] = None
+    ):
+        super().__init__(parent)
         self.session = session
         self.engine = engine
-        self.on_complete = on_complete
-
-        # Load mid-clip frame and apply any existing rotation
-        mid = (session.start_frame + session.end_frame) // 2
-        frame = engine.get_frame(mid)
-        if session.rotation_matrix is not None:
-            frame = engine.apply_rotation(frame, session.rotation_matrix)
-        self.orig_img = frame
-        self.h0, self.w0 = frame.shape[:2]
-
-        # Compute scale & offset to fit PREVIEW_SIZE
-        pw, ph = self.PREVIEW_SIZE
-        scale = min(pw / self.w0, ph / self.h0)
-        self._scale = scale
-        self._xoff = int((pw - self.w0 * scale) // 2)
-        self._yoff = int((ph - self.h0 * scale) // 2)
-
-        # Prepare initial display image
-        pil = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-        disp = pil.resize((int(self.w0 * scale), int(self.h0 * scale)), Image.LANCZOS)
-        canvas_img = Image.new("RGB", self.PREVIEW_SIZE, (0, 0, 0))
-        canvas_img.paste(disp, (self._xoff, self._yoff))
-        self._photo_disp = ImageTk.PhotoImage(canvas_img)
-
-        # Drawing state
-        self._start = None
-        self._line = None
-        self._dot1 = None
-        self._dot2 = None
-        self._orig0 = None
-        self._orig1 = None
-
-        self.frame = tk.Frame(self.parent)
+        self.on_complete = on_complete or (lambda: None)
+        
+        self.angle = 0
+        self.base_frame = None  # Store the original frame
+        self.rotated_frame = None
+        
+        # Line drawing state
+        self.drawing = False
+        self.start_point = None
+        self.end_point = None
+        self.display_to_image_ratio = 1.0  # Track scaling ratio
+        
         self._build_ui()
+        self._load_base_frame()
+        self._update_preview()
 
     def _build_ui(self):
-        ttk.Label(self.frame,
-            text="Click and drag to draw a line across a horizontal feature\n"
-                 "(e.g. chip edge) to deskew.",
-            wraplength=700, justify="center"
-        ).pack(pady=10)
-        ttk.Label(self.frame, text="Rotate / Deskew", font=(None,16)).pack(pady=5)
+        layout = QVBoxLayout()
+        self.setLayout(layout)
 
-        pw, ph = self.PREVIEW_SIZE
-        self.canvas = tk.Canvas(self.frame, width=pw, height=ph, cursor="cross")
-        self.canvas.pack()
-        self.canvas_img = self.canvas.create_image(0, 0, anchor='nw', image=self._photo_disp)
+        # Title
+        title = QLabel("Step 3: Rotate Video")
+        title.setStyleSheet("font-size: 16pt;")
+        layout.addWidget(title)
 
-        self.canvas.bind("<ButtonPress-1>",    self._on_press)
-        self.canvas.bind("<B1-Motion>",        self._on_drag)
-        self.canvas.bind("<ButtonRelease-1>",  self._on_release)
-
-        ctrl = ttk.Frame(self.frame)
-        ctrl.pack(pady=5, fill=tk.X, padx=10)
-        ttk.Label(ctrl, text="Angle to apply (°):").pack(side=tk.LEFT)
-        self.angle_var = tk.DoubleVar(value=0.0)
-        self.angle_spin = ttk.Spinbox(
-            ctrl, from_=-180, to=180, increment=0.1,
-            textvariable=self.angle_var,
-            command=self._on_angle_change,
-            state="disabled", width=7
+        # Instructions
+        instructions = QLabel(
+            "Draw a line across a feature that should be horizontal, "
+            "or use the slider for fine adjustments."
         )
-        self.angle_spin.pack(side=tk.LEFT, padx=5)
-        ttk.Button(ctrl, text="Reset", command=self._reset).pack(side=tk.LEFT, padx=5)
-        self.confirm_btn = ttk.Button(
-            ctrl, text="Confirm Rotation",
-            command=self._on_confirm,
-            state="disabled"
+        instructions.setWordWrap(True)
+        layout.addWidget(instructions)
+
+        # Preview frame
+        self.preview = QLabel()
+        self.preview.setAlignment(Qt.AlignCenter)
+        self.preview.setMinimumSize(640, 480)
+        self.preview.setStyleSheet("border: 1px solid #ccc;")
+        # Enable mouse tracking for line drawing
+        self.preview.setMouseTracking(True)
+        self.preview.mousePressEvent = self._on_mouse_press
+        self.preview.mouseMoveEvent = self._on_mouse_move
+        self.preview.mouseReleaseEvent = self._on_mouse_release
+        layout.addWidget(self.preview)
+
+        # Controls group
+        controls_group = QGroupBox("Rotation Controls")
+        controls_layout = QVBoxLayout()
+        controls_group.setLayout(controls_layout)
+
+        # Angle controls
+        angle_layout = QHBoxLayout()
+        
+        # Angle spinbox
+        self.angle_spin = QSpinBox()
+        self.angle_spin.setRange(-180, 180)
+        self.angle_spin.setSingleStep(1)
+        self.angle_spin.valueChanged.connect(self._on_angle_changed)
+        angle_layout.addWidget(QLabel("Angle:"))
+        angle_layout.addWidget(self.angle_spin)
+
+        # Angle slider
+        self.angle_slider = QSlider(Qt.Horizontal)
+        self.angle_slider.setRange(-180, 180)
+        self.angle_slider.valueChanged.connect(self._on_slider_changed)
+        angle_layout.addWidget(self.angle_slider)
+        
+        controls_layout.addLayout(angle_layout)
+
+        # Buttons
+        button_layout = QHBoxLayout()
+        
+        self.reset_btn = QPushButton("Reset")
+        self.reset_btn.clicked.connect(self._on_reset)
+        button_layout.addWidget(self.reset_btn)
+
+        button_layout.addStretch()
+
+        self.confirm_btn = QPushButton("Confirm Rotation")
+        self.confirm_btn.clicked.connect(self._on_confirm)
+        button_layout.addWidget(self.confirm_btn)
+        
+        controls_layout.addLayout(button_layout)
+        layout.addWidget(controls_group)
+
+    def _load_base_frame(self):
+        """Load and store the base frame"""
+        if self.engine.cap:
+            self.base_frame = self.engine.get_frame(self.session.start_frame)
+
+    def _get_image_position(self, pos):
+        """Convert display coordinates to image coordinates"""
+        if not self.preview.pixmap():
+            return None
+
+        # Get the geometry of the displayed image
+        label_rect = self.preview.rect()
+        pixmap = self.preview.pixmap()
+        image_rect = pixmap.rect()
+        
+        # Calculate the actual display rectangle (maintaining aspect ratio)
+        display_rect = image_rect
+        display_rect.moveCenter(label_rect.center())
+        
+        # Check if click is within the image area
+        if not display_rect.contains(pos):
+            return None
+
+        # Calculate scaling ratios
+        scale_x = image_rect.width() / display_rect.width()
+        scale_y = image_rect.height() / display_rect.height()
+        self.display_to_image_ratio = scale_x  # Store for later use
+
+        # Convert to image coordinates
+        image_x = (pos.x() - display_rect.left()) * scale_x
+        image_y = (pos.y() - display_rect.top()) * scale_y
+
+        return QPoint(int(image_x), int(image_y))
+
+    def _on_mouse_press(self, event):
+        if event.button() == Qt.LeftButton:
+            # Convert to image coordinates
+            pos = self._get_image_position(event.pos())
+            if pos:
+                self.drawing = True
+                self.start_point = pos
+                self.end_point = pos
+                self._update_preview()
+
+    def _on_mouse_move(self, event):
+        if self.drawing:
+            pos = self._get_image_position(event.pos())
+            if pos:
+                self.end_point = pos
+                self._update_preview()
+
+    def _on_mouse_release(self, event):
+        if event.button() == Qt.LeftButton and self.drawing:
+            self.drawing = False
+            pos = self._get_image_position(event.pos())
+            if pos:
+                self.end_point = pos
+                self._calculate_and_apply_angle()
+
+    def _calculate_and_apply_angle(self):
+        """Calculate and apply rotation angle from the drawn line"""
+        if not (self.start_point and self.end_point):
+            return
+
+        # Calculate angle relative to horizontal
+        dx = self.end_point.x() - self.start_point.x()
+        dy = self.end_point.y() - self.start_point.y()
+        angle = np.degrees(np.arctan2(dy, dx))
+        
+        # Update the angle control
+        self.angle_spin.setValue(-angle)  # Negative because we want to rotate to horizontal
+
+    def _update_preview(self):
+        if self.base_frame is None:
+            return
+
+        # Make a copy of the base frame
+        frame = self.base_frame.copy()
+
+        # Apply rotation if needed
+        if self.angle != 0:
+            h, w = frame.shape[:2]
+            center = (w // 2, h // 2)
+            M = cv2.getRotationMatrix2D(center, self.angle, 1.0)
+            frame = cv2.warpAffine(frame, M, (w, h),
+                                 flags=cv2.INTER_LINEAR,
+                                 borderMode=cv2.BORDER_CONSTANT,
+                                 borderValue=(128, 128, 128))
+
+        # Convert to Qt image
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        h, w, ch = rgb.shape
+        image = QImage(rgb.data, w, h, w * ch, QImage.Format_RGB888)
+        pixmap = QPixmap.fromImage(image)
+
+        # Draw the line if we have points
+        if self.start_point and self.end_point:
+            painter = QPainter(pixmap)
+            
+            # Set up pen for line drawing
+            pen = QPen(QColor(255, 0, 0))
+            pen.setWidth(3)  # Thicker line
+            painter.setPen(pen)
+
+            # Draw the line
+            if self.angle != 0:
+                # Rotate points with the image
+                center = QPoint(w // 2, h // 2)
+                angle_rad = np.radians(self.angle)
+                rot_matrix = np.array([
+                    [np.cos(angle_rad), -np.sin(angle_rad)],
+                    [np.sin(angle_rad), np.cos(angle_rad)]
+                ])
+                
+                # Rotate start point
+                start_vec = np.array([self.start_point.x() - center.x(),
+                                    self.start_point.y() - center.y()])
+                rotated_start = np.dot(rot_matrix, start_vec)
+                start_point = QPoint(int(rotated_start[0] + center.x()),
+                                   int(rotated_start[1] + center.y()))
+                
+                # Rotate end point
+                end_vec = np.array([self.end_point.x() - center.x(),
+                                  self.end_point.y() - center.y()])
+                rotated_end = np.dot(rot_matrix, end_vec)
+                end_point = QPoint(int(rotated_end[0] + center.x()),
+                                 int(rotated_end[1] + center.y()))
+            else:
+                start_point = self.start_point
+                end_point = self.end_point
+
+            # Draw line and endpoint dots
+            painter.drawLine(start_point, end_point)
+            
+            # Draw dots at endpoints
+            painter.setBrush(QColor(255, 0, 0))
+            painter.drawEllipse(start_point, 5, 5)
+            painter.drawEllipse(end_point, 5, 5)
+            
+            painter.end()
+
+        # Scale the pixmap to fit the preview label
+        scaled_pixmap = pixmap.scaled(
+            self.preview.size(),
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation
         )
-        self.confirm_btn.pack(side=tk.RIGHT)
+        self.preview.setPixmap(scaled_pixmap)
 
-        self.frame.pack(fill=tk.BOTH, expand=True)
+    def _on_angle_changed(self, value):
+        """Handle angle changes from spinbox"""
+        self.angle = value
+        self.angle_slider.setValue(value)
+        self._update_preview()
 
-    def _on_press(self, e):
-        # start of drag
-        self._start = (e.x, e.y)
-        # clear previous decorations
-        for attr in ("_line", "_dot1", "_dot2"):
-            obj = getattr(self, attr)
-            if obj:
-                self.canvas.delete(obj)
-                setattr(self, attr, None)
-        self.confirm_btn.config(state="disabled")
-        self.angle_spin.config(state="disabled")
+    def _on_slider_changed(self, value):
+        """Handle angle changes from slider"""
+        self.angle = value
+        self.angle_spin.setValue(value)
+        self._update_preview()
 
-    def _on_drag(self, e):
-        # rubber‐band line
-        if self._line:
-            self.canvas.delete(self._line)
-        x0, y0 = self._start
-        self._line = self.canvas.create_line(x0, y0, e.x, e.y,
-                                             fill="red", width=2)
-
-    def _on_release(self, e):
-        # drop end‐point dots
-        x0, y0 = self._start
-        x1, y1 = e.x, e.y
-        r = 4
-        self._dot1 = self.canvas.create_oval(x0-r, y0-r, x0+r, y0+r,
-                                             fill="red", outline="red")
-        self._dot2 = self.canvas.create_oval(x1-r, y1-r, x1+r, y1+r,
-                                             fill="red", outline="red")
-
-        # map canvas coords back to image coords
-        ox0 = (x0 - self._xoff) / self._scale
-        oy0 = (y0 - self._yoff) / self._scale
-        ox1 = (x1 - self._xoff) / self._scale
-        oy1 = (y1 - self._yoff) / self._scale
-        self._orig0 = (ox0, oy0)
-        self._orig1 = (ox1, oy1)
-
-        # measured slope angle (positive CCW)
-        raw = np.degrees(np.arctan2(oy1 - oy0, ox1 - ox0))
-        # deskew by rotating by the negative of raw
-        angle_to_apply = raw
-        self.angle_var.set(round(angle_to_apply, 2))
-        self.angle_spin.config(state="normal")
-        self._apply_rotation(angle_to_apply)
-        self.confirm_btn.config(state="normal")
-
-    def _apply_rotation(self, angle: float):
-        # build and store rotation matrix
-        center = (self.w0/2, self.h0/2)
-        rot_mat = cv2.getRotationMatrix2D(center, angle, 1.0)
-        self.session.rotation_matrix = rot_mat
-
-        # rotate the original image
-        rotated = cv2.warpAffine(self.orig_img, rot_mat,
-                                 (self.w0, self.h0),
-                                 flags=cv2.INTER_LINEAR)
-
-        # update display image
-        pil = Image.fromarray(cv2.cvtColor(rotated, cv2.COLOR_BGR2RGB))
-        disp = pil.resize((int(self.w0*self._scale), int(self.h0*self._scale)), Image.LANCZOS)
-        canvas_img = Image.new("RGB", self.PREVIEW_SIZE, (0,0,0))
-        canvas_img.paste(disp, (self._xoff, self._yoff))
-        self._photo_rot = ImageTk.PhotoImage(canvas_img)
-        self.canvas.itemconfig(self.canvas_img, image=self._photo_rot)
-
-        # rotate the red guideline and dots along with the image
-        if self._orig0 and self._orig1:
-            a, b, c = rot_mat[0]
-            d, e, f = rot_mat[1]
-            nx0 = a*self._orig0[0] + b*self._orig0[1] + c
-            ny0 = d*self._orig0[0] + e*self._orig0[1] + f
-            nx1 = a*self._orig1[0] + b*self._orig1[1] + c
-            ny1 = d*self._orig1[0] + e*self._orig1[1] + f
-            cx0 = nx0*self._scale + self._xoff
-            cy0 = ny0*self._scale + self._yoff
-            cx1 = nx1*self._scale + self._xoff
-            cy1 = ny1*self._scale + self._yoff
-
-            # clear old
-            for attr in ("_line", "_dot1", "_dot2"):
-                obj = getattr(self, attr)
-                if obj:
-                    self.canvas.delete(obj)
-                    setattr(self, attr, None)
-
-            # draw new line and dots
-            self._line = self.canvas.create_line(cx0, cy0, cx1, cy1,
-                                                 fill="red", width=2)
-            r = 4
-            self._dot1 = self.canvas.create_oval(cx0-r, cy0-r, cx0+r, cy0+r,
-                                                 fill="red", outline="red")
-            self._dot2 = self.canvas.create_oval(cx1-r, cy1-r, cx1+r, cy1+r,
-                                                 fill="red", outline="red")
-
-    def _on_angle_change(self):
-        if self.angle_spin["state"] == "normal":
-            self._apply_rotation(self.angle_var.get())
-
-    def _reset(self):
-        for attr in ("_line", "_dot1", "_dot2"):
-            obj = getattr(self, attr)
-            if obj:
-                self.canvas.delete(obj)
-                setattr(self, attr, None)
-        # restore original display
-        self.canvas.itemconfig(self.canvas_img, image=self._photo_disp)
-        self.angle_var.set(0.0)
-        self.angle_spin.config(state="disabled")
-        self.confirm_btn.config(state="disabled")
-        self.session.rotation_matrix = None
-        self._orig0 = None
-        self._orig1 = None
+    def _on_reset(self):
+        """Reset rotation and clear line"""
+        self.angle = 0
+        self.angle_spin.setValue(0)
+        self.angle_slider.setValue(0)
+        self.start_point = None
+        self.end_point = None
+        self._update_preview()
 
     def _on_confirm(self):
-        self.on_complete()
+        """Save rotation and proceed"""
+        # Store rotation matrix in session if needed
+        if self.angle != 0:
+            h, w = self.base_frame.shape[:2]
+            center = (w // 2, h // 2)
+            M = cv2.getRotationMatrix2D(center, self.angle, 1.0)
+            self.session.rotation_matrix = M
+        
+        if self.on_complete:
+            self.on_complete()
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self._update_preview()
