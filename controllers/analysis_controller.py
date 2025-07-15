@@ -78,9 +78,31 @@ class AnalysisWorker(QThread):
                                        np.ones(self.smooth_window)/self.smooth_window, 
                                        mode='valid')
 
+                # Convert intensity to volume using ROI's total_volume calibration
+                if hasattr(roi, 'total_volume') and roi.total_volume > 0:
+                    # Normalize intensity to 0-1 range, then scale by total volume
+                    volume_min = np.min(volume)
+                    volume_max = np.max(volume)
+                    if volume_max > volume_min:
+                        volume_normalized = (volume - volume_min) / (volume_max - volume_min)
+                        volume = volume_normalized * roi.total_volume  # Convert to µL
+                    else:
+                        volume = np.full_like(volume, roi.total_volume / 2)  # Default to half volume
+                else:
+                    # If no volume calibration, assume maximum intensity = 100 µL
+                    volume_max = np.max(volume) if len(volume) > 0 else 1
+                    volume = (volume / volume_max) * 100.0  # Scale to 0-100 µL
+
+                # Calculate time array like the original: frame_index * interval / fps
                 # Use actual sampling frequency for time calculation
-                times = np.arange(len(volume)) / self.sampling_freq
-                flow = np.gradient(volume, times)
+                actual_frame_step = max(1, int(video_fps / self.sampling_freq))
+                times = np.arange(len(volume)) * actual_frame_step / video_fps
+                
+                # Apply time multiplier if present (from original logic)
+                if hasattr(self.session, 'time_multiplier'):
+                    times = times * self.session.time_multiplier
+                    
+                flow = np.gradient(volume, times)  # Now in µL/s
                 
                 self.results[name] = (times, volume, flow)
                 
@@ -94,11 +116,12 @@ class AnalysisWorker(QThread):
 class AnalysisController(QWidget):
     """Controller for Step 5: Analysis"""
 
-    def __init__(self, parent, session, engine, on_complete=None):
+    def __init__(self, parent, session, engine, on_complete=None, ui_controller=None):
         super().__init__(parent)
         self.session = session
         self.engine = engine
         self.on_complete = on_complete or (lambda: None)
+        self.ui_controller = ui_controller
         self.results = {}
         
         self._build_ui()
@@ -144,12 +167,6 @@ class AnalysisController(QWidget):
         self.run_btn.clicked.connect(self._on_run)
         controls.addWidget(self.run_btn)
 
-        # Save button
-        self.save_btn = QPushButton("Save Results")
-        self.save_btn.clicked.connect(self._on_save)
-        self.save_btn.setEnabled(False)
-        controls.addWidget(self.save_btn)
-
         layout.addLayout(controls)
 
         # Plots
@@ -161,15 +178,23 @@ class AnalysisController(QWidget):
         layout.addLayout(plots_layout)
 
     def _setup_plots(self):
+        # Setup volume plot
+        self.canvas_vol.figure.clear()
         self.ax_vol = self.canvas_vol.figure.add_subplot(111)
         self.ax_vol.set_title("Volume vs Time")
         self.ax_vol.set_xlabel("Time (s)")
-        self.ax_vol.set_ylabel("Volume (a.u.)")
+        self.ax_vol.set_ylabel("Volume (µL)")
 
+        # Setup flow plot
+        self.canvas_flow.figure.clear()
         self.ax_flow = self.canvas_flow.figure.add_subplot(111)
-        self.ax_flow.set_title("Flow vs Time")
+        self.ax_flow.set_title("Flow Rate vs Time")
         self.ax_flow.set_xlabel("Time (s)")
-        self.ax_flow.set_ylabel("Flow (a.u.)")
+        self.ax_flow.set_ylabel("Flow Rate (µL/s)")
+
+        # Ensure distinct axes for each plot
+        self.canvas_vol.figure.tight_layout()
+        self.canvas_flow.figure.tight_layout()
 
     def _on_run(self):
         # Check if there are ROIs to analyze
@@ -206,40 +231,51 @@ class AnalysisController(QWidget):
         self.progress.setValue(overall_progress)
 
     def _on_analysis_complete(self, results):
+        """Handle completion of analysis"""
         self.results = results
         self.status_label.setText(f"Analysis complete! Processed {len(results)} ROIs.")
         self.progress.setValue(100)
         self.progress.hide()
-        
+
         # Re-enable buttons
         self.run_btn.setEnabled(True)
-        self.save_btn.setEnabled(True)
-        
+
         # Plot results
         plot_count = 0
         for name, (times, volume, flow) in results.items():
+            # Ensure volume calculation matches original logic
+            volume = np.array(volume)
+            volume_min = np.min(volume)
+            volume_max = np.max(volume)
+            if volume_max > volume_min:
+                volume_normalized = (volume - volume_min) / (volume_max - volume_min)
+                volume = volume_normalized * 100  # Scale to 0-100 µL
+            else:
+                volume = np.full_like(volume, 50)  # Default to half volume
+
             self.ax_vol.plot(times, volume, label=name)
             self.ax_flow.plot(times, flow, label=name)
             plot_count += 1
-        
+
         # Only add legends if there are plots
         if plot_count > 0:
             self.ax_vol.legend()
             self.ax_flow.legend()
-        
+
         self.canvas_vol.draw()
         self.canvas_flow.draw()
-        
+
         # Store results in session
         self.session.analysis_results = {
             name: AnalysisResults(time=t, volume=v, flow=f, 
-                                smoothing_window=self.smooth_spin.value(),
-                                sampling_frequency=self.sampling_freq_spin.value())
+                                  smoothing_window=self.smooth_spin.value(),
+                                  sampling_frequency=self.sampling_freq_spin.value())
             for name, (t, v, f) in results.items()
         }
         
-        self.save_btn.setEnabled(True)
-        self.run_btn.setEnabled(True)
+        # Notify UI controller that analysis is complete
+        if self.ui_controller and hasattr(self.ui_controller, 'on_analysis_complete'):
+            self.ui_controller.on_analysis_complete()
 
     def _on_error(self, error_msg):
         QMessageBox.critical(self, "Analysis Error", error_msg)

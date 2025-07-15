@@ -1,9 +1,9 @@
-
 from PyQt5.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                             QPushButton, QStackedWidget, QLabel, QFileDialog,
                             QMessageBox, QApplication)
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QPixmap
+import logging
 
 from models.video_session import VideoSession
 from engine.video_engine import VideoEngine
@@ -64,10 +64,15 @@ class UIController(QMainWindow):
         self.back_button.clicked.connect(self._on_back)
         self.next_button = QPushButton("Next")
         self.next_button.clicked.connect(self.next_step)
+        self.save_button = QPushButton("Save Results")
+        self.save_button.clicked.connect(self._on_save_results)
+        self.save_button.setEnabled(False)
+        self.save_button.hide()  # Hidden by default
         
         nav_layout.addWidget(self.back_button)
         nav_layout.addStretch()
         nav_layout.addWidget(self.next_button)
+        nav_layout.addWidget(self.save_button)
         main_layout.addLayout(nav_layout)
 
         # Initialize controllers
@@ -89,7 +94,8 @@ class UIController(QMainWindow):
         )
         self.analysis_ctrl = AnalysisController(
             self.stack, self.session, self.engine,
-            on_complete=lambda: self.show_step(1)
+            on_complete=lambda: self.show_step(1),
+            ui_controller=self
         )
 
         # Add controllers to stack
@@ -126,14 +132,21 @@ class UIController(QMainWindow):
         
     def _update_navigation(self):
         """Update navigation button states based on current step"""
-        # Enable back button if we're not on the first step
+        # Enable back button only if not on first step
         self.back_button.setEnabled(self.current_step > 1)
-        
-        # Hide next button on the last step (analysis)
+
+        # On the last step (analysis), show save button instead of next
         if self.current_step == self.total_steps:
             self.next_button.hide()
+            self.save_button.show()
+            # Enable save button if analysis has been run
+            if hasattr(self.analysis_ctrl, 'results') and self.analysis_ctrl.results:
+                self.save_button.setEnabled(True)
+            else:
+                self.save_button.setEnabled(False)
         else:
             self.next_button.show()
+            self.save_button.hide()
             self.next_button.setEnabled(self.is_step_complete(self.current_step))
 
     def is_step_complete(self, step: int) -> bool:
@@ -153,9 +166,11 @@ class UIController(QMainWindow):
         self.next_button.setEnabled(True)
 
     def _on_back(self):
-        """Handle back button click"""
+        """Navigate to the previous step"""
         if self.current_step > 1:
-            self.show_step(self.current_step - 1)
+            self.current_step -= 1
+            self.show_step(self.current_step)
+            logging.info(f"Navigated back to step {self.current_step}")
 
     def next_step(self):
         """Navigate to the next step if validation passes"""
@@ -173,6 +188,7 @@ class UIController(QMainWindow):
         # Move to next step
         next_index = current_index + 1
         if next_index < self.stack.count():
+            self.current_step = next_index + 1  # Update current_step
             self.stack.setCurrentIndex(next_index)
             self._update_navigation()
             
@@ -206,3 +222,13 @@ class UIController(QMainWindow):
                 "No File Selected",
                 "Please use the 'Load Video' button to select a video file when ready."
             )
+
+    def _on_save_results(self):
+        """Handle save results button click"""
+        if hasattr(self.analysis_ctrl, '_on_save'):
+            self.analysis_ctrl._on_save()
+
+    def on_analysis_complete(self):
+        """Called when analysis is complete to enable save button"""
+        if self.current_step == self.total_steps:
+            self.save_button.setEnabled(True)
