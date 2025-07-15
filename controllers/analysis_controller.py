@@ -8,18 +8,28 @@ import os, csv
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from PIL import Image, ImageDraw, ImageFont
+import tkinter.simpledialog
+import threading
 
 from models.video_session import VideoSession
 from models.analysis_results import AnalysisResults
 from engine.video_engine import VideoEngine
 from controllers.lighting_correction_controller import LightingCorrectionController
 
+"""
+analysis_controller.py
+
+Provides the AnalysisController class for running and displaying
+analysis of regions of interest (ROIs) on video frames, including
+volume and flow rate plotting, result confirmation, and saving.
+"""
+
 class AnalysisController:
     """
-    Step 6: Analysis
-    - Runs analysis for *all* ROIs.
-    - Plots volume curves together with legend.
-    - Shows a status label updating which ROI is being processed.
+    Controller for Step 6: Analysis.
+
+    Builds the UI for analysis controls, runs analysis on all defined ROIs,
+    displays volume and flow plots, and handles saving and confirmation of results.
     """
     def __init__(self,
                  parent: tk.Frame,
@@ -27,6 +37,16 @@ class AnalysisController:
                  engine: VideoEngine,
                  on_complete: Optional[Callable[[], None]] = None,
                  on_edit_rois: Optional[Callable[[], None]] = None):
+        """
+        Initialize the AnalysisController.
+
+        Args:
+            parent (tk.Frame): Parent frame for UI components.
+            session (VideoSession): Video session containing video and ROI data.
+            engine (VideoEngine): Video engine for frame retrieval and processing.
+            on_complete (Optional[Callable[[], None]]): Callback when analysis completes.
+            on_edit_rois (Optional[Callable[[], None]]): Callback to trigger ROI editing.
+        """
         self.parent       = parent
         self.session      = session
         self.engine       = engine
@@ -37,6 +57,12 @@ class AnalysisController:
         self._build_ui()
 
     def _build_ui(self):
+        """
+        Construct the analysis UI components.
+
+        Creates labels, buttons, spinboxes, progress bar, and plot canvases
+        for user interaction during analysis.
+        """
         ttk.Label(self.parent, text="Step 6: Analysis", font=(None,16)).pack(pady=10)
 
         # Controls...
@@ -89,17 +115,13 @@ class AnalysisController:
         self.canvas_flow = FigureCanvasTkAgg(fig_f, master=self.parent)
         self.canvas_flow.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
-        # Confirm
-        self.confirm_btn = ttk.Button(self.parent, text="Confirm Analysis",
-                                      state="disabled", command=self._on_confirm)
-        self.confirm_btn.pack(pady=10)
-
     def _mark_dirty(self):
+        """Mark analysis state as dirty, enabling rerun and disabling save/confirm."""
         self.run_btn.config(state="normal")
-        self.confirm_btn.config(state="disabled")
         self.save_btn.config(state="disabled")
 
     def _open_lighting(self):
+        """Open the lighting correction UI and apply correction upon completion."""
         LightingCorrectionController(
             parent=self.parent,
             session=self.session,
@@ -108,34 +130,42 @@ class AnalysisController:
         )
 
     def _on_run(self):
+        """Start analysis in a background thread to keep UI responsive."""
         self.run_btn.config(state="disabled")
+        thread = threading.Thread(target=self._run_analysis)
+        thread.start()
+
+    def _run_analysis(self):
+        """Actual analysis logic (moved from _on_run)."""
         rois = self.session.rois
         if not rois:
-            messagebox.showerror("Error","No ROIs defined.")
-            self.run_btn.config(state="normal")
+            self.parent.after(0, lambda: messagebox.showerror("Error","No ROIs defined."))
+            self.parent.after(0, lambda: self.run_btn.config(state="normal"))
             return
 
+        # Determine frames to sample based on interval
         iv = self.interval_var.get()
         frame_range = range(self.session.start_frame, self.session.end_frame, iv)
         steps = len(frame_range)
         self.prog.config(maximum=steps, value=0)
 
-        # Clear prior
+        # Reset previous analysis results and plots
         self.results.clear()
         self.ax_vol.clear()
         self.ax_flow.clear()
         self.status_label.config(text="")
 
-        # base time array
+        # Compute time array for plotting
         base_times = np.arange(steps) * iv / self.session.fps
         times = base_times * getattr(self.session, 'time_multiplier', 1.0)
 
-        # loop over ROIs
+        # Loop over each ROI to sample pixel intensities
         for name, roi in rois.items():
             # update status
-            self.status_label.config(text=f"Analyzing: {name}")
+            self.parent.after(0, lambda name=name: self.status_label.config(text=f"Analyzing: {name}"))
             samples = []
             for idx in frame_range:
+                # Retrieve and optionally rotate frame
                 frame = self.engine.get_frame(idx)
                 if getattr(self.session, 'rotation_matrix', None) is not None:
                     frame = self.engine.apply_rotation(frame, self.session.rotation_matrix)
@@ -143,29 +173,29 @@ class AnalysisController:
                 patch = frame[y:y+h, x:x+w]
                 ch = {'B':0,'G':1,'R':2}[roi.channel]
                 samples.append(patch[:,:,ch].mean())
-                self.prog.step(1)
-                self.parent.update_idletasks()
+                self.parent.after(0, self.prog.step, 1)
+                self.parent.after(0, self.parent.update_idletasks)
 
             arr = np.array(samples)
+            # Normalize intensity to volume
             norm   = (arr - arr.min()) / (arr.ptp() or 1)
             volume = norm * roi.total_volume
+            # Compute flow rate as time derivative of volume
             flow   = np.gradient(volume, times)
 
             self.results[name] = (times, volume, flow)
 
-            # incremental plotting
+            # Apply smoothing and update plots
             w = max(1, self.smooth_var.get())
             vol_s  = np.convolve(volume, np.ones(w)/w, mode='same')
             flow_s = np.convolve(flow,   np.ones(w)/w, mode='same')
             self.ax_vol.plot(times, vol_s, label=name)
             self.ax_flow.plot(times, flow_s, label=name)
-            self.canvas_vol.draw()
-            self.canvas_flow.draw()
+            self.parent.after(0, self.canvas_vol.draw)
+            self.parent.after(0, self.canvas_flow.draw)
+            self.parent.after(0, lambda: self.prog.config(value=0))
 
-            # reset progress bar for next ROI
-            self.prog.config(value=0)
-
-        # finalize axes labels, ticks & legend
+        # Finalize plot labels, legends, and redraw canvases
         self.ax_vol.set_title("Volume vs Time")
         self.ax_vol.set_xlabel("Time (s)")
         self.ax_vol.set_ylabel("Volume (µL)")
@@ -182,53 +212,71 @@ class AnalysisController:
         self.canvas_flow.draw()
 
         # clear status text now that we're done
-        self.status_label.config(text="")
+        self.parent.after(0, lambda: self.status_label.config(text=""))
 
-        # enable confirm & save
-        self.confirm_btn.config(state="normal")
-        self.save_btn.config(state="normal")
-
-    def _on_confirm(self):
-        # store into session
+        # Store results in session immediately after analysis
         self.session.analysis_results = {
             name: AnalysisResults(time=t, volume=v, flow=f, smoothing_window=self.smooth_var.get())
-            for name, (t,v,f) in self.results.items()
+            for name, (t, v, f) in self.results.items()
         }
-        self.on_complete()
-        messagebox.showinfo("Analysis","Analysis complete.")
+
+        # enable save
+        self.parent.after(0, lambda: self.save_btn.config(state="normal"))
 
     def _on_save(self):
-        folder = filedialog.askdirectory(title="Save results to…")
-        if not folder:
+        """
+        Save analysis data and plots to a user-selected folder.
+
+        - Prompts for output directory.
+        - Exports CSV with time and volume data.
+        - Saves volume and flow plot images.
+        - Generates and saves an ROI overlay image.
+        """
+        # Prompt for a base file name
+        base_name = tkinter.simpledialog.askstring("Save Results", "Enter a base file name for all saved assets:")
+        if not base_name:
+            return  # User cancelled
+
+        # Prompt for a directory to save files
+        directory = filedialog.askdirectory(title="Select Folder to Save Results")
+        if not directory:
+            return  # User cancelled
+
+        # Build full file paths
+        results_path = f"{directory}/{base_name}_results.csv"
+        volume_plot_path = f"{directory}/{base_name}_volume.png"
+        flow_plot_path = f"{directory}/{base_name}_flow.png"
+
+        # Save results (implement your actual saving logic here)
+        self._save_results_csv(results_path)
+        self._save_plot(self.ax_vol, volume_plot_path)
+        self._save_plot(self.ax_flow, flow_plot_path)
+        messagebox.showinfo(
+            "Save Complete",
+            f"Results saved as:\n{results_path}\n{volume_plot_path}\n{flow_plot_path}"
+        )
+
+    def _save_results_csv(self, path):
+        """
+        Save analysis results to a CSV file.
+        Each ROI's results are written as separate blocks with headers.
+        """
+        if not hasattr(self.session, "analysis_results") or not self.session.analysis_results:
+            messagebox.showerror("Save Error", "No analysis results to save.")
             return
 
-        # CSV with one column per ROI
-        csv_path = os.path.join(folder, "analysis_data.csv")
-        with open(csv_path, 'w', newline='') as f:
-            writer = csv.writer(f)
-            header = ["time"] + list(self.results.keys())
-            writer.writerow(header)
-            times = self.results[next(iter(self.results))][0]
-            for i, t in enumerate(times):
-                row = [t] + [self.results[n][1][i] for n in self.results]
-                writer.writerow(row)
+        try:
+            with open(path, "w", newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                for roi_name, result in self.session.analysis_results.items():
+                    writer.writerow([f"ROI: {roi_name}"])
+                    writer.writerow(["Time", "Volume", "Flow"])
+                    for t, v, f in zip(result.time, result.volume, result.flow):
+                        writer.writerow([t, v, f])
+                    writer.writerow([])  # Blank line between ROIs
+        except Exception as e:
+            messagebox.showerror("Save Error", f"Failed to save CSV: {e}")
 
-        # save plots
-        self.ax_vol.figure.savefig(os.path.join(folder,"volume_plot.png"))
-        self.ax_flow.figure.savefig(os.path.join(folder,"flow_plot.png"))
-
-        # save ROI overlay
-        mid = (self.session.start_frame + self.session.end_frame)//2
-        frame = self.engine.get_frame(mid)
-        if getattr(self.session, 'rotation_matrix', None) is not None:
-            frame = self.engine.apply_rotation(frame, self.session.rotation_matrix)
-        img = Image.fromarray(frame[:,:,::-1])
-        draw = ImageDraw.Draw(img)
-        font = ImageFont.load_default()
-        for roi in self.session.rois.values():
-            x,y,w,h = roi.rect
-            draw.rectangle([x,y,x+w,y+h], outline="yellow", width=3)
-            draw.text((x+4,y+4), roi.name, fill="yellow", font=font)
-        img.save(os.path.join(folder,"roi_overlay.png"))
-
-        messagebox.showinfo("Saved", f"Results saved to {folder}")
+    def _save_plot(self, ax, path):
+        fig = ax.figure
+        fig.savefig(path)

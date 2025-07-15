@@ -81,14 +81,17 @@ class UIController:
         if frm: frm.pack(fill=tk.BOTH, expand=True)
         # if we're showing Analysis (step 6) and it's already built, mark it dirty
         if step == 6 and hasattr(self, 'analysis_ctrl'):
-            # assumes AnalysisController has a public 'mark_dirty' method
             self.analysis_ctrl._mark_dirty()
 
         self.back_button['state'] = tk.NORMAL if step>1 else tk.DISABLED
-        self.next_button['state'] = (
-            tk.NORMAL if step<self.total_steps and self.is_step_complete(step)
-            else tk.DISABLED
-        )
+        if step == self.total_steps:
+            self.next_button.pack_forget()  # Hide the Next button on the last page
+        else:
+            self.next_button.pack(side=tk.RIGHT, padx=5, pady=5)
+            self.next_button['state'] = (
+                tk.NORMAL if step<self.total_steps and self.is_step_complete(step)
+                else tk.DISABLED
+            )
         self.current_step = step
 
     def go_next(self):

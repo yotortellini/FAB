@@ -108,10 +108,11 @@ class ScanController:
         self.frame.pack(fill=tk.BOTH, expand=True)
 
     def _on_run(self):
+        """Start scanning in a background thread and keep UI responsive."""
         self.run_btn.config(state=tk.DISABLED)
         self.progress.config(value=0, maximum=1)
         self.progress.pack(fill=tk.X, padx=20, pady=5)
-        self.on_run()
+        # Start the scan in a background thread
         threading.Thread(target=self._async_load, daemon=True).start()
 
     def _async_load(self):
@@ -145,6 +146,7 @@ class ScanController:
             self.frame.after(0, self._on_data_ready)
         except Exception as e:
             self.frame.after(0, lambda: messagebox.showerror("Scan Error", str(e)))
+            self.frame.after(0, lambda: self.run_btn.config(state=tk.NORMAL))
 
     def _on_data_ready(self):
         self.progress.pack_forget()
@@ -208,3 +210,16 @@ class ScanController:
         new_end   = self.session.start_frame + int(frac_e*(total-1))
         self.session.set_frame_range(new_start, new_end)
         self.on_complete()
+
+    def _on_scan(self):
+        """Start scanning in a background thread."""
+        self.scan_btn.config(state="disabled")
+        thread = threading.Thread(target=self._run_scan)
+        thread.start()
+
+    def _run_scan(self):
+        self.run_btn.config(state=tk.DISABLED)
+        self.progress.config(value=0, maximum=1)
+        self.progress.pack(fill=tk.X, padx=20, pady=5)
+        self.on_run()
+        threading.Thread(target=self._async_load, daemon=True).start()
