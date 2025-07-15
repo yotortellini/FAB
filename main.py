@@ -1,6 +1,4 @@
 # Written by Yonatan Morocz July 10th 2025. 
-#comment for testing commits and pushes and github. 
-#Is this part of the main or Branch?
 
 import tkinter as tk
 import sys
