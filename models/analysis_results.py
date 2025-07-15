@@ -14,6 +14,7 @@ class AnalysisResults:
         fill_flow: Optional 1D array of flow during filling phase.
         drain_flow: Optional 1D array of flow during drainage phase.
         smoothing_window: Window size used for any smoothing applied.
+        sampling_frequency: Sampling frequency used for analysis (Hz).
         plot_paths: Optional dict mapping plot names (e.g., 'volume', 'flow') to file paths of exported images.
     """
     time: np.ndarray
@@ -22,6 +23,7 @@ class AnalysisResults:
     fill_flow: Optional[np.ndarray] = None
     drain_flow: Optional[np.ndarray] = None
     smoothing_window: int = 0
+    sampling_frequency: int = 30
     plot_paths: Dict[str, str] = field(default_factory=dict)
 
     def add_plot_path(self, name: str, path: str) -> None:

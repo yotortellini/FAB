@@ -3,7 +3,8 @@
 import cv2
 import numpy as np
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
-                            QLabel, QLineEdit, QListWidget, QMessageBox, QGroupBox)
+                            QLabel, QLineEdit, QListWidget, QMessageBox, QGroupBox,
+                            QSlider, QDoubleSpinBox)
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen, QColor, QFont
 
@@ -95,13 +96,63 @@ class ROIController(QWidget):
         name_layout.addWidget(self.name_input)
         creation_layout.addLayout(name_layout)
 
-        # Volume input (optional)
+        # Volume input
         volume_layout = QHBoxLayout()
         volume_layout.addWidget(QLabel("Volume (µL):"))
         self.volume_input = QLineEdit()
-        self.volume_input.setPlaceholderText("Optional - for concentration calc")
+        self.volume_input.setPlaceholderText("e.g., 50, 100, 250")
         volume_layout.addWidget(self.volume_input)
         creation_layout.addLayout(volume_layout)
+
+        # Start Fraction input
+        start_frac_layout = QVBoxLayout()
+        start_frac_label = QLabel("Start Fraction (0.0 - 1.0):")
+        start_frac_layout.addWidget(start_frac_label)
+        
+        start_frac_controls = QHBoxLayout()
+        self.start_frac_slider = QSlider(Qt.Horizontal)
+        self.start_frac_slider.setMinimum(0)
+        self.start_frac_slider.setMaximum(100)
+        self.start_frac_slider.setValue(0)
+        self.start_frac_slider.valueChanged.connect(self._on_start_frac_slider_changed)
+        
+        self.start_frac_spin = QDoubleSpinBox()
+        self.start_frac_spin.setMinimum(0.0)
+        self.start_frac_spin.setMaximum(1.0)
+        self.start_frac_spin.setSingleStep(0.01)
+        self.start_frac_spin.setDecimals(2)
+        self.start_frac_spin.setValue(0.0)
+        self.start_frac_spin.valueChanged.connect(self._on_start_frac_spin_changed)
+        
+        start_frac_controls.addWidget(self.start_frac_slider, 3)
+        start_frac_controls.addWidget(self.start_frac_spin, 1)
+        start_frac_layout.addLayout(start_frac_controls)
+        creation_layout.addLayout(start_frac_layout)
+
+        # End Fraction input
+        end_frac_layout = QVBoxLayout()
+        end_frac_label = QLabel("End Fraction (0.0 - 1.0):")
+        end_frac_layout.addWidget(end_frac_label)
+        
+        end_frac_controls = QHBoxLayout()
+        self.end_frac_slider = QSlider(Qt.Horizontal)
+        self.end_frac_slider.setMinimum(0)
+        self.end_frac_slider.setMaximum(100)
+        self.end_frac_slider.setValue(100)
+        self.end_frac_slider.valueChanged.connect(self._on_end_frac_slider_changed)
+        
+        self.end_frac_spin = QDoubleSpinBox()
+        self.end_frac_spin.setMinimum(0.0)
+        self.end_frac_spin.setMaximum(1.0)
+        self.end_frac_spin.setSingleStep(0.01)
+        self.end_frac_spin.setDecimals(2)
+        self.end_frac_spin.setValue(1.0)
+        self.end_frac_spin.valueChanged.connect(self._on_end_frac_spin_changed)
+        
+        end_frac_controls.addWidget(self.end_frac_slider, 3)
+        end_frac_controls.addWidget(self.end_frac_spin, 1)
+        end_frac_layout.addLayout(end_frac_controls)
+        creation_layout.addLayout(end_frac_layout)
 
         # Add ROI button
         self.add_btn = QPushButton("Add ROI")
@@ -196,6 +247,40 @@ class ROIController(QWidget):
         """Initialize the step when it becomes active"""
         self._update_frame()
 
+    def _on_start_frac_slider_changed(self, value):
+        """Handle start fraction slider change"""
+        fraction = value / 100.0
+        self.start_frac_spin.setValue(fraction)
+        # Ensure start fraction is less than end fraction
+        if fraction >= self.end_frac_spin.value():
+            self.end_frac_spin.setValue(min(1.0, fraction + 0.01))
+            self.end_frac_slider.setValue(int(self.end_frac_spin.value() * 100))
+
+    def _on_start_frac_spin_changed(self, value):
+        """Handle start fraction spinbox change"""
+        self.start_frac_slider.setValue(int(value * 100))
+        # Ensure start fraction is less than end fraction
+        if value >= self.end_frac_spin.value():
+            self.end_frac_spin.setValue(min(1.0, value + 0.01))
+            self.end_frac_slider.setValue(int(self.end_frac_spin.value() * 100))
+
+    def _on_end_frac_slider_changed(self, value):
+        """Handle end fraction slider change"""
+        fraction = value / 100.0
+        self.end_frac_spin.setValue(fraction)
+        # Ensure end fraction is greater than start fraction
+        if fraction <= self.start_frac_spin.value():
+            self.start_frac_spin.setValue(max(0.0, fraction - 0.01))
+            self.start_frac_slider.setValue(int(self.start_frac_spin.value() * 100))
+
+    def _on_end_frac_spin_changed(self, value):
+        """Handle end fraction spinbox change"""
+        self.end_frac_slider.setValue(int(value * 100))
+        # Ensure end fraction is greater than start fraction
+        if value <= self.start_frac_spin.value():
+            self.start_frac_spin.setValue(max(0.0, value - 0.01))
+            self.start_frac_slider.setValue(int(self.start_frac_spin.value() * 100))
+
     def _get_image_position(self, pos):
         """Convert screen coordinates to image coordinates"""
         if not self.frame_label.pixmap():
@@ -272,34 +357,52 @@ class ROIController(QWidget):
             QMessageBox.warning(self, "Error", f"An ROI with the name '{name}' already exists. Please choose a different name.")
             return
 
+        volume_text = self.volume_input.text().strip()
+        if not volume_text:
+            QMessageBox.warning(self, "Error", "Please enter a volume value in µL.")
+            return
+            
         try:
-            volume = float(self.volume_input.text() or 0)
+            volume = float(volume_text)
+            if volume <= 0:
+                QMessageBox.warning(self, "Error", "Volume must be a positive number.")
+                return
         except ValueError:
-            QMessageBox.warning(self, "Error", "Please enter a valid number for the volume (or leave blank for no volume).")
+            QMessageBox.warning(self, "Error", "Please enter a valid number for the volume.")
             return
 
         # Use the pending ROI rectangle
         x, y, w, h = self.pending_roi
 
         try:
-            # Create ROI with default values for analysis parameters
+            # Get fraction values from UI
+            start_frac = self.start_frac_spin.value()
+            end_frac = self.end_frac_spin.value()
+            
+            # Create ROI with user-specified values
             roi = ROI(
                 name=name,
                 rect=(int(x), int(y), int(w), int(h)),
                 channel='auto',
                 total_volume=volume,
-                start_frac=0.0,
-                end_frac=1.0,
+                start_frac=start_frac,
+                end_frac=end_frac,
                 interval=1,
                 smoothing_window=5
             )
             self.rois[name] = roi
             
             # Update UI
-            volume_text = f" (Vol: {volume}µL)" if volume > 0 else ""
-            self.roi_list.addItem(f"{name}{volume_text}")
+            volume_text = f" (Vol: {volume}µL)"
+            frac_text = f" (Start: {start_frac:.2f}, End: {end_frac:.2f})"
+            self.roi_list.addItem(f"{name}{volume_text}{frac_text}")
             self.name_input.clear()
             self.volume_input.clear()
+            # Reset fraction controls to defaults
+            self.start_frac_spin.setValue(0.0)
+            self.start_frac_slider.setValue(0)
+            self.end_frac_spin.setValue(1.0)
+            self.end_frac_slider.setValue(100)
             self.start_point = None
             self.current_point = None
             self.pending_roi = None  # Clear the pending ROI after adding
@@ -404,7 +507,7 @@ class ROIController(QWidget):
         
         # Draw existing ROIs
         pen = QPen(QColor(255, 0, 0))
-        pen.setWidth(2)
+        pen.setWidth(4)  # Increased thickness from 2 to 4
         painter.setPen(pen)
         for name, roi in self.rois.items():
             x, y, w, h = roi.rect
@@ -418,7 +521,7 @@ class ROIController(QWidget):
         # Draw current ROI if drawing
         if self.drawing and self.start_point and self.current_point:
             pen = QPen(QColor(0, 255, 0))  # Green for active drawing
-            pen.setWidth(2)
+            pen.setWidth(4)  # Increased thickness from 2 to 4
             painter.setPen(pen)
             x = min(self.start_point.x(), self.current_point.x())
             y = min(self.start_point.y(), self.current_point.y())
@@ -429,7 +532,7 @@ class ROIController(QWidget):
         # Draw pending ROI (after drawing is complete but before adding)
         elif self.pending_roi:
             pen = QPen(QColor(0, 150, 255))  # Blue for pending ROI
-            pen.setWidth(3)  # Slightly thicker to indicate it's ready to be added
+            pen.setWidth(5)  # Increased thickness from 3 to 5
             painter.setPen(pen)
             x, y, w, h = self.pending_roi
             painter.drawRect(x, y, w, h)

@@ -16,30 +16,61 @@ from engine.video_engine import VideoEngine
 
 class AnalysisWorker(QThread):
     """Worker thread for running analysis"""
-    progress = pyqtSignal(str, int)  # ROI name, progress value
+    progress = pyqtSignal(str, int, int, int)  # ROI name, roi_progress, current_roi_num, total_rois
     finished = pyqtSignal(dict)  # Results dictionary
     error = pyqtSignal(str)
 
-    def __init__(self, session, engine, smooth_window):
+    def __init__(self, session, engine, smooth_window, sampling_freq):
         super().__init__()
         self.session = session
         self.engine = engine
         self.smooth_window = smooth_window
+        self.sampling_freq = sampling_freq
         self.results = {}
 
     def run(self):
         try:
+            total_rois = len(self.session.rois)
+            roi_num = 0
+            
             for name, roi in self.session.rois.items():
-                self.progress.emit(name, 0)
+                roi_num += 1
+                self.progress.emit(name, 0, roi_num, total_rois)
                 samples = []
-                frame_range = range(self.session.start_frame, self.session.end_frame)
+                
+                # Calculate frame range based on ROI start/end fractions
+                total_frames = self.session.end_frame - self.session.start_frame
+                start_frame = self.session.start_frame + int(total_frames * roi.start_frac)
+                end_frame = self.session.start_frame + int(total_frames * roi.end_frac)
+                
+                # Calculate frame step based on sampling frequency
+                video_fps = self.session.fps
+                frame_step = max(1, int(video_fps / self.sampling_freq))
+                frame_range = range(start_frame, end_frame, frame_step)
                 
                 for i, idx in enumerate(frame_range):
                     frame = self.engine.get_frame(idx)
-                    x, y, w, h = roi.bounds
+                    if frame is None:
+                        continue
+                        
+                    x, y, w, h = roi.rect
                     roi_pixels = frame[y:y+h, x:x+w]
-                    samples.append(float(cv2.mean(roi_pixels)[0]))
-                    self.progress.emit(name, int((i+1)/len(frame_range)*100))
+                    
+                    # Extract the specified channel
+                    if roi.channel == 'auto':
+                        intensity = cv2.mean(roi_pixels)[0]  # Average of all channels
+                    elif roi.channel == 'R':
+                        intensity = cv2.mean(roi_pixels[:,:,2])[0]  # OpenCV uses BGR
+                    elif roi.channel == 'G':
+                        intensity = cv2.mean(roi_pixels[:,:,1])[0]
+                    elif roi.channel == 'B':
+                        intensity = cv2.mean(roi_pixels[:,:,0])[0]
+                    else:
+                        intensity = cv2.mean(roi_pixels)[0]  # Default to auto
+                    
+                    samples.append(float(intensity))
+                    roi_progress = int((i+1)/len(frame_range)*100)
+                    self.progress.emit(name, roi_progress, roi_num, total_rois)
 
                 volume = np.array(samples)
                 if self.smooth_window > 1:
@@ -47,10 +78,14 @@ class AnalysisWorker(QThread):
                                        np.ones(self.smooth_window)/self.smooth_window, 
                                        mode='valid')
 
-                times = np.arange(len(volume)) / self.session.fps
+                # Use actual sampling frequency for time calculation
+                times = np.arange(len(volume)) / self.sampling_freq
                 flow = np.gradient(volume, times)
                 
                 self.results[name] = (times, volume, flow)
+                
+                # Emit completion for this ROI
+                self.progress.emit(name, 100, roi_num, total_rois)
             
             self.finished.emit(self.results)
         except Exception as e:
@@ -96,6 +131,14 @@ class AnalysisController(QWidget):
         self.smooth_spin.setValue(1)
         controls.addWidget(self.smooth_spin)
 
+        # Sampling frequency
+        controls.addWidget(QLabel("Sampling Frequency (Hz):"))
+        self.sampling_freq_spin = QSpinBox()
+        self.sampling_freq_spin.setRange(1, 1000)
+        self.sampling_freq_spin.setValue(30)  # Default 30 Hz
+        self.sampling_freq_spin.setToolTip("Frames per second for analysis sampling")
+        controls.addWidget(self.sampling_freq_spin)
+
         # Run button
         self.run_btn = QPushButton("Run Analysis")
         self.run_btn.clicked.connect(self._on_run)
@@ -130,8 +173,10 @@ class AnalysisController(QWidget):
 
     def _on_run(self):
         self.run_btn.setEnabled(False)
+        self.save_btn.setEnabled(False)
         self.progress.setValue(0)
         self.progress.show()
+        self.status_label.setText("Starting analysis...")
         
         # Clear previous plots
         self.ax_vol.clear()
@@ -139,35 +184,52 @@ class AnalysisController(QWidget):
         self._setup_plots()
         
         # Start analysis in worker thread
-        self.worker = AnalysisWorker(self.session, self.engine, self.smooth_spin.value())
+        self.worker = AnalysisWorker(self.session, self.engine, self.smooth_spin.value(), self.sampling_freq_spin.value())
         self.worker.progress.connect(self._update_progress)
         self.worker.finished.connect(self._on_analysis_complete)
         self.worker.error.connect(self._on_error)
         self.worker.start()
 
-    def _update_progress(self, roi_name, value):
-        self.status_label.setText(f"Analyzing: {roi_name}")
-        self.progress.setValue(value)
+    def _update_progress(self, roi_name, roi_progress, current_roi, total_rois):
+        # Calculate overall progress
+        roi_weight = 100 / total_rois  # Each ROI is worth this much of total progress
+        completed_rois_progress = (current_roi - 1) * roi_weight
+        current_roi_progress = (roi_progress / 100) * roi_weight
+        overall_progress = int(completed_rois_progress + current_roi_progress)
+        
+        self.status_label.setText(f"Analyzing ROI {current_roi}/{total_rois}: {roi_name} ({roi_progress}%)")
+        self.progress.setValue(overall_progress)
 
     def _on_analysis_complete(self, results):
         self.results = results
-        self.status_label.clear()
+        self.status_label.setText(f"Analysis complete! Processed {len(results)} ROIs.")
+        self.progress.setValue(100)
         self.progress.hide()
         
+        # Re-enable buttons
+        self.run_btn.setEnabled(True)
+        self.save_btn.setEnabled(True)
+        
         # Plot results
+        plot_count = 0
         for name, (times, volume, flow) in results.items():
             self.ax_vol.plot(times, volume, label=name)
             self.ax_flow.plot(times, flow, label=name)
+            plot_count += 1
         
-        self.ax_vol.legend()
-        self.ax_flow.legend()
+        # Only add legends if there are plots
+        if plot_count > 0:
+            self.ax_vol.legend()
+            self.ax_flow.legend()
+        
         self.canvas_vol.draw()
         self.canvas_flow.draw()
         
         # Store results in session
         self.session.analysis_results = {
             name: AnalysisResults(time=t, volume=v, flow=f, 
-                                smoothing_window=self.smooth_spin.value())
+                                smoothing_window=self.smooth_spin.value(),
+                                sampling_frequency=self.sampling_freq_spin.value())
             for name, (t, v, f) in results.items()
         }
         
@@ -177,8 +239,9 @@ class AnalysisController(QWidget):
     def _on_error(self, error_msg):
         QMessageBox.critical(self, "Analysis Error", error_msg)
         self.run_btn.setEnabled(True)
+        self.save_btn.setEnabled(False)  # Don't enable save if there was an error
         self.progress.hide()
-        self.status_label.clear()
+        self.status_label.setText("Analysis failed.")
 
     def _on_save(self):
         # Get base filename from user
@@ -219,3 +282,16 @@ class AnalysisController(QWidget):
 
         except Exception as e:
             QMessageBox.critical(self, "Save Error", str(e))
+
+    def initialize_step(self):
+        """Initialize the step when it becomes active"""
+        # Set sampling frequency to video FPS if available
+        if hasattr(self.session, 'fps') and self.session.fps:
+            self.sampling_freq_spin.setValue(min(int(self.session.fps), 1000))
+        self._update_status()
+
+    def _update_status(self):
+        status = "Ready"
+        if hasattr(self.session, 'analysis_results') and self.session.analysis_results:
+            status = f"Loaded results for {len(self.session.analysis_results)} ROIs"
+        self.status_label.setText(status)

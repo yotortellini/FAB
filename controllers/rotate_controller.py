@@ -106,17 +106,107 @@ class RotateController(QWidget):
         
         layout.addWidget(controls_group)
 
+    def _get_image_coordinates(self, widget_pos):
+        """Convert widget coordinates to image coordinates with proper scaling"""
+        if self.original_frame is None:
+            return None
+            
+        # Get current pixmap from the preview label
+        pixmap = self.preview.pixmap()
+        if not pixmap:
+            return None
+            
+        # Get original image dimensions
+        img_h, img_w = self.original_frame.shape[:2]
+        
+        # Get widget dimensions
+        widget_rect = self.preview.rect()
+        widget_w = widget_rect.width()
+        widget_h = widget_rect.height()
+        
+        # Calculate how the image is displayed (Qt.KeepAspectRatio)
+        img_aspect = img_w / img_h
+        widget_aspect = widget_w / widget_h
+        
+        if img_aspect > widget_aspect:
+            # Image is wider - limited by widget width
+            display_w = widget_w
+            display_h = widget_w / img_aspect
+        else:
+            # Image is taller - limited by widget height
+            display_h = widget_h
+            display_w = widget_h * img_aspect
+            
+        # Calculate offset to center the image
+        offset_x = (widget_w - display_w) / 2
+        offset_y = (widget_h - display_h) / 2
+        
+        # Check if click is within the displayed image
+        if (widget_pos.x() < offset_x or widget_pos.x() > offset_x + display_w or
+            widget_pos.y() < offset_y or widget_pos.y() > offset_y + display_h):
+            return None
+            
+        # Convert to image coordinates
+        image_x = (widget_pos.x() - offset_x) * img_w / display_w
+        image_y = (widget_pos.y() - offset_y) * img_h / display_h
+        
+        # Clamp to image bounds
+        image_x = max(0, min(img_w - 1, image_x))
+        image_y = max(0, min(img_h - 1, image_y))
+        
+        return QPoint(int(image_x), int(image_y))
+
+    def _get_widget_coordinates(self, image_pos):
+        """Convert image coordinates to widget coordinates for drawing"""
+        if self.original_frame is None:
+            return None
+            
+        # Get original image dimensions
+        img_h, img_w = self.original_frame.shape[:2]
+        
+        # Get widget dimensions
+        widget_rect = self.preview.rect()
+        widget_w = widget_rect.width()
+        widget_h = widget_rect.height()
+        
+        # Calculate how the image is displayed (Qt.KeepAspectRatio)
+        img_aspect = img_w / img_h
+        widget_aspect = widget_w / widget_h
+        
+        if img_aspect > widget_aspect:
+            # Image is wider - limited by widget width
+            display_w = widget_w
+            display_h = widget_w / img_aspect
+        else:
+            # Image is taller - limited by widget height
+            display_h = widget_h
+            display_w = widget_h * img_aspect
+            
+        # Calculate offset to center the image
+        offset_x = (widget_w - display_w) / 2
+        offset_y = (widget_h - display_h) / 2
+        
+        # Convert from image coordinates to widget coordinates
+        widget_x = image_pos.x() * display_w / img_w + offset_x
+        widget_y = image_pos.y() * display_h / img_h + offset_y
+        
+        return QPoint(int(widget_x), int(widget_y))
+
     def _on_mouse_press(self, event):
         """Handle mouse press events on the preview"""
         if event.button() == Qt.LeftButton:
             self.drawing = True
-            self.start_pos = event.pos()
+            self.start_pos = event.pos()  # Store widget coordinates for drawing
             self.end_pos = None
+            # Ensure we have the original frame loaded
+            if self.original_frame is None:
+                self.original_frame = self.engine.get_frame(self.session.start_frame)
+            self._update_preview()
 
     def _on_mouse_move(self, event):
         """Handle mouse move events on the preview"""
         if self.drawing:
-            self.end_pos = event.pos()
+            self.end_pos = event.pos()  # Store widget coordinates for drawing
             self._update_preview()
 
     def _on_mouse_release(self, event):
@@ -124,26 +214,17 @@ class RotateController(QWidget):
         if event.button() == Qt.LeftButton and self.drawing:
             self.drawing = False
             self.end_pos = event.pos()
-            # Convert drawn widget coordinates to original image coordinates
-            if self.original_frame is None:
-                self.original_frame = self.engine.get_frame(self.session.start_frame)
-                if self.original_frame is None:
-                    return
-            img_h, img_w = self.original_frame.shape[:2]
-            preview_size = self.preview.size()
-            scale = min(preview_size.width() / img_w, preview_size.height() / img_h)
-            offset_x = (preview_size.width() - img_w * scale) / 2
-            offset_y = (preview_size.height() - img_h * scale) / 2
-            x0 = int((self.start_pos.x() - offset_x) / scale)
-            y0 = int((self.start_pos.y() - offset_y) / scale)
-            x1 = int((self.end_pos.x() - offset_x) / scale)
-            y1 = int((self.end_pos.y() - offset_y) / scale)
-            x0 = max(0, min(img_w - 1, x0))
-            y0 = max(0, min(img_h - 1, y0))
-            x1 = max(0, min(img_w - 1, x1))
-            y1 = max(0, min(img_h - 1, y1))
-            self.line_points = ((x0, y0), (x1, y1))
-            self._calculate_angle()
+            
+            # Convert widget coordinates to image coordinates for angle calculation
+            start_img = self._get_image_coordinates(self.start_pos)
+            end_img = self._get_image_coordinates(self.end_pos)
+            
+            if start_img and end_img:
+                self.line_points = ((start_img.x(), start_img.y()), (end_img.x(), end_img.y()))
+                logging.info(f"Widget coords: ({self.start_pos.x()},{self.start_pos.y()}) → ({self.end_pos.x()},{self.end_pos.y()})")
+                logging.info(f"Image coords: ({start_img.x()},{start_img.y()}) → ({end_img.x()},{end_img.y()})")
+                self._calculate_angle()
+                
             self._update_preview()
 
     def _calculate_angle(self):
@@ -154,9 +235,11 @@ class RotateController(QWidget):
             dy = y1 - y0
             angle_rad = math.atan2(dy, dx)
             angle_deg = math.degrees(angle_rad)
-            self.angle_spin.setValue(int(angle_deg))
-            self.angle_slider.setValue(int(angle_deg))
-            logging.info(f"Line drawn, angle: {angle_deg:.1f}°")
+            # To make the line horizontal, we need to rotate by the negative angle
+            correction_angle = -angle_deg
+            self.angle_spin.setValue(int(correction_angle))
+            self.angle_slider.setValue(int(correction_angle))
+            logging.info(f"Line from ({x0},{y0}) to ({x1},{y1}), angle: {angle_deg:.1f}° → correction: {correction_angle:.1f}°")
 
     def _on_angle_changed(self, value):
         """Handle angle spinbox changes"""
@@ -220,9 +303,9 @@ class RotateController(QWidget):
                 pt1 = np.dot(M, np.array([x1, y1, 1]))
                 p0 = (int(pt0[0]), int(pt0[1]))
                 p1 = (int(pt1[0]), int(pt1[1]))
-                cv2.line(frame, p0, p1, (0, 0, 255), 3)
-                cv2.circle(frame, p0, 5, (0, 0, 255), -1)
-                cv2.circle(frame, p1, 5, (0, 0, 255), -1)
+                cv2.line(frame, p0, p1, (0, 255, 0), 5)  # Thicker green line
+                cv2.circle(frame, p0, 8, (0, 255, 0), -1)  # Larger green circles
+                cv2.circle(frame, p1, 8, (0, 255, 0), -1)
             
             self.current_frame = frame.copy()
             
@@ -239,8 +322,32 @@ class RotateController(QWidget):
             preview_size = self.preview.size()
             scaled_pixmap = pixmap.scaled(preview_size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
             
-            # Set the pixmap - no need for additional drawing since line is baked in
-            self.preview.setPixmap(scaled_pixmap)
+            # If currently drawing, overlay the current line being drawn
+            if self.drawing and self.start_pos and self.end_pos:
+                painter = QPainter(scaled_pixmap)
+                pen = QPen(QColor(255, 255, 0))  # Bright yellow for active drawing
+                pen.setWidth(5)  # Thick line
+                painter.setPen(pen)
+                
+                # Convert the image coordinates back to scaled pixmap coordinates
+                if self.line_points:
+                    # If we have calculated line points, use those for consistency
+                    (x0, y0), (x1, y1) = self.line_points
+                    start_img = QPoint(x0, y0)
+                    end_img = QPoint(x1, y1)
+                    start_widget = self._get_widget_coordinates(start_img)
+                    end_widget = self._get_widget_coordinates(end_img)
+                    if start_widget and end_widget:
+                        painter.drawLine(start_widget, end_widget)
+                else:
+                    # During active drawing, use the widget coordinates directly
+                    painter.drawLine(self.start_pos, self.end_pos)
+                    
+                painter.end()
+                self.preview.setPixmap(scaled_pixmap)
+            else:
+                # Set the pixmap without additional drawing
+                self.preview.setPixmap(scaled_pixmap)
 
     def initialize_step(self):
         """Initialize the step when it becomes active"""
@@ -250,9 +357,26 @@ class RotateController(QWidget):
         """Save the current rotation angle to the session"""
         current_angle = self.angle_spin.value() if hasattr(self, 'angle_spin') else 0
         if current_angle != 0:
-            if self.current_frame is not None:
-                h, w = self.current_frame.shape[:2]
+            # Use the original frame dimensions, not the rotated frame
+            if self.original_frame is not None:
+                h, w = self.original_frame.shape[:2]
                 center = (w // 2, h // 2)
                 M = cv2.getRotationMatrix2D(center, current_angle, 1.0)
+                
+                # Compute new bounds for proper translation
+                cos = np.abs(M[0, 0])
+                sin = np.abs(M[0, 1])
+                new_w = int((h * sin) + (w * cos))
+                new_h = int((h * cos) + (w * sin))
+                
+                # Adjust translation to keep image centered
+                M[0, 2] += (new_w / 2) - center[0]
+                M[1, 2] += (new_h / 2) - center[1]
+                
                 self.session.rotation_matrix = M
+                logging.info(f"Saved rotation matrix for {current_angle}° rotation")
+        else:
+            # Clear rotation matrix if angle is 0
+            self.session.rotation_matrix = None
+            logging.info("Cleared rotation matrix (angle = 0)")
         return True  # Always return True since rotation is optional
