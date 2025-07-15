@@ -4272,3 +4272,1293 @@ RuntimeError: Video not loaded. Call load_video() first.
 2025-07-15 12:36:30,351 - root - INFO - Cleared rotation line
 2025-07-15 12:36:30,351 - root - INFO - Finished drawing line from widget 172, 242 to 839, 232
 2025-07-15 12:36:31,397 - root - INFO - Saved rotation matrix for -0.9° rotation
+2025-07-15 12:46:26,202 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 12:46:26,437 - __main__ - INFO - Main window displayed
+2025-07-15 12:48:14,732 - root - INFO - Loaded base frame for rotation
+2025-07-15 12:48:15,476 - root - INFO - No rotation to save (angle near 0°)
+2025-07-15 12:49:44,496 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 12:49:44,722 - __main__ - INFO - Main window displayed
+2025-07-15 12:51:10,766 - root - INFO - Loaded base frame for rotation
+2025-07-15 12:51:13,083 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(221, 238), drawing=True, fixed=False
+2025-07-15 12:51:13,084 - root - INFO - Started drawing line at widget 221, 238
+2025-07-15 12:51:13,116 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(222, 237), drawing=True, fixed=False
+2025-07-15 12:51:13,130 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(222, 238), drawing=True, fixed=False
+2025-07-15 12:51:13,138 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(223, 238), drawing=True, fixed=False
+2025-07-15 12:51:13,149 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(227, 239), drawing=True, fixed=False
+2025-07-15 12:51:13,154 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(237, 242), drawing=True, fixed=False
+2025-07-15 12:51:13,161 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(252, 244), drawing=True, fixed=False
+2025-07-15 12:51:13,169 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(273, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,177 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(294, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,188 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(313, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,193 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(336, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,202 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(362, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,210 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(389, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,217 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(422, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,228 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(455, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,233 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(486, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,241 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(513, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,249 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(542, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,257 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(566, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,268 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(582, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,273 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(595, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,282 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(604, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,289 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(606, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,297 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(607, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,308 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(607, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,313 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(610, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,321 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(611, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,329 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(612, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,337 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(616, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,348 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(622, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,353 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(626, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,362 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(632, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,369 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(637, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,377 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(641, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,388 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(645, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,393 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(647, 245), drawing=True, fixed=False
+2025-07-15 12:51:13,401 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(650, 242), drawing=True, fixed=False
+2025-07-15 12:51:13,409 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(651, 242), drawing=True, fixed=False
+2025-07-15 12:51:13,417 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(652, 242), drawing=True, fixed=False
+2025-07-15 12:51:13,428 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(657, 239), drawing=True, fixed=False
+2025-07-15 12:51:13,433 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(658, 238), drawing=True, fixed=False
+2025-07-15 12:51:13,441 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(662, 238), drawing=True, fixed=False
+2025-07-15 12:51:13,449 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(670, 236), drawing=True, fixed=False
+2025-07-15 12:51:13,457 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(677, 236), drawing=True, fixed=False
+2025-07-15 12:51:13,468 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(687, 236), drawing=True, fixed=False
+2025-07-15 12:51:13,473 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(699, 233), drawing=True, fixed=False
+2025-07-15 12:51:13,481 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(709, 232), drawing=True, fixed=False
+2025-07-15 12:51:13,489 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(718, 230), drawing=True, fixed=False
+2025-07-15 12:51:13,497 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(729, 229), drawing=True, fixed=False
+2025-07-15 12:51:13,508 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(745, 229), drawing=True, fixed=False
+2025-07-15 12:51:13,513 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(758, 229), drawing=True, fixed=False
+2025-07-15 12:51:13,521 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(772, 229), drawing=True, fixed=False
+2025-07-15 12:51:13,529 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(785, 226), drawing=True, fixed=False
+2025-07-15 12:51:13,538 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(794, 224), drawing=True, fixed=False
+2025-07-15 12:51:13,548 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(801, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,553 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(810, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,562 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(816, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,569 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(820, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,577 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(822, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,588 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(822, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,628 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(823, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,642 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(823, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,739 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(823, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,771 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(824, 223), drawing=True, fixed=False
+2025-07-15 12:51:13,778 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(824, 224), drawing=True, fixed=False
+2025-07-15 12:51:13,790 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(824, 224), drawing=True, fixed=False
+2025-07-15 12:51:13,794 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(824, 225), drawing=True, fixed=False
+2025-07-15 12:51:13,804 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(825, 226), drawing=True, fixed=False
+2025-07-15 12:51:13,810 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(826, 229), drawing=True, fixed=False
+2025-07-15 12:51:13,818 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(826, 229), drawing=True, fixed=False
+2025-07-15 12:51:13,831 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(827, 231), drawing=True, fixed=False
+2025-07-15 12:51:13,834 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(827, 231), drawing=True, fixed=False
+2025-07-15 12:51:13,844 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(827, 231), drawing=True, fixed=False
+2025-07-15 12:51:13,850 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(221, 238), end=PyQt5.QtCore.QPoint(827, 232), drawing=True, fixed=False
+2025-07-15 12:51:14,203 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(137, 104), end=PyQt5.QtCore.QPoint(401, 104)
+2025-07-15 12:51:14,203 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(137, 104), end=PyQt5.QtCore.QPoint(401, 104), drawing=False, fixed=True
+2025-07-15 12:51:14,203 - root - INFO - Calculated rotation: line angle -0.6, correction -0.6, total angle -0.6
+2025-07-15 12:51:14,203 - root - INFO - Cleared rotation line
+2025-07-15 12:51:14,203 - root - INFO - Finished drawing line from widget 221, 238 to 827, 232
+2025-07-15 12:51:15,203 - root - INFO - Saved rotation matrix for -0.6° rotation
+2025-07-15 12:51:22,422 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:02:17,641 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 13:02:17,913 - __main__ - INFO - Main window displayed
+2025-07-15 13:02:45,518 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:02:47,038 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(189, 234), drawing=True, fixed=False
+2025-07-15 13:02:47,039 - root - INFO - Started drawing line at widget 189, 234
+2025-07-15 13:02:47,093 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(190, 234), drawing=True, fixed=False
+2025-07-15 13:02:47,105 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(196, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,109 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(204, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,117 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(221, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,125 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(242, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,133 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(266, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,144 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(291, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,149 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(324, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,157 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(357, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,165 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(393, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,173 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(437, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,183 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(471, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,189 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(508, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,197 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(544, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,205 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(579, 236), drawing=True, fixed=False
+2025-07-15 13:02:47,213 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(610, 233), drawing=True, fixed=False
+2025-07-15 13:02:47,223 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(639, 229), drawing=True, fixed=False
+2025-07-15 13:02:47,229 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(662, 226), drawing=True, fixed=False
+2025-07-15 13:02:47,237 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(682, 223), drawing=True, fixed=False
+2025-07-15 13:02:47,245 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(698, 220), drawing=True, fixed=False
+2025-07-15 13:02:47,253 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(711, 219), drawing=True, fixed=False
+2025-07-15 13:02:47,263 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(720, 217), drawing=True, fixed=False
+2025-07-15 13:02:47,269 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(723, 217), drawing=True, fixed=False
+2025-07-15 13:02:47,277 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(726, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,285 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(726, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,293 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(727, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,406 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(727, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,413 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(728, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,425 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(728, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,429 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(729, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,438 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(730, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,445 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(730, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,453 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(733, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,464 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(736, 216), drawing=True, fixed=False
+2025-07-15 13:02:47,469 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(738, 218), drawing=True, fixed=False
+2025-07-15 13:02:47,477 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(741, 219), drawing=True, fixed=False
+2025-07-15 13:02:47,485 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(744, 221), drawing=True, fixed=False
+2025-07-15 13:02:47,493 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(745, 221), drawing=True, fixed=False
+2025-07-15 13:02:47,504 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(746, 221), drawing=True, fixed=False
+2025-07-15 13:02:47,509 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(747, 221), drawing=True, fixed=False
+2025-07-15 13:02:47,517 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(747, 222), drawing=True, fixed=False
+2025-07-15 13:02:47,533 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(748, 222), drawing=True, fixed=False
+2025-07-15 13:02:47,544 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(748, 222), drawing=True, fixed=False
+2025-07-15 13:02:47,549 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(748, 222), drawing=True, fixed=False
+2025-07-15 13:02:47,573 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(748, 222), drawing=True, fixed=False
+2025-07-15 13:02:47,589 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(749, 222), drawing=True, fixed=False
+2025-07-15 13:02:47,598 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(749, 222), drawing=True, fixed=False
+2025-07-15 13:02:47,605 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(752, 222), drawing=True, fixed=False
+2025-07-15 13:02:47,613 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(753, 223), drawing=True, fixed=False
+2025-07-15 13:02:47,625 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(753, 223), drawing=True, fixed=False
+2025-07-15 13:02:47,629 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(754, 223), drawing=True, fixed=False
+2025-07-15 13:02:47,653 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(755, 223), drawing=True, fixed=False
+2025-07-15 13:02:47,665 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(755, 223), drawing=True, fixed=False
+2025-07-15 13:02:47,669 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(756, 223), drawing=True, fixed=False
+2025-07-15 13:02:47,679 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(758, 225), drawing=True, fixed=False
+2025-07-15 13:02:47,685 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(759, 225), drawing=True, fixed=False
+2025-07-15 13:02:47,693 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(759, 225), drawing=True, fixed=False
+2025-07-15 13:02:47,706 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(760, 225), drawing=True, fixed=False
+2025-07-15 13:02:47,726 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(760, 225), drawing=True, fixed=False
+2025-07-15 13:02:47,918 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(761, 225), drawing=True, fixed=False
+2025-07-15 13:02:48,504 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(761, 225), drawing=True, fixed=False
+2025-07-15 13:02:48,509 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(761, 226), drawing=True, fixed=False
+2025-07-15 13:02:48,526 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(761, 226), drawing=True, fixed=False
+2025-07-15 13:02:48,547 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(189, 234), end=PyQt5.QtCore.QPoint(762, 226), drawing=True, fixed=False
+2025-07-15 13:02:48,911 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(126, 101), end=PyQt5.QtCore.QPoint(374, 101)
+2025-07-15 13:02:48,911 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(126, 101), end=PyQt5.QtCore.QPoint(374, 101), drawing=False, fixed=True
+2025-07-15 13:02:48,912 - root - INFO - Calculated rotation: line angle -0.8, correction -0.8, total angle -0.8
+2025-07-15 13:02:48,912 - root - INFO - Cleared rotation line
+2025-07-15 13:02:48,912 - root - INFO - Finished drawing line from widget 189, 234 to 762, 226
+2025-07-15 13:02:50,087 - root - INFO - Saved rotation matrix for -0.8° rotation
+2025-07-15 13:02:59,467 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:03:02,826 - root - INFO - ROI r1: total_frames=945, start_frame=0, end_frame=945
+2025-07-15 13:03:02,826 - root - INFO - ROI r1: frame_step=11, frame_range length=86
+2025-07-15 13:03:09,804 - root - INFO - ROI r1: raw intensity samples (first 5): [140.00328868512526, 139.7866025410524, 139.68603919453435, 139.8219690159415, 139.6777687882057]
+2025-07-15 13:03:09,805 - root - INFO - ROI r1: raw volume min=138.54, max=142.52
+2025-07-15 13:03:16,959 - root - INFO - Navigated back to step 4
+2025-07-15 13:03:17,463 - root - INFO - Navigated back to step 3
+2025-07-15 13:03:17,863 - root - INFO - Navigated back to step 2
+2025-07-15 13:03:19,639 - root - INFO - Navigated back to step 1
+2025-07-15 13:04:20,739 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:04:23,650 - root - INFO - Reset rotation to 0°
+2025-07-15 13:04:25,254 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(220, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,254 - root - INFO - Started drawing line at widget 220, 28
+2025-07-15 13:04:25,333 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(220, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,341 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(222, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,348 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(225, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,356 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(229, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,367 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(235, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,373 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(245, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,383 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(256, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,388 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(267, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,396 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(281, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,405 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(299, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,412 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(318, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,420 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(340, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,428 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(364, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,436 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(388, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,445 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(410, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,452 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(434, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,460 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(457, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,468 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(478, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,476 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(497, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,485 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(510, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,492 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(527, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,500 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(534, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,508 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(546, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,516 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(556, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,525 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(565, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,532 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(571, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,540 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(575, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,548 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(578, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,556 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(582, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,565 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(584, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,572 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(587, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,580 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(588, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,588 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(588, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,620 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(589, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,636 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(589, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,645 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(589, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,652 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(590, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,660 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(591, 28), drawing=True, fixed=False
+2025-07-15 13:04:25,668 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(593, 29), drawing=True, fixed=False
+2025-07-15 13:04:25,676 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(596, 29), drawing=True, fixed=False
+2025-07-15 13:04:25,687 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(600, 30), drawing=True, fixed=False
+2025-07-15 13:04:25,692 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(601, 30), drawing=True, fixed=False
+2025-07-15 13:04:25,700 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(603, 30), drawing=True, fixed=False
+2025-07-15 13:04:25,708 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(604, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,716 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(605, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,725 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(605, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,788 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(606, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,796 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(606, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,812 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(606, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,820 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(607, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,828 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(608, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,836 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(609, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,847 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(612, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,852 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(613, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,861 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(614, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,868 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(615, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,877 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(616, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,885 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(617, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,900 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(617, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,908 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(618, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,926 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(618, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,948 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(618, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,966 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(619, 31), drawing=True, fixed=False
+2025-07-15 13:04:25,972 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(619, 31), drawing=True, fixed=False
+2025-07-15 13:04:26,013 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(620, 31), drawing=True, fixed=False
+2025-07-15 13:04:26,046 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(620, 31), drawing=True, fixed=False
+2025-07-15 13:04:26,053 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(620, 31), drawing=True, fixed=False
+2025-07-15 13:04:26,069 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(620, 31), drawing=True, fixed=False
+2025-07-15 13:04:26,088 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(621, 30), drawing=True, fixed=False
+2025-07-15 13:04:26,092 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(621, 30), drawing=True, fixed=False
+2025-07-15 13:04:26,117 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(622, 30), drawing=True, fixed=False
+2025-07-15 13:04:26,149 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(622, 29), drawing=True, fixed=False
+2025-07-15 13:04:26,167 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(220, 28), end=PyQt5.QtCore.QPoint(623, 29), drawing=True, fixed=False
+2025-07-15 13:04:26,566 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(129, 13), end=PyQt5.QtCore.QPoint(308, 13)
+2025-07-15 13:04:26,567 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(129, 13), end=PyQt5.QtCore.QPoint(308, 13), drawing=False, fixed=True
+2025-07-15 13:04:26,567 - root - INFO - Calculated rotation: line angle 0.1, correction 0.1, total angle 0.1
+2025-07-15 13:04:26,567 - root - INFO - Cleared rotation line
+2025-07-15 13:04:26,567 - root - INFO - Finished drawing line from widget 220, 28 to 623, 29
+2025-07-15 13:04:32,127 - root - INFO - Saved rotation matrix for 0.1° rotation
+2025-07-15 13:05:00,992 - root - INFO - ROI Channel: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:05:07,742 - root - INFO - ROI Channel: total_frames=337, start_frame=190, end_frame=527
+2025-07-15 13:05:07,743 - root - INFO - ROI Channel: frame_step=1, frame_range length=337
+2025-07-15 13:05:37,862 - root - INFO - ROI Channel: raw intensity samples (first 5): [140.21186718006257, 140.2108046885625, 140.226757998436, 140.21918455902352, 140.21607252141982]
+2025-07-15 13:05:37,864 - root - INFO - ROI Channel: raw volume min=136.56, max=140.42
+2025-07-15 13:06:19,803 - root - INFO - ROI Channel: total_frames=337, start_frame=190, end_frame=527
+2025-07-15 13:06:19,804 - root - INFO - ROI Channel: frame_step=1, frame_range length=337
+2025-07-15 13:06:50,313 - root - INFO - ROI Channel: raw intensity samples (first 5): [140.21186718006257, 140.2108046885625, 140.226757998436, 140.21918455902352, 140.21607252141982]
+2025-07-15 13:06:50,315 - root - INFO - ROI Channel: raw volume min=136.56, max=140.42
+2025-07-15 13:07:02,225 - root - INFO - ROI Channel: total_frames=337, start_frame=190, end_frame=527
+2025-07-15 13:07:02,225 - root - INFO - ROI Channel: frame_step=4, frame_range length=85
+2025-07-15 13:07:10,055 - root - INFO - ROI Channel: raw intensity samples (first 5): [140.21186718006257, 140.21607252141982, 140.29171129130967, 140.39954886610906, 140.3374717377261]
+2025-07-15 13:07:10,056 - root - INFO - ROI Channel: raw volume min=136.63, max=140.40
+2025-07-15 13:09:43,126 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 13:09:43,380 - __main__ - INFO - Main window displayed
+2025-07-15 13:10:24,593 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:10:26,494 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(178, 242), drawing=True, fixed=False
+2025-07-15 13:10:26,494 - root - INFO - Started drawing line at widget 178, 242
+2025-07-15 13:10:26,573 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(179, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,582 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(187, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,589 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(195, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,597 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(212, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,610 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(233, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,613 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(254, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,621 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(279, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,629 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(303, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,636 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(327, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,648 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(352, 241), drawing=True, fixed=False
+2025-07-15 13:10:26,652 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(382, 237), drawing=True, fixed=False
+2025-07-15 13:10:26,661 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(412, 235), drawing=True, fixed=False
+2025-07-15 13:10:26,668 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(436, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,677 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(461, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,688 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(485, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,692 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(507, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,701 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(527, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,708 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(546, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,716 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(565, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,728 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(582, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,732 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(600, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,741 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(614, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,749 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(631, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,756 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(646, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,768 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(659, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,772 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(669, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,781 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(680, 229), drawing=True, fixed=False
+2025-07-15 13:10:26,788 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(692, 229), drawing=True, fixed=False
+2025-07-15 13:10:26,796 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(703, 229), drawing=True, fixed=False
+2025-07-15 13:10:26,808 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(715, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,812 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(726, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,821 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(733, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,828 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(743, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,836 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(751, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,848 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(758, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,852 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(765, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,861 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(771, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,868 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(780, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,876 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(786, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,887 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(796, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,892 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(807, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,901 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(818, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,908 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(830, 228), drawing=True, fixed=False
+2025-07-15 13:10:26,916 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(839, 229), drawing=True, fixed=False
+2025-07-15 13:10:26,927 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(848, 229), drawing=True, fixed=False
+2025-07-15 13:10:26,932 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(851, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,941 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(851, 231), drawing=True, fixed=False
+2025-07-15 13:10:26,957 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(852, 231), drawing=True, fixed=False
+2025-07-15 13:10:27,101 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(853, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,108 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(853, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,117 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(853, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,128 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(854, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,132 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(854, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,141 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(855, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,148 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(855, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,156 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(855, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,168 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(856, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,189 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(856, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,208 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(856, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,221 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(857, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,228 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(857, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,249 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(178, 242), end=PyQt5.QtCore.QPoint(857, 232), drawing=True, fixed=False
+2025-07-15 13:10:27,669 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(121, 105), end=PyQt5.QtCore.QPoint(416, 105)
+2025-07-15 13:10:27,669 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(121, 105), end=PyQt5.QtCore.QPoint(416, 105), drawing=False, fixed=True
+2025-07-15 13:10:27,669 - root - INFO - Calculated rotation: line angle -0.8, correction -0.8, total angle -0.8
+2025-07-15 13:10:27,669 - root - INFO - Cleared rotation line
+2025-07-15 13:10:27,670 - root - INFO - Finished drawing line from widget 178, 242 to 857, 232
+2025-07-15 13:10:28,503 - root - INFO - Saved rotation matrix for -0.8° rotation
+2025-07-15 13:10:59,055 - root - INFO - ROI channel1: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:10:59,055 - root - INFO - ROI channel2: start_frac=0.2, end_frac=1.0, total_volume=100.0
+2025-07-15 13:11:05,069 - root - INFO - ROI channel1: total_frames=334, start_frame=47, end_frame=381
+2025-07-15 13:11:05,069 - root - INFO - ROI channel1: frame_step=2, frame_range length=167
+2025-07-15 13:11:19,168 - root - INFO - ROI channel1: raw intensity samples (first 5): [139.80432211325217, 139.75219719744385, 139.93227703579583, 139.89977494127118, 139.98541225173722]
+2025-07-15 13:11:19,169 - root - INFO - ROI channel1: raw volume min=138.84, max=142.96
+2025-07-15 13:11:19,169 - root - INFO - ROI channel2: total_frames=334, start_frame=113, end_frame=381
+2025-07-15 13:11:19,169 - root - INFO - ROI channel2: frame_step=2, frame_range length=134
+2025-07-15 13:11:31,302 - root - INFO - ROI channel2: raw intensity samples (first 5): [153.41348696111993, 153.41205365840082, 153.40598647407532, 153.4141270768974, 153.43918900114107]
+2025-07-15 13:11:31,303 - root - INFO - ROI channel2: raw volume min=150.99, max=155.19
+2025-07-15 13:12:05,952 - root - INFO - Navigated back to step 4
+2025-07-15 13:12:06,335 - root - INFO - Navigated back to step 3
+2025-07-15 13:12:06,736 - root - INFO - Navigated back to step 2
+2025-07-15 13:12:07,999 - root - INFO - Navigated back to step 1
+2025-07-15 13:12:46,636 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:12:49,585 - root - INFO - Reset rotation to 0°
+2025-07-15 13:12:51,831 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(185, 56), drawing=True, fixed=False
+2025-07-15 13:12:51,831 - root - INFO - Started drawing line at widget 185, 56
+2025-07-15 13:12:51,958 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(186, 56), drawing=True, fixed=False
+2025-07-15 13:12:51,970 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(186, 56), drawing=True, fixed=False
+2025-07-15 13:12:51,974 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(189, 56), drawing=True, fixed=False
+2025-07-15 13:12:51,983 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(197, 56), drawing=True, fixed=False
+2025-07-15 13:12:51,990 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(207, 56), drawing=True, fixed=False
+2025-07-15 13:12:51,998 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(222, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,010 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(238, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,014 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(259, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,024 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(284, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,030 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(308, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,038 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(332, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,050 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(354, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,054 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(378, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,064 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(404, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,070 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(428, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,078 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(451, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,090 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(474, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,094 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(496, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,104 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(517, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,110 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(542, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,118 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(562, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,130 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(581, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,134 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(599, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,144 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(612, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,150 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(623, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,158 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(633, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,171 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(640, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,174 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(646, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,184 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(654, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,190 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(655, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,198 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(658, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,211 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(659, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,214 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(659, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,224 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(660, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,230 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(660, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,238 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(661, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,251 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(662, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,254 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(663, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,264 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(664, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,270 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(665, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,278 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(667, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,291 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(670, 56), drawing=True, fixed=False
+2025-07-15 13:12:52,294 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(674, 55), drawing=True, fixed=False
+2025-07-15 13:12:52,304 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(680, 54), drawing=True, fixed=False
+2025-07-15 13:12:52,310 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(684, 54), drawing=True, fixed=False
+2025-07-15 13:12:52,318 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(687, 54), drawing=True, fixed=False
+2025-07-15 13:12:52,330 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(691, 52), drawing=True, fixed=False
+2025-07-15 13:12:52,334 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(696, 51), drawing=True, fixed=False
+2025-07-15 13:12:52,344 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(700, 50), drawing=True, fixed=False
+2025-07-15 13:12:52,350 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(703, 49), drawing=True, fixed=False
+2025-07-15 13:12:52,358 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(707, 47), drawing=True, fixed=False
+2025-07-15 13:12:52,371 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(710, 47), drawing=True, fixed=False
+2025-07-15 13:12:52,373 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(713, 46), drawing=True, fixed=False
+2025-07-15 13:12:52,384 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(713, 46), drawing=True, fixed=False
+2025-07-15 13:12:52,390 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(717, 43), drawing=True, fixed=False
+2025-07-15 13:12:52,398 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(717, 43), drawing=True, fixed=False
+2025-07-15 13:12:52,414 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(718, 43), drawing=True, fixed=False
+2025-07-15 13:12:52,424 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(718, 43), drawing=True, fixed=False
+2025-07-15 13:12:52,430 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(718, 43), drawing=True, fixed=False
+2025-07-15 13:12:52,451 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(718, 43), drawing=True, fixed=False
+2025-07-15 13:12:52,470 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(719, 43), drawing=True, fixed=False
+2025-07-15 13:12:52,490 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(719, 42), drawing=True, fixed=False
+2025-07-15 13:12:52,550 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(185, 56), end=PyQt5.QtCore.QPoint(719, 42), drawing=True, fixed=False
+2025-07-15 13:12:52,962 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(135, 24), end=PyQt5.QtCore.QPoint(362, 24)
+2025-07-15 13:12:52,962 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(135, 24), end=PyQt5.QtCore.QPoint(362, 24), drawing=False, fixed=True
+2025-07-15 13:12:52,962 - root - INFO - Calculated rotation: line angle -1.5, correction -1.5, total angle -1.5
+2025-07-15 13:12:52,962 - root - INFO - Cleared rotation line
+2025-07-15 13:12:52,962 - root - INFO - Finished drawing line from widget 185, 56 to 719, 42
+2025-07-15 13:12:54,464 - root - INFO - Saved rotation matrix for -1.5° rotation
+2025-07-15 13:13:22,690 - root - INFO - ROI channel filling: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:13:27,592 - root - INFO - ROI channel filling: total_frames=64, start_frame=31, end_frame=95
+2025-07-15 13:13:27,592 - root - INFO - ROI channel filling: frame_step=2, frame_range length=32
+2025-07-15 13:13:29,318 - root - INFO - ROI channel filling: raw intensity samples (first 5): [133.98240657313255, 134.29110031321062, 135.4649665336594, 136.04787939245722, 136.52663041146437]
+2025-07-15 13:13:29,318 - root - INFO - ROI channel filling: raw volume min=133.98, max=140.72
+2025-07-15 13:13:45,262 - root - INFO - ROI channel filling: total_frames=64, start_frame=31, end_frame=95
+2025-07-15 13:13:45,263 - root - INFO - ROI channel filling: frame_step=1, frame_range length=64
+2025-07-15 13:13:48,728 - root - INFO - ROI channel filling: raw intensity samples (first 5): [133.98240657313255, 133.98583258248595, 134.29110031321062, 135.00367915218604, 135.4649665336594]
+2025-07-15 13:13:48,728 - root - INFO - ROI channel filling: raw volume min=133.98, max=140.72
+2025-07-15 13:13:56,533 - root - INFO - ROI channel filling: total_frames=64, start_frame=31, end_frame=95
+2025-07-15 13:13:56,533 - root - INFO - ROI channel filling: frame_step=1, frame_range length=64
+2025-07-15 13:14:00,079 - root - INFO - ROI channel filling: raw intensity samples (first 5): [133.98240657313255, 133.98583258248595, 134.29110031321062, 135.00367915218604, 135.4649665336594]
+2025-07-15 13:14:00,079 - root - INFO - ROI channel filling: raw volume min=133.98, max=140.72
+2025-07-15 13:14:19,985 - root - INFO - ROI channel filling: total_frames=64, start_frame=31, end_frame=95
+2025-07-15 13:14:19,985 - root - INFO - ROI channel filling: frame_step=1, frame_range length=64
+2025-07-15 13:14:23,710 - root - INFO - ROI channel filling: raw intensity samples (first 5): [133.98240657313255, 133.98583258248595, 134.29110031321062, 135.00367915218604, 135.4649665336594]
+2025-07-15 13:14:23,710 - root - INFO - ROI channel filling: raw volume min=133.98, max=140.72
+2025-07-15 13:24:43,733 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 13:24:44,094 - __main__ - INFO - Main window displayed
+2025-07-15 13:25:17,643 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:25:19,812 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(192, 244), drawing=True, fixed=False
+2025-07-15 13:25:19,812 - root - INFO - Started drawing line at widget 192, 244
+2025-07-15 13:25:19,916 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(192, 244), drawing=True, fixed=False
+2025-07-15 13:25:19,932 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(193, 244), drawing=True, fixed=False
+2025-07-15 13:25:19,943 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(193, 245), drawing=True, fixed=False
+2025-07-15 13:25:19,947 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(196, 245), drawing=True, fixed=False
+2025-07-15 13:25:19,956 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(204, 246), drawing=True, fixed=False
+2025-07-15 13:25:19,963 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(216, 246), drawing=True, fixed=False
+2025-07-15 13:25:19,971 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(232, 246), drawing=True, fixed=False
+2025-07-15 13:25:19,982 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(247, 246), drawing=True, fixed=False
+2025-07-15 13:25:19,987 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(262, 245), drawing=True, fixed=False
+2025-07-15 13:25:19,995 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(278, 242), drawing=True, fixed=False
+2025-07-15 13:25:20,003 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(296, 241), drawing=True, fixed=False
+2025-07-15 13:25:20,011 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(314, 237), drawing=True, fixed=False
+2025-07-15 13:25:20,021 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(333, 234), drawing=True, fixed=False
+2025-07-15 13:25:20,026 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(351, 232), drawing=True, fixed=False
+2025-07-15 13:25:20,035 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(367, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,043 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(387, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,051 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(409, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,061 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(431, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,067 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(451, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,075 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(476, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,083 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(503, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,091 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(531, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,101 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(555, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,106 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(582, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,115 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(607, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,122 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(633, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,131 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(658, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,141 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(681, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,146 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(704, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,155 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(731, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,163 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(757, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,171 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(779, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,181 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(798, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,187 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(815, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,195 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(825, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,203 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(833, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,211 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(835, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,221 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(836, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,283 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(837, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,291 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(837, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,302 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(837, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,315 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(838, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,323 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(838, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,347 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(839, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,355 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(839, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,363 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(840, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,371 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(840, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,381 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(842, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,387 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(843, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,395 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(844, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,403 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(844, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,427 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(844, 228), drawing=True, fixed=False
+2025-07-15 13:25:20,443 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(844, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,451 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(845, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,467 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(845, 229), drawing=True, fixed=False
+2025-07-15 13:25:20,475 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(845, 230), drawing=True, fixed=False
+2025-07-15 13:25:20,483 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(845, 230), drawing=True, fixed=False
+2025-07-15 13:25:20,491 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(845, 231), drawing=True, fixed=False
+2025-07-15 13:25:20,507 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 231), drawing=True, fixed=False
+2025-07-15 13:25:20,515 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 231), drawing=True, fixed=False
+2025-07-15 13:25:20,531 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 232), drawing=True, fixed=False
+2025-07-15 13:25:20,541 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 232), drawing=True, fixed=False
+2025-07-15 13:25:20,563 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 232), drawing=True, fixed=False
+2025-07-15 13:25:20,595 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 233), drawing=True, fixed=False
+2025-07-15 13:25:20,621 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 233), drawing=True, fixed=False
+2025-07-15 13:25:20,635 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 234), drawing=True, fixed=False
+2025-07-15 13:25:20,651 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(846, 234), drawing=True, fixed=False
+2025-07-15 13:25:20,662 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(847, 234), drawing=True, fixed=False
+2025-07-15 13:25:20,796 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(192, 244), end=PyQt5.QtCore.QPoint(847, 235), drawing=True, fixed=False
+2025-07-15 13:25:21,054 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(123, 106), end=PyQt5.QtCore.QPoint(408, 106)
+2025-07-15 13:25:21,055 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(123, 106), end=PyQt5.QtCore.QPoint(408, 106), drawing=False, fixed=True
+2025-07-15 13:25:21,055 - root - INFO - Calculated rotation: line angle -0.7, correction -0.7, total angle -0.7
+2025-07-15 13:25:21,055 - root - INFO - Cleared rotation line
+2025-07-15 13:25:21,055 - root - INFO - Finished drawing line from widget 192, 244 to 847, 235
+2025-07-15 13:25:21,877 - root - INFO - Saved rotation matrix for -0.7° rotation
+2025-07-15 13:25:39,287 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:25:42,563 - root - INFO - ROI r1: total_frames=334, start_frame=38, end_frame=372
+2025-07-15 13:25:42,563 - root - INFO - ROI r1: frame_step=2, frame_range length=167
+2025-07-15 13:25:56,065 - root - INFO - ROI r1: raw intensity samples (first 5): [144.66217138955273, 144.67638882114812, 144.60357833812935, 143.69128907964688, 143.04222146352566]
+2025-07-15 13:25:56,066 - root - INFO - ROI r1: raw volume min=92.99, max=144.68
+2025-07-15 13:26:02,054 - root - INFO - Navigated back to step 4
+2025-07-15 13:26:07,197 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:35:17,239 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 13:35:17,473 - __main__ - INFO - Main window displayed
+2025-07-15 13:36:05,388 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:36:06,848 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(224, 235), drawing=True, fixed=False
+2025-07-15 13:36:06,849 - root - INFO - Started drawing line at widget 224, 235
+2025-07-15 13:36:06,912 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(224, 236), drawing=True, fixed=False
+2025-07-15 13:36:06,931 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(225, 237), drawing=True, fixed=False
+2025-07-15 13:36:06,935 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(234, 237), drawing=True, fixed=False
+2025-07-15 13:36:06,944 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(244, 238), drawing=True, fixed=False
+2025-07-15 13:36:06,951 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(264, 238), drawing=True, fixed=False
+2025-07-15 13:36:06,959 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(286, 238), drawing=True, fixed=False
+2025-07-15 13:36:06,971 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(314, 238), drawing=True, fixed=False
+2025-07-15 13:36:06,975 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(343, 238), drawing=True, fixed=False
+2025-07-15 13:36:06,984 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(374, 238), drawing=True, fixed=False
+2025-07-15 13:36:06,991 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(409, 238), drawing=True, fixed=False
+2025-07-15 13:36:06,999 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(449, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,009 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(496, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,015 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(540, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,023 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(584, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,031 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(628, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,039 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(662, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,049 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(692, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,055 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(725, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,063 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(752, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,071 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(777, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,079 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(800, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,089 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(820, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,095 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(840, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,103 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(855, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,111 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(867, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,119 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(877, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,129 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(883, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,135 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(886, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,143 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(886, 238), drawing=True, fixed=False
+2025-07-15 13:36:07,320 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(886, 237), drawing=True, fixed=False
+2025-07-15 13:36:07,331 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(886, 237), drawing=True, fixed=False
+2025-07-15 13:36:07,335 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(886, 237), drawing=True, fixed=False
+2025-07-15 13:36:07,345 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(886, 236), drawing=True, fixed=False
+2025-07-15 13:36:07,360 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(886, 236), drawing=True, fixed=False
+2025-07-15 13:36:07,371 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(886, 235), drawing=True, fixed=False
+2025-07-15 13:36:07,375 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(885, 233), drawing=True, fixed=False
+2025-07-15 13:36:07,385 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(885, 232), drawing=True, fixed=False
+2025-07-15 13:36:07,391 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(885, 232), drawing=True, fixed=False
+2025-07-15 13:36:07,399 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(884, 231), drawing=True, fixed=False
+2025-07-15 13:36:07,415 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(884, 230), drawing=True, fixed=False
+2025-07-15 13:36:07,431 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(883, 229), drawing=True, fixed=False
+2025-07-15 13:36:07,439 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(883, 229), drawing=True, fixed=False
+2025-07-15 13:36:07,452 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(883, 228), drawing=True, fixed=False
+2025-07-15 13:36:07,465 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(882, 227), drawing=True, fixed=False
+2025-07-15 13:36:07,479 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(882, 226), drawing=True, fixed=False
+2025-07-15 13:36:07,496 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(881, 226), drawing=True, fixed=False
+2025-07-15 13:36:07,568 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(881, 226), drawing=True, fixed=False
+2025-07-15 13:36:07,736 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(881, 226), drawing=True, fixed=False
+2025-07-15 13:36:07,776 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(881, 226), drawing=True, fixed=False
+2025-07-15 13:36:07,792 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(880, 227), drawing=True, fixed=False
+2025-07-15 13:36:07,840 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(224, 235), end=PyQt5.QtCore.QPoint(880, 227), drawing=True, fixed=False
+2025-07-15 13:36:08,143 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(138, 102), end=PyQt5.QtCore.QPoint(423, 102)
+2025-07-15 13:36:08,143 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(138, 102), end=PyQt5.QtCore.QPoint(423, 102), drawing=False, fixed=True
+2025-07-15 13:36:08,143 - root - INFO - Calculated rotation: line angle -0.7, correction -0.7, total angle -0.7
+2025-07-15 13:36:08,143 - root - INFO - Cleared rotation line
+2025-07-15 13:36:08,143 - root - INFO - Finished drawing line from widget 224, 235 to 880, 227
+2025-07-15 13:36:08,817 - root - INFO - Saved rotation matrix for -0.7° rotation
+2025-07-15 13:36:36,322 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:36:36,322 - root - INFO - ROI r2: start_frac=0.0, end_frac=1.0, total_volume=90.0
+2025-07-15 13:36:39,583 - root - INFO - ROI r1: total_frames=353, start_frame=19, end_frame=372
+2025-07-15 13:36:39,583 - root - INFO - ROI r1: frame_step=2, frame_range length=177
+2025-07-15 13:36:53,922 - root - INFO - ROI r1: raw intensity samples (first 5): [144.50401458056254, 144.406983235637, 144.3496379488695, 144.3478892665386, 144.31852289706583]
+2025-07-15 13:36:53,923 - root - INFO - ROI r1: raw volume min=92.13, max=144.60
+2025-07-15 13:36:53,924 - root - INFO - ROI r2: total_frames=353, start_frame=19, end_frame=372
+2025-07-15 13:36:53,924 - root - INFO - ROI r2: frame_step=2, frame_range length=177
+2025-07-15 13:37:10,730 - root - INFO - ROI r2: raw intensity samples (first 5): [148.93352192362093, 146.44497601020606, 144.8035055606401, 142.5019968383393, 141.99100036054026]
+2025-07-15 13:37:10,731 - root - INFO - ROI r2: raw volume min=78.09, max=148.93
+2025-07-15 13:42:26,262 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 13:42:26,522 - __main__ - INFO - Main window displayed
+2025-07-15 13:42:45,796 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:42:47,699 - root - INFO - No rotation to save (angle near 0°)
+2025-07-15 13:43:02,006 - root - INFO - ROI bignut: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:43:05,483 - root - INFO - ROI bignut: total_frames=1525, start_frame=0, end_frame=1525
+2025-07-15 13:43:05,483 - root - INFO - ROI bignut: frame_step=4, frame_range length=382
+2025-07-15 13:43:35,984 - root - INFO - ROI bignut: raw intensity samples (first 5): [154.56833954269854, 153.86385281978232, 153.69039922565565, 153.60281521659726, 153.348493772372]
+2025-07-15 13:43:35,985 - root - INFO - ROI bignut: raw volume min=110.01, max=154.57
+2025-07-15 13:44:56,537 - root - INFO - Navigated back to step 4
+2025-07-15 13:45:07,671 - root - INFO - ROI bignut: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:45:32,109 - root - INFO - Saved ROI overlay to /Users/ymorocz/Downloads/temp_roi_overlay.png
+2025-07-15 13:49:12,045 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 13:49:12,229 - __main__ - INFO - Main window displayed
+2025-07-15 13:49:44,184 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:49:47,552 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(172, 58), drawing=True, fixed=False
+2025-07-15 13:49:47,552 - root - INFO - Started drawing line at widget 172, 58
+2025-07-15 13:49:47,639 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(174, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,650 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(178, 60), drawing=True, fixed=False
+2025-07-15 13:49:47,655 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(181, 60), drawing=True, fixed=False
+2025-07-15 13:49:47,663 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(188, 63), drawing=True, fixed=False
+2025-07-15 13:49:47,670 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(194, 64), drawing=True, fixed=False
+2025-07-15 13:49:47,679 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(205, 64), drawing=True, fixed=False
+2025-07-15 13:49:47,690 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(216, 64), drawing=True, fixed=False
+2025-07-15 13:49:47,694 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(231, 64), drawing=True, fixed=False
+2025-07-15 13:49:47,702 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(246, 64), drawing=True, fixed=False
+2025-07-15 13:49:47,710 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(263, 64), drawing=True, fixed=False
+2025-07-15 13:49:47,718 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(285, 64), drawing=True, fixed=False
+2025-07-15 13:49:47,728 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(303, 63), drawing=True, fixed=False
+2025-07-15 13:49:47,734 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(322, 62), drawing=True, fixed=False
+2025-07-15 13:49:47,742 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(343, 61), drawing=True, fixed=False
+2025-07-15 13:49:47,750 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(358, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,758 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(374, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,768 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(389, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,774 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(401, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,782 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(413, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,790 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(423, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,798 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(432, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,809 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(441, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,814 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(450, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,822 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(457, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,830 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(466, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,838 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(473, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,848 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(482, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,854 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(489, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,862 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(495, 59), drawing=True, fixed=False
+2025-07-15 13:49:47,870 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(504, 57), drawing=True, fixed=False
+2025-07-15 13:49:47,878 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(508, 57), drawing=True, fixed=False
+2025-07-15 13:49:47,888 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(513, 56), drawing=True, fixed=False
+2025-07-15 13:49:47,894 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(519, 55), drawing=True, fixed=False
+2025-07-15 13:49:47,902 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(523, 55), drawing=True, fixed=False
+2025-07-15 13:49:47,910 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(529, 54), drawing=True, fixed=False
+2025-07-15 13:49:47,918 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(535, 54), drawing=True, fixed=False
+2025-07-15 13:49:47,928 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(539, 52), drawing=True, fixed=False
+2025-07-15 13:49:47,934 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(543, 52), drawing=True, fixed=False
+2025-07-15 13:49:47,942 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(545, 52), drawing=True, fixed=False
+2025-07-15 13:49:47,950 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(549, 52), drawing=True, fixed=False
+2025-07-15 13:49:47,958 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(552, 51), drawing=True, fixed=False
+2025-07-15 13:49:47,968 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(555, 51), drawing=True, fixed=False
+2025-07-15 13:49:47,974 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(555, 51), drawing=True, fixed=False
+2025-07-15 13:49:47,982 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(558, 51), drawing=True, fixed=False
+2025-07-15 13:49:47,990 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(560, 51), drawing=True, fixed=False
+2025-07-15 13:49:47,998 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(561, 50), drawing=True, fixed=False
+2025-07-15 13:49:48,009 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(562, 50), drawing=True, fixed=False
+2025-07-15 13:49:48,014 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(563, 50), drawing=True, fixed=False
+2025-07-15 13:49:48,022 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(564, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,030 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(565, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,038 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(565, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,049 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(566, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,054 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(566, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,063 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(568, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,070 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(568, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,079 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(571, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,090 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(574, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,095 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(575, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,104 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(575, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,110 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(576, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,130 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(576, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,191 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(576, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,199 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(577, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,210 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(577, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,224 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(577, 49), drawing=True, fixed=False
+2025-07-15 13:49:48,230 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(172, 58), end=PyQt5.QtCore.QPoint(578, 49), drawing=True, fixed=False
+2025-07-15 13:49:49,002 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(124, 25), end=PyQt5.QtCore.QPoint(298, 25)
+2025-07-15 13:49:49,002 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(124, 25), end=PyQt5.QtCore.QPoint(298, 25), drawing=False, fixed=True
+2025-07-15 13:49:49,002 - root - INFO - Calculated rotation: line angle -1.3, correction -1.3, total angle -1.3
+2025-07-15 13:49:49,002 - root - INFO - Cleared rotation line
+2025-07-15 13:49:49,002 - root - INFO - Finished drawing line from widget 172, 58 to 578, 49
+2025-07-15 13:49:50,171 - root - INFO - Saved rotation matrix for -1.3° rotation
+2025-07-15 13:50:02,212 - root - INFO - ROI channel: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:50:03,602 - root - INFO - ROI channel: total_frames=32, start_frame=31, end_frame=63
+2025-07-15 13:50:03,602 - root - INFO - ROI channel: frame_step=1, frame_range length=32
+2025-07-15 13:50:05,051 - root - INFO - ROI channel: raw intensity samples (first 5): [139.10565331090024, 139.09009884584256, 135.48131318603114, 129.0818659409899, 125.39144801830338]
+2025-07-15 13:50:05,052 - root - INFO - ROI channel: normalized volume (first 5): [80.54301377 81.89844455 83.35264577 84.96305443 86.62333   ]
+2025-07-15 13:50:24,810 - root - INFO - ROI channel: total_frames=32, start_frame=31, end_frame=63
+2025-07-15 13:50:24,813 - root - INFO - ROI channel: frame_step=1, frame_range length=32
+2025-07-15 13:50:26,477 - root - INFO - ROI channel: raw intensity samples (first 5): [139.10565331090024, 139.09009884584256, 135.48131318603114, 129.0818659409899, 125.39144801830338]
+2025-07-15 13:50:26,478 - root - INFO - ROI channel: normalized volume (first 5): [80.54301377 81.89844455 83.35264577 84.96305443 86.62333   ]
+2025-07-15 13:50:27,306 - root - INFO - Navigated back to step 4
+2025-07-15 13:50:28,538 - root - INFO - Navigated back to step 3
+2025-07-15 13:50:28,962 - root - INFO - Navigated back to step 2
+2025-07-15 13:50:29,690 - root - INFO - Navigated back to step 1
+2025-07-15 13:50:56,877 - root - INFO - Loaded base frame for rotation
+2025-07-15 13:50:58,513 - root - INFO - Saved rotation matrix for -1.3° rotation
+2025-07-15 13:51:03,171 - root - INFO - ROI channel: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 13:51:04,515 - root - INFO - ROI channel: total_frames=31, start_frame=31, end_frame=62
+2025-07-15 13:51:04,515 - root - INFO - ROI channel: frame_step=1, frame_range length=31
+2025-07-15 13:51:05,921 - root - INFO - ROI channel: raw intensity samples (first 5): [139.10565331090024, 139.09009884584256, 135.48131318603114, 129.0818659409899, 125.39144801830338]
+2025-07-15 13:51:05,922 - root - INFO - ROI channel: normalized volume (first 5): [81.89844455 83.35264577 84.96305443 86.62333    88.26742336]
+2025-07-15 13:51:29,292 - root - INFO - Saved ROI overlay to /Users/ymorocz/Downloads/temp_roi_overlay.png
+2025-07-15 13:58:51,029 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 13:58:51,148 - __main__ - ERROR - Failed to launch application
+Traceback (most recent call last):
+  File "/Users/ymorocz/Documents/GitHub/FAB/main.py", line 60, in launch_app
+    window = UIController(session=session, engine=engine)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 35, in __init__
+    self._build_ui()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/ui_controller.py", line 83, in _build_ui
+    self.scan_ctrl = ScanController(
+                     ^^^^^^^^^^^^^^^
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/scan_controller.py", line 95, in __init__
+    self._setup_worker()
+  File "/Users/ymorocz/Documents/GitHub/FAB/controllers/scan_controller.py", line 175, in _setup_worker
+    sample_interval=self.sample_interval,
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ScanController' object has no attribute 'sample_interval'
+2025-07-15 13:58:51,149 - __main__ - CRITICAL - Fatal error launching application: 'ScanController' object has no attribute 'sample_interval'
+2025-07-15 14:04:20,108 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 14:04:20,355 - __main__ - INFO - Main window displayed
+2025-07-15 14:04:31,900 - root - INFO - Navigated back to step 1
+2025-07-15 14:05:32,406 - root - INFO - Loaded base frame for rotation
+2025-07-15 14:05:34,339 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(353, 94), drawing=True, fixed=False
+2025-07-15 14:05:34,339 - root - INFO - Started drawing line at widget 353, 94
+2025-07-15 14:05:34,411 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(354, 94), drawing=True, fixed=False
+2025-07-15 14:05:34,422 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(358, 95), drawing=True, fixed=False
+2025-07-15 14:05:34,427 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(364, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,435 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(376, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,443 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(392, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,451 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(412, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,462 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(435, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,467 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(462, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,475 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(497, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,483 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(528, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,491 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(558, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,502 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(589, 96), drawing=True, fixed=False
+2025-07-15 14:05:34,507 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(618, 100), drawing=True, fixed=False
+2025-07-15 14:05:34,515 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(643, 105), drawing=True, fixed=False
+2025-07-15 14:05:34,523 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(665, 106), drawing=True, fixed=False
+2025-07-15 14:05:34,531 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(685, 109), drawing=True, fixed=False
+2025-07-15 14:05:34,542 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(703, 113), drawing=True, fixed=False
+2025-07-15 14:05:34,547 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(716, 114), drawing=True, fixed=False
+2025-07-15 14:05:34,555 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(728, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,563 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(740, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,571 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(750, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,582 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(759, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,587 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(766, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,595 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(771, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,603 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(774, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,611 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(774, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,635 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(774, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,683 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(775, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,691 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(775, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,707 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(776, 115), drawing=True, fixed=False
+2025-07-15 14:05:34,715 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(776, 114), drawing=True, fixed=False
+2025-07-15 14:05:34,723 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(777, 114), drawing=True, fixed=False
+2025-07-15 14:05:34,731 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(777, 114), drawing=True, fixed=False
+2025-07-15 14:05:34,742 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(777, 114), drawing=True, fixed=False
+2025-07-15 14:05:34,747 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(778, 113), drawing=True, fixed=False
+2025-07-15 14:05:34,755 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(778, 113), drawing=True, fixed=False
+2025-07-15 14:05:34,763 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(778, 113), drawing=True, fixed=False
+2025-07-15 14:05:34,787 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(778, 112), drawing=True, fixed=False
+2025-07-15 14:05:34,795 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(779, 112), drawing=True, fixed=False
+2025-07-15 14:05:34,811 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(779, 111), drawing=True, fixed=False
+2025-07-15 14:05:34,822 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(780, 110), drawing=True, fixed=False
+2025-07-15 14:05:34,827 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(780, 110), drawing=True, fixed=False
+2025-07-15 14:05:34,836 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(780, 110), drawing=True, fixed=False
+2025-07-15 14:05:34,843 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(781, 109), drawing=True, fixed=False
+2025-07-15 14:05:34,851 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(781, 109), drawing=True, fixed=False
+2025-07-15 14:05:34,862 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(783, 106), drawing=True, fixed=False
+2025-07-15 14:05:34,867 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(783, 106), drawing=True, fixed=False
+2025-07-15 14:05:34,876 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(784, 106), drawing=True, fixed=False
+2025-07-15 14:05:34,883 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(784, 105), drawing=True, fixed=False
+2025-07-15 14:05:34,891 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(785, 105), drawing=True, fixed=False
+2025-07-15 14:05:34,902 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(786, 104), drawing=True, fixed=False
+2025-07-15 14:05:34,907 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(786, 104), drawing=True, fixed=False
+2025-07-15 14:05:34,923 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(786, 104), drawing=True, fixed=False
+2025-07-15 14:05:34,931 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(787, 103), drawing=True, fixed=False
+2025-07-15 14:05:34,947 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(787, 103), drawing=True, fixed=False
+2025-07-15 14:05:34,963 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(788, 103), drawing=True, fixed=False
+2025-07-15 14:05:34,971 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(788, 103), drawing=True, fixed=False
+2025-07-15 14:05:34,983 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(789, 102), drawing=True, fixed=False
+2025-07-15 14:05:35,019 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(789, 102), drawing=True, fixed=False
+2025-07-15 14:05:35,027 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(789, 102), drawing=True, fixed=False
+2025-07-15 14:05:35,036 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(790, 102), drawing=True, fixed=False
+2025-07-15 14:05:35,051 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(790, 102), drawing=True, fixed=False
+2025-07-15 14:05:35,062 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(790, 101), drawing=True, fixed=False
+2025-07-15 14:05:35,115 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(791, 101), drawing=True, fixed=False
+2025-07-15 14:05:35,123 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(791, 101), drawing=True, fixed=False
+2025-07-15 14:05:35,142 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(791, 100), drawing=True, fixed=False
+2025-07-15 14:05:35,147 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(792, 100), drawing=True, fixed=False
+2025-07-15 14:05:35,171 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(792, 100), drawing=True, fixed=False
+2025-07-15 14:05:35,187 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(792, 99), drawing=True, fixed=False
+2025-07-15 14:05:35,243 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(793, 99), drawing=True, fixed=False
+2025-07-15 14:05:35,263 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(793, 99), drawing=True, fixed=False
+2025-07-15 14:05:35,267 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(793, 98), drawing=True, fixed=False
+2025-07-15 14:05:35,419 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(793, 98), drawing=True, fixed=False
+2025-07-15 14:05:35,436 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(794, 98), drawing=True, fixed=False
+2025-07-15 14:05:35,443 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(794, 98), drawing=True, fixed=False
+2025-07-15 14:05:35,547 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(794, 97), drawing=True, fixed=False
+2025-07-15 14:05:35,556 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(794, 97), drawing=True, fixed=False
+2025-07-15 14:05:35,859 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(794, 96), drawing=True, fixed=False
+2025-07-15 14:05:35,867 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(794, 95), drawing=True, fixed=False
+2025-07-15 14:05:35,877 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(795, 95), drawing=True, fixed=False
+2025-07-15 14:05:35,907 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(353, 94), end=PyQt5.QtCore.QPoint(795, 94), drawing=True, fixed=False
+2025-07-15 14:05:36,252 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(186, 41), end=PyQt5.QtCore.QPoint(382, 41)
+2025-07-15 14:05:36,252 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(186, 41), end=PyQt5.QtCore.QPoint(382, 41), drawing=False, fixed=True
+2025-07-15 14:05:36,252 - root - INFO - Calculated rotation: line angle 0.0, correction 0.0, total angle 0.0
+2025-07-15 14:05:36,252 - root - INFO - Cleared rotation line
+2025-07-15 14:05:36,253 - root - INFO - Finished drawing line from widget 353, 94 to 795, 94
+2025-07-15 14:05:37,124 - root - INFO - No rotation to save (angle near 0°)
+2025-07-15 14:06:08,817 - root - INFO - ROI R1: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 14:06:08,818 - root - INFO - ROI r2: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 14:06:08,818 - root - INFO - ROI r3: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 14:06:15,277 - root - INFO - ROI R1: total_frames=323, start_frame=0, end_frame=323
+2025-07-15 14:06:15,280 - root - INFO - ROI R1: frame_step=2, frame_range length=162
+2025-07-15 14:06:27,121 - root - INFO - ROI R1: raw intensity samples (first 5): [156.77392592592594, 155.97955555555555, 155.24601481481483, 153.50681481481482, 154.67028148148148]
+2025-07-15 14:06:27,123 - root - INFO - ROI R1: normalized volume (first 5): [100.          98.7168123   97.53188585  94.72246579  96.6018739 ]
+2025-07-15 14:06:27,123 - root - INFO - ROI r2: total_frames=323, start_frame=0, end_frame=323
+2025-07-15 14:06:27,124 - root - INFO - ROI r2: frame_step=2, frame_range length=162
+2025-07-15 14:06:38,621 - root - INFO - ROI r2: raw intensity samples (first 5): [158.3142504409171, 157.18970017636684, 157.08786596119927, 156.9063492063492, 156.59142857142857]
+2025-07-15 14:06:38,622 - root - INFO - ROI r2: normalized volume (first 5): [100.          97.87511139  97.68269103  97.33970691  96.74465012]
+2025-07-15 14:06:38,622 - root - INFO - ROI r3: total_frames=323, start_frame=0, end_frame=323
+2025-07-15 14:06:38,622 - root - INFO - ROI r3: frame_step=2, frame_range length=162
+2025-07-15 14:06:50,154 - root - INFO - ROI r3: raw intensity samples (first 5): [158.3368389423077, 157.2704326923077, 157.18906917735043, 157.02547409188037, 156.89927216880344]
+2025-07-15 14:06:50,155 - root - INFO - ROI r3: normalized volume (first 5): [100.          97.98687793  97.83328291  97.52445419  97.28621489]
+2025-07-15 14:07:11,079 - root - INFO - ROI R1: total_frames=323, start_frame=0, end_frame=323
+2025-07-15 14:07:11,082 - root - INFO - ROI R1: frame_step=2, frame_range length=162
+2025-07-15 14:07:23,242 - root - INFO - ROI R1: raw intensity samples (first 5): [156.77392592592594, 155.97955555555555, 155.24601481481483, 153.50681481481482, 154.67028148148148]
+2025-07-15 14:07:23,243 - root - INFO - ROI R1: normalized volume (first 5): [100.          98.7168123   97.53188585  94.72246579  96.6018739 ]
+2025-07-15 14:07:23,243 - root - INFO - ROI r2: total_frames=323, start_frame=0, end_frame=323
+2025-07-15 14:07:23,243 - root - INFO - ROI r2: frame_step=2, frame_range length=162
+2025-07-15 14:07:34,986 - root - INFO - ROI r2: raw intensity samples (first 5): [158.3142504409171, 157.18970017636684, 157.08786596119927, 156.9063492063492, 156.59142857142857]
+2025-07-15 14:07:34,987 - root - INFO - ROI r2: normalized volume (first 5): [100.          97.87511139  97.68269103  97.33970691  96.74465012]
+2025-07-15 14:07:34,987 - root - INFO - ROI r3: total_frames=323, start_frame=0, end_frame=323
+2025-07-15 14:07:34,987 - root - INFO - ROI r3: frame_step=2, frame_range length=162
+2025-07-15 14:07:46,609 - root - INFO - ROI r3: raw intensity samples (first 5): [158.3368389423077, 157.2704326923077, 157.18906917735043, 157.02547409188037, 156.89927216880344]
+2025-07-15 14:07:46,610 - root - INFO - ROI r3: normalized volume (first 5): [100.          97.98687793  97.83328291  97.52445419  97.28621489]
+2025-07-15 14:08:19,260 - root - INFO - Saved ROI overlay to /Users/ymorocz/Downloads/temp_roi_overlay.png
+2025-07-15 14:14:05,625 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 14:14:05,822 - __main__ - INFO - Main window displayed
+2025-07-15 14:14:34,149 - root - INFO - Loaded base frame for rotation
+2025-07-15 14:14:36,171 - root - INFO - No rotation to save (angle near 0°)
+2025-07-15 14:15:07,166 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 14:15:07,167 - root - INFO - ROI r2: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 14:15:07,167 - root - INFO - ROI r3: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 14:15:07,167 - root - INFO - ROI r4: start_frac=0.0, end_frac=1.0, total_volume=20.0
+2025-07-15 14:15:08,802 - root - INFO - ROI r1: total_frames=231, start_frame=0, end_frame=231
+2025-07-15 14:15:08,805 - root - INFO - ROI r1: frame_step=1, frame_range length=231
+2025-07-15 14:15:25,205 - root - INFO - ROI r1: raw intensity samples (first 5): [156.81071216365333, 156.7749342161107, 155.88506917918684, 155.9773363891011, 155.51740089975385]
+2025-07-15 14:15:25,206 - root - INFO - ROI r1: normalized volume (first 5): [12.         11.99450998 11.85796273 11.87212087 11.80154509]
+2025-07-15 14:15:25,207 - root - INFO - ROI r2: total_frames=231, start_frame=0, end_frame=231
+2025-07-15 14:15:25,207 - root - INFO - ROI r2: frame_step=1, frame_range length=231
+2025-07-15 14:15:40,886 - root - INFO - ROI r2: raw intensity samples (first 5): [158.03067085420028, 157.9974535268653, 156.9945109356874, 156.99074781427723, 156.85182355770593]
+2025-07-15 14:15:40,887 - root - INFO - ROI r2: normalized volume (first 5): [12.         11.99078594 11.71258242 11.71153857 11.67300275]
+2025-07-15 14:15:40,887 - root - INFO - ROI r3: total_frames=231, start_frame=0, end_frame=231
+2025-07-15 14:15:40,887 - root - INFO - ROI r3: frame_step=1, frame_range length=231
+2025-07-15 14:15:58,029 - root - INFO - ROI r3: raw intensity samples (first 5): [158.03316593429588, 157.6895794099184, 156.96976354885962, 156.97213503522357, 156.8008300202274]
+2025-07-15 14:15:58,030 - root - INFO - ROI r3: normalized volume (first 5): [12.         11.92257481 11.76036858 11.76090298 11.72230041]
+2025-07-15 14:15:58,030 - root - INFO - ROI r4: total_frames=231, start_frame=0, end_frame=231
+2025-07-15 14:15:58,030 - root - INFO - ROI r4: frame_step=1, frame_range length=231
+2025-07-15 14:16:16,080 - root - INFO - ROI r4: raw intensity samples (first 5): [157.04203861981642, 157.10867363089588, 156.92174738841408, 156.79914529914532, 156.74447610003168]
+2025-07-15 14:16:16,082 - root - INFO - ROI r4: normalized volume (first 5): [19.97196692 20.         19.92136088 19.86978267 19.84678355]
+2025-07-15 16:35:56,989 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 16:35:57,236 - __main__ - INFO - Main window displayed
+2025-07-15 16:38:52,370 - root - INFO - Loaded base frame for rotation
+2025-07-15 16:38:57,438 - root - INFO - No rotation to save (angle near 0°)
+2025-07-15 16:40:03,066 - root - INFO - ROI Titak: start_frac=0.0, end_frac=1.0, total_volume=110.0
+2025-07-15 16:40:03,068 - root - INFO - ROI R1: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 16:40:03,068 - root - INFO - ROI R2: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 16:40:08,200 - root - INFO - Navigated back to step 4
+2025-07-15 16:40:09,801 - root - INFO - ROI Titak: start_frac=0.0, end_frac=1.0, total_volume=110.0
+2025-07-15 16:40:09,802 - root - INFO - ROI R1: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 16:40:09,802 - root - INFO - ROI R2: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 16:40:11,872 - root - INFO - ROI Titak: total_frames=261, start_frame=0, end_frame=261
+2025-07-15 16:40:11,872 - root - INFO - ROI Titak: frame_step=1, frame_range length=261
+2025-07-15 16:40:30,148 - root - INFO - ROI Titak: raw intensity samples (first 5): [155.7769137216981, 155.73361611532303, 155.17687417555777, 155.1019911210789, 154.93018751912976]
+2025-07-15 16:40:30,149 - root - INFO - ROI Titak: normalized volume (first 5): [  0.         109.88563722 108.41510423 108.2173142  107.76352611]
+2025-07-15 16:40:30,149 - root - INFO - ROI R1: total_frames=261, start_frame=0, end_frame=261
+2025-07-15 16:40:30,149 - root - INFO - ROI R1: frame_step=1, frame_range length=261
+2025-07-15 16:40:48,658 - root - INFO - ROI R1: raw intensity samples (first 5): [158.21861950380742, 158.21587652501435, 157.08990420044216, 157.0519118971588, 156.93122083026284]
+2025-07-15 16:40:48,659 - root - INFO - ROI R1: normalized volume (first 5): [ 0.         11.99943424 11.76719197 11.7593557  11.73446205]
+2025-07-15 16:40:48,661 - root - INFO - ROI R2: total_frames=261, start_frame=0, end_frame=261
+2025-07-15 16:40:48,662 - root - INFO - ROI R2: frame_step=1, frame_range length=261
+2025-07-15 16:41:06,881 - root - INFO - ROI R2: raw intensity samples (first 5): [156.6036777518259, 156.54061468876284, 156.41723204686167, 156.28765802839877, 156.27223519816113]
+2025-07-15 16:41:06,882 - root - INFO - ROI R2: normalized volume (first 5): [ 0.         11.98501998 11.95571163 11.92493257 11.92126903]
+2025-07-15 16:42:49,128 - root - INFO - Saved ROI overlay to /Users/ymorocz/Downloads/temp_roi_overlay.png
+2025-07-15 16:46:24,213 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 16:46:24,632 - __main__ - INFO - Main window displayed
+2025-07-15 16:46:53,427 - root - INFO - Loaded base frame for rotation
+2025-07-15 16:46:57,215 - root - INFO - No rotation to save (angle near 0°)
+2025-07-15 16:48:16,231 - root - INFO - ROI totall: start_frac=0.0, end_frac=1.0, total_volume=120.0
+2025-07-15 16:48:16,233 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 16:48:20,489 - root - INFO - ROI totall: total_frames=277, start_frame=0, end_frame=277
+2025-07-15 16:48:20,489 - root - INFO - ROI totall: frame_step=11, frame_range length=26
+2025-07-15 16:48:22,506 - root - INFO - ROI totall: raw intensity samples (first 5): [155.78934430727023, 154.75821399176957, 154.0979862825789, 154.29427983539094, 150.3270891632373]
+2025-07-15 16:48:22,507 - root - INFO - ROI totall: normalized volume (first 5): [  0.         117.07936274 115.20929296 115.76528696 104.52837082]
+2025-07-15 16:48:22,508 - root - INFO - ROI r1: total_frames=277, start_frame=0, end_frame=277
+2025-07-15 16:48:22,508 - root - INFO - ROI r1: frame_step=11, frame_range length=26
+2025-07-15 16:48:24,478 - root - INFO - ROI r1: raw intensity samples (first 5): [158.24275200381396, 156.51282738893357, 156.45263847918716, 157.14084800810465, 156.5061827716695]
+2025-07-15 16:48:24,478 - root - INFO - ROI r1: normalized volume (first 5): [ 0.         11.54807687 11.5323532  11.71214011 11.54634104]
+2025-07-15 16:49:09,427 - root - INFO - Navigated back to step 4
+2025-07-15 16:49:24,724 - root - INFO - ROI totall: start_frac=0.0, end_frac=1.0, total_volume=120.0
+2025-07-15 16:49:24,725 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 16:49:28,863 - root - INFO - ROI totall: total_frames=277, start_frame=0, end_frame=277
+2025-07-15 16:49:28,864 - root - INFO - ROI totall: frame_step=11, frame_range length=26
+2025-07-15 16:49:30,768 - root - INFO - ROI totall: raw intensity samples (first 5): [157.12217009602196, 158.044304526749, 157.5025157750343, 157.844683127572, 158.35091632373116]
+2025-07-15 16:49:30,769 - root - INFO - ROI totall: normalized volume (first 5): [ 0.         20.89307248  8.61760452 16.37019141 27.84006664]
+2025-07-15 16:49:30,769 - root - INFO - ROI r1: total_frames=277, start_frame=0, end_frame=277
+2025-07-15 16:49:30,769 - root - INFO - ROI r1: frame_step=11, frame_range length=26
+2025-07-15 16:49:32,653 - root - INFO - ROI r1: raw intensity samples (first 5): [158.48815589523554, 159.73519859360567, 159.3192097970859, 159.43982598849857, 159.42379547689282]
+2025-07-15 16:49:32,654 - root - INFO - ROI r1: normalized volume (first 5): [0.         2.5744647  1.71567416 1.96468098 1.93158669]
+2025-07-15 16:49:43,212 - root - INFO - ROI totall: total_frames=277, start_frame=0, end_frame=277
+2025-07-15 16:49:43,215 - root - INFO - ROI totall: frame_step=1, frame_range length=277
+2025-07-15 16:50:03,099 - root - INFO - ROI totall: raw intensity samples (first 5): [157.12217009602196, 157.3666721536351, 157.9499670781893, 158.17936899862826, 158.19119067215365]
+2025-07-15 16:50:03,100 - root - INFO - ROI totall: normalized volume (first 5): [ 0.          5.53362989 18.73490214 23.92678206 24.19433304]
+2025-07-15 16:50:03,101 - root - INFO - ROI r1: total_frames=277, start_frame=0, end_frame=277
+2025-07-15 16:50:03,101 - root - INFO - ROI r1: frame_step=1, frame_range length=277
+2025-07-15 16:50:22,514 - root - INFO - ROI r1: raw intensity samples (first 5): [158.48815589523554, 158.647209558714, 159.43985578498854, 159.87309674920294, 159.93569917463722]
+2025-07-15 16:50:22,515 - root - INFO - ROI r1: normalized volume (first 5): [0.         0.32703658 1.95682807 2.84763208 2.97635142]
+2025-07-15 17:22:47,964 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 17:22:48,257 - __main__ - INFO - Main window displayed
+2025-07-15 17:23:17,925 - root - INFO - Loaded base frame for rotation
+2025-07-15 17:23:19,867 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(125, 238), drawing=True, fixed=False
+2025-07-15 17:23:19,867 - root - INFO - Started drawing line at widget 125, 238
+2025-07-15 17:23:19,923 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(125, 238), drawing=True, fixed=False
+2025-07-15 17:23:19,965 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(125, 238), drawing=True, fixed=False
+2025-07-15 17:23:19,970 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(131, 238), drawing=True, fixed=False
+2025-07-15 17:23:19,978 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(144, 238), drawing=True, fixed=False
+2025-07-15 17:23:19,991 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(162, 238), drawing=True, fixed=False
+2025-07-15 17:23:19,994 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(184, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,003 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(214, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,009 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(246, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,018 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(279, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,026 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(311, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,034 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(343, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,042 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(374, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,049 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(403, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,058 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(428, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,065 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(452, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,074 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(474, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,082 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(494, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,090 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(513, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,098 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(528, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,105 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(541, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,114 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(553, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,122 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(562, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,129 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(571, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,138 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(577, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,145 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(581, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,154 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(585, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,162 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(586, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,170 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(587, 238), drawing=True, fixed=False
+2025-07-15 17:23:20,178 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(590, 237), drawing=True, fixed=False
+2025-07-15 17:23:20,186 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(591, 237), drawing=True, fixed=False
+2025-07-15 17:23:20,194 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(598, 235), drawing=True, fixed=False
+2025-07-15 17:23:20,202 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(604, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,210 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(608, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,218 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(616, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,226 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(623, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,234 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(632, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,242 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(642, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,249 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(654, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,258 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(666, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,265 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(676, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,274 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(687, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,283 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(695, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,290 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(704, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,298 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(710, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,305 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(719, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,314 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(725, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,323 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(731, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,330 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(739, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,338 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(748, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,351 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(757, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,354 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(763, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,363 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(769, 234), drawing=True, fixed=False
+2025-07-15 17:23:20,369 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(773, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,378 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(775, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,385 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(775, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,394 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(778, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,403 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(779, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,409 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(780, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,418 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(780, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,450 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(781, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,458 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(782, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,466 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(782, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,474 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(783, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,484 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(784, 233), drawing=True, fixed=False
+2025-07-15 17:23:20,490 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(788, 231), drawing=True, fixed=False
+2025-07-15 17:23:20,498 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(793, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,506 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(795, 229), drawing=True, fixed=False
+2025-07-15 17:23:20,514 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(798, 229), drawing=True, fixed=False
+2025-07-15 17:23:20,524 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(801, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,530 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(802, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,562 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(803, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,594 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(803, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,604 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(803, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,611 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(804, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,632 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(804, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,666 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(804, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,686 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(805, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,698 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(805, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,755 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(805, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,765 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(806, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,770 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(806, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,779 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(807, 227), drawing=True, fixed=False
+2025-07-15 17:23:20,791 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(807, 228), drawing=True, fixed=False
+2025-07-15 17:23:20,794 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(809, 228), drawing=True, fixed=False
+2025-07-15 17:23:20,805 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(809, 228), drawing=True, fixed=False
+2025-07-15 17:23:20,810 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(812, 229), drawing=True, fixed=False
+2025-07-15 17:23:20,818 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(812, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,845 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(813, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,875 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(813, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,884 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(814, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,890 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(814, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,898 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(815, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,906 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(815, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,914 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(817, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,924 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(817, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,930 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(817, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,938 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(818, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,946 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(819, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,954 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(819, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,965 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(820, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,970 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(820, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,978 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(820, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,986 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(820, 230), drawing=True, fixed=False
+2025-07-15 17:23:20,994 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(821, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,004 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(821, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,010 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(826, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,018 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(826, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,026 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(831, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,034 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(832, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,044 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(833, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,050 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(833, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,058 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(834, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,066 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(834, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,074 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(834, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,085 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(835, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,090 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(835, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,098 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(835, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,106 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(836, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,114 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(836, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,125 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(837, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,139 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(838, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,146 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(839, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,154 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(839, 229), drawing=True, fixed=False
+2025-07-15 17:23:21,299 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(839, 229), drawing=True, fixed=False
+2025-07-15 17:23:21,315 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(839, 229), drawing=True, fixed=False
+2025-07-15 17:23:21,326 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(840, 229), drawing=True, fixed=False
+2025-07-15 17:23:21,339 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(840, 229), drawing=True, fixed=False
+2025-07-15 17:23:21,346 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(840, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,365 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(841, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,378 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(841, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,386 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(842, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,394 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(842, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,405 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(842, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,410 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(843, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,419 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(843, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,426 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(843, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,434 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(844, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,538 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(844, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,566 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(845, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,578 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(845, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,594 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(845, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,626 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(846, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,634 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(846, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,644 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(847, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,650 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(848, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,658 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(848, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,666 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(849, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,683 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(849, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,690 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(850, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,770 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(850, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,922 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(850, 230), drawing=True, fixed=False
+2025-07-15 17:23:21,954 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(125, 238), end=PyQt5.QtCore.QPoint(851, 229), drawing=True, fixed=False
+2025-07-15 17:23:21,980 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(94, 103), end=PyQt5.QtCore.QPoint(410, 103)
+2025-07-15 17:23:21,980 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(94, 103), end=PyQt5.QtCore.QPoint(410, 103), drawing=False, fixed=True
+2025-07-15 17:23:21,980 - root - INFO - Calculated rotation: line angle -0.7, correction -0.7, total angle -0.7
+2025-07-15 17:23:21,981 - root - INFO - Cleared rotation line
+2025-07-15 17:23:21,981 - root - INFO - Finished drawing line from widget 125, 238 to 851, 229
+2025-07-15 17:23:23,427 - root - INFO - Saved rotation matrix for -0.7° rotation
+2025-07-15 17:23:41,392 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=100.0
+2025-07-15 17:23:41,393 - root - INFO - ROI r2: start_frac=0.0, end_frac=1.0, total_volume=150.0
+2025-07-15 17:23:45,287 - root - INFO - ROI r1: total_frames=381, start_frame=0, end_frame=381
+2025-07-15 17:23:45,287 - root - INFO - ROI r1: frame_step=11, frame_range length=35
+2025-07-15 17:26:16,118 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 17:26:16,462 - __main__ - INFO - Main window displayed
+2025-07-15 17:26:59,262 - root - INFO - Loaded base frame for rotation
+2025-07-15 17:27:00,572 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(347, 198), drawing=True, fixed=False
+2025-07-15 17:27:00,572 - root - INFO - Started drawing line at widget 347, 198
+2025-07-15 17:27:00,652 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(347, 198), drawing=True, fixed=False
+2025-07-15 17:27:00,659 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(348, 198), drawing=True, fixed=False
+2025-07-15 17:27:00,667 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(349, 198), drawing=True, fixed=False
+2025-07-15 17:27:00,675 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(353, 201), drawing=True, fixed=False
+2025-07-15 17:27:00,686 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(359, 205), drawing=True, fixed=False
+2025-07-15 17:27:00,691 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(372, 211), drawing=True, fixed=False
+2025-07-15 17:27:00,699 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(385, 216), drawing=True, fixed=False
+2025-07-15 17:27:00,707 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(402, 224), drawing=True, fixed=False
+2025-07-15 17:27:00,715 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(417, 230), drawing=True, fixed=False
+2025-07-15 17:27:00,724 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(436, 239), drawing=True, fixed=False
+2025-07-15 17:27:00,731 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(456, 247), drawing=True, fixed=False
+2025-07-15 17:27:00,739 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(474, 256), drawing=True, fixed=False
+2025-07-15 17:27:00,746 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(493, 265), drawing=True, fixed=False
+2025-07-15 17:27:00,755 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(511, 273), drawing=True, fixed=False
+2025-07-15 17:27:00,764 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(525, 279), drawing=True, fixed=False
+2025-07-15 17:27:00,771 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(539, 285), drawing=True, fixed=False
+2025-07-15 17:27:00,779 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(552, 292), drawing=True, fixed=False
+2025-07-15 17:27:00,786 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(566, 299), drawing=True, fixed=False
+2025-07-15 17:27:00,795 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(578, 305), drawing=True, fixed=False
+2025-07-15 17:27:00,805 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(587, 311), drawing=True, fixed=False
+2025-07-15 17:27:00,810 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(592, 313), drawing=True, fixed=False
+2025-07-15 17:27:00,819 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(594, 315), drawing=True, fixed=False
+2025-07-15 17:27:00,827 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(597, 317), drawing=True, fixed=False
+2025-07-15 17:27:00,835 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(598, 318), drawing=True, fixed=False
+2025-07-15 17:27:00,844 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(604, 322), drawing=True, fixed=False
+2025-07-15 17:27:00,850 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(612, 328), drawing=True, fixed=False
+2025-07-15 17:27:00,859 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(618, 332), drawing=True, fixed=False
+2025-07-15 17:27:00,866 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(625, 336), drawing=True, fixed=False
+2025-07-15 17:27:00,875 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(631, 340), drawing=True, fixed=False
+2025-07-15 17:27:00,884 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(636, 344), drawing=True, fixed=False
+2025-07-15 17:27:00,890 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(639, 345), drawing=True, fixed=False
+2025-07-15 17:27:00,899 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(643, 347), drawing=True, fixed=False
+2025-07-15 17:27:00,906 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(650, 350), drawing=True, fixed=False
+2025-07-15 17:27:00,915 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(656, 352), drawing=True, fixed=False
+2025-07-15 17:27:00,924 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(659, 352), drawing=True, fixed=False
+2025-07-15 17:27:00,930 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(660, 353), drawing=True, fixed=False
+2025-07-15 17:27:00,939 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(665, 354), drawing=True, fixed=False
+2025-07-15 17:27:00,946 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(669, 355), drawing=True, fixed=False
+2025-07-15 17:27:00,955 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(678, 357), drawing=True, fixed=False
+2025-07-15 17:27:00,964 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(685, 361), drawing=True, fixed=False
+2025-07-15 17:27:00,971 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(696, 363), drawing=True, fixed=False
+2025-07-15 17:27:00,979 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(706, 365), drawing=True, fixed=False
+2025-07-15 17:27:00,986 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(710, 367), drawing=True, fixed=False
+2025-07-15 17:27:00,995 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(715, 368), drawing=True, fixed=False
+2025-07-15 17:27:01,004 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(719, 369), drawing=True, fixed=False
+2025-07-15 17:27:01,011 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(723, 371), drawing=True, fixed=False
+2025-07-15 17:27:01,019 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(724, 372), drawing=True, fixed=False
+2025-07-15 17:27:01,026 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(725, 372), drawing=True, fixed=False
+2025-07-15 17:27:01,260 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(726, 371), drawing=True, fixed=False
+2025-07-15 17:27:01,267 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(726, 371), drawing=True, fixed=False
+2025-07-15 17:27:01,275 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(727, 369), drawing=True, fixed=False
+2025-07-15 17:27:01,286 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(728, 368), drawing=True, fixed=False
+2025-07-15 17:27:01,291 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(728, 367), drawing=True, fixed=False
+2025-07-15 17:27:01,300 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(730, 364), drawing=True, fixed=False
+2025-07-15 17:27:01,307 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(731, 363), drawing=True, fixed=False
+2025-07-15 17:27:01,315 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(733, 359), drawing=True, fixed=False
+2025-07-15 17:27:01,325 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(734, 358), drawing=True, fixed=False
+2025-07-15 17:27:01,331 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(734, 357), drawing=True, fixed=False
+2025-07-15 17:27:01,339 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(735, 354), drawing=True, fixed=False
+2025-07-15 17:27:01,347 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(735, 354), drawing=True, fixed=False
+2025-07-15 17:27:01,355 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(737, 351), drawing=True, fixed=False
+2025-07-15 17:27:01,365 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(737, 348), drawing=True, fixed=False
+2025-07-15 17:27:01,371 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(739, 346), drawing=True, fixed=False
+2025-07-15 17:27:01,379 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(741, 340), drawing=True, fixed=False
+2025-07-15 17:27:01,386 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(745, 335), drawing=True, fixed=False
+2025-07-15 17:27:01,395 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(748, 331), drawing=True, fixed=False
+2025-07-15 17:27:01,405 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(750, 326), drawing=True, fixed=False
+2025-07-15 17:27:01,411 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(752, 323), drawing=True, fixed=False
+2025-07-15 17:27:01,419 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(754, 320), drawing=True, fixed=False
+2025-07-15 17:27:01,427 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(754, 317), drawing=True, fixed=False
+2025-07-15 17:27:01,434 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(756, 314), drawing=True, fixed=False
+2025-07-15 17:27:01,444 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(756, 314), drawing=True, fixed=False
+2025-07-15 17:27:01,451 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(757, 312), drawing=True, fixed=False
+2025-07-15 17:27:01,459 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(757, 312), drawing=True, fixed=False
+2025-07-15 17:27:01,467 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(758, 309), drawing=True, fixed=False
+2025-07-15 17:27:01,475 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(759, 307), drawing=True, fixed=False
+2025-07-15 17:27:01,485 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(759, 307), drawing=True, fixed=False
+2025-07-15 17:27:01,491 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(759, 307), drawing=True, fixed=False
+2025-07-15 17:27:01,499 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(760, 304), drawing=True, fixed=False
+2025-07-15 17:27:01,507 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(762, 299), drawing=True, fixed=False
+2025-07-15 17:27:01,515 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(764, 295), drawing=True, fixed=False
+2025-07-15 17:27:01,526 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(767, 289), drawing=True, fixed=False
+2025-07-15 17:27:01,531 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(769, 280), drawing=True, fixed=False
+2025-07-15 17:27:01,539 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(773, 274), drawing=True, fixed=False
+2025-07-15 17:27:01,547 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(777, 265), drawing=True, fixed=False
+2025-07-15 17:27:01,555 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(780, 258), drawing=True, fixed=False
+2025-07-15 17:27:01,566 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(784, 250), drawing=True, fixed=False
+2025-07-15 17:27:01,571 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(785, 244), drawing=True, fixed=False
+2025-07-15 17:27:01,580 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(788, 240), drawing=True, fixed=False
+2025-07-15 17:27:01,587 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(790, 235), drawing=True, fixed=False
+2025-07-15 17:27:01,595 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(791, 231), drawing=True, fixed=False
+2025-07-15 17:27:01,607 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(792, 230), drawing=True, fixed=False
+2025-07-15 17:27:01,611 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(793, 227), drawing=True, fixed=False
+2025-07-15 17:27:01,620 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(793, 224), drawing=True, fixed=False
+2025-07-15 17:27:01,627 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(793, 224), drawing=True, fixed=False
+2025-07-15 17:27:01,635 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(794, 223), drawing=True, fixed=False
+2025-07-15 17:27:01,647 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(794, 223), drawing=True, fixed=False
+2025-07-15 17:27:01,651 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(794, 222), drawing=True, fixed=False
+2025-07-15 17:27:01,660 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(794, 222), drawing=True, fixed=False
+2025-07-15 17:27:01,667 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(795, 219), drawing=True, fixed=False
+2025-07-15 17:27:01,675 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(795, 219), drawing=True, fixed=False
+2025-07-15 17:27:01,686 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(796, 218), drawing=True, fixed=False
+2025-07-15 17:27:01,691 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(796, 218), drawing=True, fixed=False
+2025-07-15 17:27:01,701 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(796, 217), drawing=True, fixed=False
+2025-07-15 17:27:01,707 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(796, 217), drawing=True, fixed=False
+2025-07-15 17:27:01,715 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(796, 216), drawing=True, fixed=False
+2025-07-15 17:27:01,726 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(797, 215), drawing=True, fixed=False
+2025-07-15 17:27:01,731 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(797, 214), drawing=True, fixed=False
+2025-07-15 17:27:01,747 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(798, 214), drawing=True, fixed=False
+2025-07-15 17:27:01,755 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(798, 214), drawing=True, fixed=False
+2025-07-15 17:27:01,766 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(798, 213), drawing=True, fixed=False
+2025-07-15 17:27:01,771 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(798, 213), drawing=True, fixed=False
+2025-07-15 17:27:01,780 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(798, 213), drawing=True, fixed=False
+2025-07-15 17:27:01,787 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(799, 212), drawing=True, fixed=False
+2025-07-15 17:27:01,795 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(799, 212), drawing=True, fixed=False
+2025-07-15 17:27:01,806 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(800, 211), drawing=True, fixed=False
+2025-07-15 17:27:01,811 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(802, 209), drawing=True, fixed=False
+2025-07-15 17:27:01,820 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(802, 208), drawing=True, fixed=False
+2025-07-15 17:27:01,827 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(802, 208), drawing=True, fixed=False
+2025-07-15 17:27:01,835 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(802, 207), drawing=True, fixed=False
+2025-07-15 17:27:01,846 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(802, 207), drawing=True, fixed=False
+2025-07-15 17:27:01,851 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(803, 207), drawing=True, fixed=False
+2025-07-15 17:27:01,860 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(803, 206), drawing=True, fixed=False
+2025-07-15 17:27:01,867 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(803, 206), drawing=True, fixed=False
+2025-07-15 17:27:01,886 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(804, 205), drawing=True, fixed=False
+2025-07-15 17:27:01,899 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(804, 205), drawing=True, fixed=False
+2025-07-15 17:27:01,915 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(804, 204), drawing=True, fixed=False
+2025-07-15 17:27:01,926 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(804, 204), drawing=True, fixed=False
+2025-07-15 17:27:01,931 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(804, 203), drawing=True, fixed=False
+2025-07-15 17:27:01,940 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(805, 200), drawing=True, fixed=False
+2025-07-15 17:27:01,947 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(805, 200), drawing=True, fixed=False
+2025-07-15 17:27:01,955 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(805, 200), drawing=True, fixed=False
+2025-07-15 17:27:01,967 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(805, 199), drawing=True, fixed=False
+2025-07-15 17:27:01,971 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 199), drawing=True, fixed=False
+2025-07-15 17:27:01,987 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 199), drawing=True, fixed=False
+2025-07-15 17:27:02,011 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 198), drawing=True, fixed=False
+2025-07-15 17:27:02,035 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 198), drawing=True, fixed=False
+2025-07-15 17:27:02,291 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 198), drawing=True, fixed=False
+2025-07-15 17:27:02,301 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 198), drawing=True, fixed=False
+2025-07-15 17:27:02,307 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 199), drawing=True, fixed=False
+2025-07-15 17:27:02,316 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 199), drawing=True, fixed=False
+2025-07-15 17:27:02,332 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 200), drawing=True, fixed=False
+2025-07-15 17:27:02,355 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 200), drawing=True, fixed=False
+2025-07-15 17:27:02,372 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 201), drawing=True, fixed=False
+2025-07-15 17:27:02,820 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 200), drawing=True, fixed=False
+2025-07-15 17:27:02,827 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 200), drawing=True, fixed=False
+2025-07-15 17:27:02,836 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 199), drawing=True, fixed=False
+2025-07-15 17:27:02,852 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 198), drawing=True, fixed=False
+2025-07-15 17:27:02,867 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(347, 198), end=PyQt5.QtCore.QPoint(806, 198), drawing=True, fixed=False
+2025-07-15 17:27:03,304 - root - INFO - _update_display: transformed widget coords start=PyQt5.QtCore.QPoint(183, 87), end=PyQt5.QtCore.QPoint(387, 87)
+2025-07-15 17:27:03,305 - root - INFO - DrawableLabel.set_line: start=PyQt5.QtCore.QPoint(183, 87), end=PyQt5.QtCore.QPoint(387, 87), drawing=False, fixed=True
+2025-07-15 17:27:03,306 - root - INFO - Calculated rotation: line angle 0.0, correction 0.0, total angle 0.0
+2025-07-15 17:27:03,306 - root - INFO - Cleared rotation line
+2025-07-15 17:27:03,306 - root - INFO - Finished drawing line from widget 347, 198 to 806, 198
+2025-07-15 17:27:04,247 - root - INFO - No rotation to save (angle near 0°)
+2025-07-15 17:31:39,420 - root - INFO - ROI total: start_frac=0.0, end_frac=1.0, total_volume=120.0
+2025-07-15 17:31:39,422 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 17:31:41,904 - root - INFO - ROI total: total_frames=492, start_frame=0, end_frame=492
+2025-07-15 17:31:41,904 - root - INFO - ROI total: frame_step=1, frame_range length=492
+2025-07-15 17:31:49,733 - root - INFO - Navigated back to step 4
+2025-07-15 17:32:21,644 - root - INFO - ROI total: raw intensity samples (first 5): [155.82065932961456, 155.77389064777125, 155.23014221820193, 155.15540981958893, 154.72084526860647]
+2025-07-15 17:32:21,645 - root - INFO - ROI total: final volume (first 5): [120.         119.85943534 118.22518337 118.00057294 116.69447634]
+2025-07-15 17:32:21,645 - root - INFO - ROI total: start_volume=0.0, end_volume=120.0, total_volume=120.0
+2025-07-15 17:32:21,646 - root - INFO - ROI r1: total_frames=492, start_frame=0, end_frame=492
+2025-07-15 17:32:21,646 - root - INFO - ROI r1: frame_step=1, frame_range length=492
+2025-07-15 17:32:27,261 - root - INFO - ROI total: start_frac=0.0, end_frac=1.0, total_volume=120.0
+2025-07-15 17:32:27,262 - root - INFO - ROI r1: start_frac=0.0, end_frac=1.0, total_volume=12.0
+2025-07-15 17:33:01,044 - root - INFO - ROI r1: raw intensity samples (first 5): [158.3663236481033, 158.14252085014797, 157.24182808716705, 157.39699354317997, 157.18132902878665]
+2025-07-15 17:33:01,045 - root - INFO - ROI r1: final volume (first 5): [12.         11.94812204 11.73933955 11.77530723 11.72531574]
+2025-07-15 17:33:01,045 - root - INFO - ROI r1: start_volume=0.0, end_volume=12.0, total_volume=12.0
+2025-07-15 17:33:34,707 - root - INFO - ROI total: total_frames=492, start_frame=0, end_frame=492
+2025-07-15 17:33:34,711 - root - INFO - ROI total: frame_step=4, frame_range length=123
+2025-07-15 17:33:44,370 - root - INFO - ROI total: raw intensity samples (first 5): [155.82065932961456, 154.72084526860647, 154.5952836825971, 154.55723905723906, 154.21962912709182]
+2025-07-15 17:33:44,371 - root - INFO - ROI total: final volume (first 5): [120.         116.68596137 116.30761019 116.19297139 115.17566093]
+2025-07-15 17:33:44,371 - root - INFO - ROI total: start_volume=0.0, end_volume=120.0, total_volume=120.0
+2025-07-15 17:33:44,371 - root - INFO - ROI r1: total_frames=492, start_frame=0, end_frame=492
+2025-07-15 17:33:44,371 - root - INFO - ROI r1: frame_step=4, frame_range length=123
+2025-07-15 17:33:53,662 - root - INFO - ROI r1: raw intensity samples (first 5): [158.3663236481033, 157.18132902878665, 156.8344430992736, 156.69047619047618, 156.5832997040624]
+2025-07-15 17:33:53,663 - root - INFO - ROI r1: final volume (first 5): [12.         11.72531574 11.64490685 11.61153502 11.58669128]
+2025-07-15 17:33:53,663 - root - INFO - ROI r1: start_volume=0.0, end_volume=12.0, total_volume=12.0
+2025-07-15 17:34:03,124 - root - INFO - Saved ROI overlay to /Users/ymorocz/Downloads/temp_roi_overlay.png
+2025-07-15 17:38:30,245 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 17:38:30,515 - __main__ - INFO - Main window displayed

@@ -3,7 +3,7 @@
 import cv2
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
                             QPushButton, QProgressBar, QSlider, QGroupBox)
-from PyQt5.QtCore import Qt, QThread, pyqtSignal
+from PyQt5.QtCore import Qt, QThread, pyqtSignal, QMetaObject
 from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen, QColor
 from typing import Optional, Callable
 
@@ -186,8 +186,12 @@ class ScanController(QWidget):
         self.quick_scan_btn.setEnabled(True)
         self.detailed_scan_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
+        QMetaObject.invokeMethod(self, "show_error_message", Qt.QueuedConnection, 
+                                 "Scan Error", f"Error during scan: {message}")
+
+    def show_error_message(self, title, message):
         from PyQt5.QtWidgets import QMessageBox
-        QMessageBox.critical(self, "Scan Error", f"Error during scan: {message}")
+        QMessageBox.critical(self, title, message)
 
     def _on_data_ready(self, time, intensity):
         self.time = time

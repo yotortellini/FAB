@@ -2,9 +2,10 @@
 
 import cv2
 import numpy as np
+import logging
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
                             QLabel, QLineEdit, QListWidget, QMessageBox, QGroupBox,
-                            QSlider, QDoubleSpinBox)
+                            QSlider, QDoubleSpinBox, QComboBox)
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen, QColor, QFont
 
@@ -110,6 +111,16 @@ class ROIController(QWidget):
         self.volume_input.setPlaceholderText("e.g., 50, 100, 250")
         volume_layout.addWidget(self.volume_input)
         creation_layout.addLayout(volume_layout)
+
+        # Channel selection
+        channel_layout = QHBoxLayout()
+        channel_layout.addWidget(QLabel("Color Channel:"))
+        self.channel_combo = QComboBox()
+        self.channel_combo.addItems(["auto", "R", "G", "B"])
+        self.channel_combo.setCurrentText("auto")
+        self.channel_combo.setToolTip("Select which color channel to measure intensity from")
+        channel_layout.addWidget(self.channel_combo)
+        creation_layout.addLayout(channel_layout)
 
         # Start Fraction input
         start_frac_layout = QVBoxLayout()
@@ -287,39 +298,36 @@ class ROIController(QWidget):
         self._update_frame()
         self._update_buttons()
 
+    def reset_on_new_file(self):
+        """Reset all ROIs and steps when a new file is loaded"""
+        self.rois.clear()
+        self.roi_list.clear()
+        self.pending_roi = None
+        self.start_frac_slider.setValue(0)
+        self.start_frac_spin.setValue(0.0)
+        self.end_frac_slider.setValue(100)
+        self.end_frac_spin.setValue(1.0)
+        self.channel_combo.setCurrentText("auto")
+        self._update_buttons()
+        logging.info("Reset all ROIs and steps for new file load.")
+
     def _on_start_frac_slider_changed(self, value):
-        """Handle start fraction slider change"""
+        """Handle start fraction slider change."""
         fraction = value / 100.0
         self.start_frac_spin.setValue(fraction)
-        # Ensure start fraction is less than end fraction
-        if fraction >= self.end_frac_spin.value():
-            self.end_frac_spin.setValue(min(1.0, fraction + 0.01))
-            self.end_frac_slider.setValue(int(self.end_frac_spin.value() * 100))
 
     def _on_start_frac_spin_changed(self, value):
-        """Handle start fraction spinbox change"""
+        """Handle start fraction spinbox change."""
         self.start_frac_slider.setValue(int(value * 100))
-        # Ensure start fraction is less than end fraction
-        if value >= self.end_frac_spin.value():
-            self.end_frac_spin.setValue(min(1.0, value + 0.01))
-            self.end_frac_slider.setValue(int(self.end_frac_spin.value() * 100))
 
     def _on_end_frac_slider_changed(self, value):
-        """Handle end fraction slider change"""
+        """Handle end fraction slider change."""
         fraction = value / 100.0
         self.end_frac_spin.setValue(fraction)
-        # Ensure end fraction is greater than start fraction
-        if fraction <= self.start_frac_spin.value():
-            self.start_frac_spin.setValue(max(0.0, fraction - 0.01))
-            self.start_frac_slider.setValue(int(self.start_frac_spin.value() * 100))
 
     def _on_end_frac_spin_changed(self, value):
-        """Handle end fraction spinbox change"""
+        """Handle end fraction spinbox change."""
         self.end_frac_slider.setValue(int(value * 100))
-        # Ensure end fraction is greater than start fraction
-        if value <= self.start_frac_spin.value():
-            self.start_frac_spin.setValue(max(0.0, value - 0.01))
-            self.start_frac_slider.setValue(int(self.start_frac_spin.value() * 100))
 
     def _get_image_position(self, pos):
         """Convert screen coordinates to image coordinates"""
@@ -390,6 +398,7 @@ class ROIController(QWidget):
                 self.volume_input.setText(str(roi.total_volume))
                 self.start_frac_spin.setValue(roi.start_frac)
                 self.end_frac_spin.setValue(roi.end_frac)
+                self.channel_combo.setCurrentText(roi.channel)
 
         self._update_buttons()
 
@@ -430,11 +439,13 @@ class ROIController(QWidget):
             start_frac = self.start_frac_spin.value()
             end_frac = self.end_frac_spin.value()
             
+            channel = self.channel_combo.currentText()  # Get selected channel
+
             # Create ROI with user-specified values
             roi = ROI(
                 name=name,
                 rect=(int(x), int(y), int(w), int(h)),
-                channel='auto',
+                channel=channel,
                 total_volume=volume,
                 start_frac=start_frac,
                 end_frac=end_frac,
@@ -494,6 +505,9 @@ class ROIController(QWidget):
 
             roi.start_frac = self.start_frac_spin.value()
             roi.end_frac = self.end_frac_spin.value()
+
+            channel = self.channel_combo.currentText()  # Get selected channel
+            roi.channel = channel
 
             self.rois[roi_name] = roi
             self.session.rois[roi_name] = roi
@@ -649,3 +663,33 @@ class ROIController(QWidget):
 
         # Make Next button always available
         self.next_btn.setEnabled(True)
+
+    def update_roi(self, roi_name, new_name):
+        if roi_name in self.rois and new_name != roi_name:
+            # Update the ROI object
+            roi = self.rois[roi_name]
+            roi.name = new_name
+            
+            # Update the dictionary key
+            del self.rois[roi_name]
+            self.rois[new_name] = roi
+            
+            # Update session rois if they exist
+            if hasattr(self.session, 'rois') and roi_name in self.session.rois:
+                del self.session.rois[roi_name]
+                self.session.rois[new_name] = roi
+            
+            # Ensure UI reflects the change
+            self.redraw_preview()
+        else:
+            # Copy, rename, and delete original ROI
+            if roi_name in self.rois:
+                roi = self.rois[roi_name]
+                new_roi = roi.copy()
+                new_roi.name = new_name
+                self.rois[new_name] = new_roi
+                del self.rois[roi_name]
+                if hasattr(self.session, 'rois') and roi_name in self.session.rois:
+                    self.session.rois[new_name] = new_roi
+                    del self.session.rois[roi_name]
+                self.redraw_preview()

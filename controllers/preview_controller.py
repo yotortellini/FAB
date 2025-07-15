@@ -1,8 +1,14 @@
-# controllers/preview_controller.py
+# import cv2
+from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
+                            QLabel, QFrame, QFileDialog, QMessageBox, QStackedWidget,
+                            QDoubleSpinBox)
+from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtGui import QPixmap, QImage
+from pathlib import Path
 
 import cv2
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
-                            QLabel, QFrame, QFileDialog, QMessageBox, QStackedWidget)
+                            QLabel, QFrame, QFileDialog, QMessageBox, QStackedWidget, QDoubleSpinBox)
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QPixmap, QImage
 from pathlib import Path
@@ -76,6 +82,26 @@ class PreviewController(QWidget):
         self.info_label.setAlignment(Qt.AlignLeft)
         layout.addWidget(self.info_label)
 
+        # Time multiplier section (initially hidden)
+        self.multiplier_widget = QWidget()
+        multiplier_layout = QHBoxLayout(self.multiplier_widget)
+        multiplier_label = QLabel("Time Multiplier:")
+        multiplier_label.setToolTip("Adjust if the video is sped up or slowed down compared to real time")
+        self.time_multiplier_spin = QDoubleSpinBox()
+        self.time_multiplier_spin.setMinimum(0.1)
+        self.time_multiplier_spin.setMaximum(100.0)
+        self.time_multiplier_spin.setSingleStep(0.1)
+        self.time_multiplier_spin.setDecimals(1)
+        self.time_multiplier_spin.setValue(1.0)
+        self.time_multiplier_spin.setToolTip("1.0 = normal speed, >1.0 = video is sped up, <1.0 = video is slowed down")
+        self.time_multiplier_spin.valueChanged.connect(self._on_time_multiplier_changed)
+        
+        multiplier_layout.addWidget(multiplier_label)
+        multiplier_layout.addWidget(self.time_multiplier_spin)
+        multiplier_layout.addStretch()
+        layout.addWidget(self.multiplier_widget)
+        self.multiplier_widget.hide()  # Initially hidden until video is loaded
+
     def _setup_preview(self):
         """Set up the preview display and video information"""
         if not self.engine.cap:
@@ -98,6 +124,9 @@ class PreviewController(QWidget):
             f"Total Frames: {frame_count}"
         )
         self.info_label.setText(info_text)
+
+        # Show time multiplier controls now that video is loaded
+        self.multiplier_widget.show()
 
         # Display first frame
         frame = self.engine.get_frame(0)
@@ -166,3 +195,15 @@ class PreviewController(QWidget):
                     Qt.SmoothTransformation
                 )
                 self.preview.setPixmap(scaled_pixmap)
+
+    def _on_time_multiplier_changed(self, value):
+        """Handle time multiplier change"""
+        if hasattr(self.session, 'time_multiplier'):
+            self.session.time_multiplier = value
+
+    def reset_on_new_file(self):
+        """Reset when a new file is loaded"""
+        self.time_multiplier_spin.setValue(1.0)
+        self.multiplier_widget.hide()
+        self.preview.setText("No video loaded. Click 'Load Video File' to begin.")
+        self.info_label.setText("No video loaded")

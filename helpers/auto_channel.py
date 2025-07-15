@@ -1,4 +1,5 @@
 import numpy as np
+from PyQt5.QtWidgets import QMessageBox
 
 
 def detect_best_channel(patch: np.ndarray) -> str:
@@ -12,11 +13,5 @@ def detect_best_channel(patch: np.ndarray) -> str:
     Returns:
         The channel identifier with highest variance: 'B', 'G', or 'R'.
     """
-    if patch.ndim != 3 or patch.shape[2] != 3:
-        raise ValueError("patch must be HxWx3 in BGR format")
-
-    # Compute variance per channel
-    variances = patch.reshape(-1, 3).var(axis=0)
-    # OpenCV default is BGR order
-    channel_idx = int(np.argmax(variances))
-    return ['B', 'G', 'R'][channel_idx]
+    QMessageBox.information(None, "Auto-Channel Selection", "Auto-Channel Selection is currently under development.")
+    return 'R'  # Default to 'R' for now

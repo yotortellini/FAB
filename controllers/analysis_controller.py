@@ -4,15 +4,17 @@ import cv2
 import numpy as np
 from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
                             QLabel, QSpinBox, QProgressBar, QFileDialog,
-                            QMessageBox)
+                            QMessageBox, QListWidget)
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
+import logging
 
 from models.video_session import VideoSession
 from models.analysis_results import AnalysisResults
 from engine.video_engine import VideoEngine
+from helpers.auto_channel import detect_best_channel
 
 class AnalysisWorker(QThread):
     """Worker thread for running analysis"""
@@ -43,23 +45,40 @@ class AnalysisWorker(QThread):
                 start_frame = self.session.start_frame + int(total_frames * roi.start_frac)
                 end_frame = self.session.start_frame + int(total_frames * roi.end_frac)
                 
+                # Ensure start_frame aligns with start_frac
+                if roi.start_frac == 0:
+                    start_frame = self.session.start_frame
+                
                 # Calculate frame step based on sampling frequency
                 video_fps = self.session.fps
                 frame_step = max(1, int(video_fps / self.sampling_freq))
+                if frame_step > total_frames:
+                    logging.warning(f"Sampling rate exceeds total frames for ROI {name}. Adjusting frame_step to 1.")
+                    frame_step = 1
                 frame_range = range(start_frame, end_frame, frame_step)
+                
+                # Debug: Log frame range calculation
+                logging.info(f"ROI {name}: total_frames={total_frames}, start_frame={start_frame}, end_frame={end_frame}")
+                logging.info(f"ROI {name}: frame_step={frame_step}, frame_range length={len(list(frame_range))}")
+                
+                # Debug: Log first few intensity samples
+                first_few_samples = []
                 
                 for i, idx in enumerate(frame_range):
                     frame = self.engine.get_frame(idx)
                     if frame is None:
                         continue
-                        
+
                     x, y, w, h = roi.rect
                     roi_pixels = frame[y:y+h, x:x+w]
-                    
+
                     # Extract the specified channel
                     if roi.channel == 'auto':
-                        intensity = cv2.mean(roi_pixels)[0]  # Average of all channels
-                    elif roi.channel == 'R':
+                        from PyQt5.QtWidgets import QMessageBox
+                        QMessageBox.information(None, "Auto-Channel Selection", "Auto-Channel Selection is currently under development.")
+                        roi.channel = 'R'  # Default to 'R' for now
+
+                    if roi.channel == 'R':
                         intensity = cv2.mean(roi_pixels[:,:,2])[0]  # OpenCV uses BGR
                     elif roi.channel == 'G':
                         intensity = cv2.mean(roi_pixels[:,:,1])[0]
@@ -67,31 +86,33 @@ class AnalysisWorker(QThread):
                         intensity = cv2.mean(roi_pixels[:,:,0])[0]
                     else:
                         intensity = cv2.mean(roi_pixels)[0]  # Default to auto
-                    
+
                     samples.append(float(intensity))
+                    
+                    # Debug: Store first 5 samples for logging
+                    if len(first_few_samples) < 5:
+                        first_few_samples.append(float(intensity))
+                    
                     roi_progress = int((i+1)/len(frame_range)*100)
                     self.progress.emit(name, roi_progress, roi_num, total_rois)
 
-                volume = np.array(samples)
-                if self.smooth_window > 1:
-                    volume = np.convolve(volume, 
-                                       np.ones(self.smooth_window)/self.smooth_window, 
-                                       mode='valid')
+                # Debug: Log volume conversion process
+                volume_raw = np.array(samples)
+                logging.info(f"ROI {name}: raw intensity samples (first 5): {samples[:5]}")
 
-                # Convert intensity to volume using ROI's total_volume calibration
-                if hasattr(roi, 'total_volume') and roi.total_volume > 0:
-                    # Normalize intensity to 0-1 range, then scale by total volume
-                    volume_min = np.min(volume)
-                    volume_max = np.max(volume)
-                    if volume_max > volume_min:
-                        volume_normalized = (volume - volume_min) / (volume_max - volume_min)
-                        volume = volume_normalized * roi.total_volume  # Convert to µL
-                    else:
-                        volume = np.full_like(volume, roi.total_volume / 2)  # Default to half volume
+                # Calculate volume directly from raw intensity
+                volume = volume_raw
+
+                # Apply smoothing only to flow rate
+                if self.smooth_window > 1:
+                    flow_rate = np.convolve(flow_rate, 
+                        np.ones(self.smooth_window) / self.smooth_window, mode='same')
                 else:
-                    # If no volume calibration, assume maximum intensity = 100 µL
-                    volume_max = np.max(volume) if len(volume) > 0 else 1
-                    volume = (volume / volume_max) * 100.0  # Scale to 0-100 µL
+                    flow_rate = flow_rate
+
+                # Debug: Log volume conversion process
+                logging.info(f"ROI {name}: final volume (first 5): {volume[:5]}")
+                logging.info(f"ROI {name}: start_volume={start_volume}, end_volume={end_volume}, total_volume={roi.total_volume}")
 
                 # Calculate time array like the original: frame_index * interval / fps
                 # Use actual sampling frequency for time calculation
@@ -101,6 +122,8 @@ class AnalysisWorker(QThread):
                 # Apply time multiplier if present (from original logic)
                 if hasattr(self.session, 'time_multiplier'):
                     times = times * self.session.time_multiplier
+                else:
+                    logging.info("No time multiplier found. Using default time calculation.")
                     
                 flow = np.gradient(volume, times)  # Now in µL/s
                 
@@ -177,7 +200,12 @@ class AnalysisController(QWidget):
         plots_layout.addWidget(self.canvas_flow)
         layout.addLayout(plots_layout)
 
+        # ROI List
+        self.roi_list = QListWidget()
+        layout.addWidget(self.roi_list)
+
     def _setup_plots(self):
+        """Set up plots and ROI information display"""
         # Setup volume plot
         self.canvas_vol.figure.clear()
         self.ax_vol = self.canvas_vol.figure.add_subplot(111)
@@ -195,6 +223,13 @@ class AnalysisController(QWidget):
         # Ensure distinct axes for each plot
         self.canvas_vol.figure.tight_layout()
         self.canvas_flow.figure.tight_layout()
+
+        # Populate ROI list with information
+        self.roi_list.clear()
+        for name, roi in self.session.rois.items():
+            channel_info = f"Channel: {roi.channel}"
+            roi_info = f"ROI: {name}, {channel_info}, Start: {roi.start_frac:.2f}, End: {roi.end_frac:.2f}, Volume: {roi.total_volume:.2f} µL"
+            self.roi_list.addItem(roi_info)
 
     def _on_run(self):
         # Check if there are ROIs to analyze
@@ -244,16 +279,9 @@ class AnalysisController(QWidget):
         for name, (times, volume, flow) in results.items():
             # Ensure volume calculation matches original logic
             volume = np.array(volume)
-            volume_min = np.min(volume)
-            volume_max = np.max(volume)
-            if volume_max > volume_min:
-                volume_normalized = (volume - volume_min) / (volume_max - volume_min)
-                volume = volume_normalized * 100  # Scale to 0-100 µL
-            else:
-                volume = np.full_like(volume, 50)  # Default to half volume
 
-            self.ax_vol.plot(times, volume, label=name)
-            self.ax_flow.plot(times, flow, label=name)
+            self.ax_vol.plot(times, volume, label=name, color='red')
+            self.ax_flow.plot(times, flow, label=name, color='red')
             plot_count += 1
 
         # Only add legends if there are plots
@@ -327,67 +355,39 @@ class AnalysisController(QWidget):
             QMessageBox.critical(self, "Save Error", str(e))
 
     def _save_roi_overlay(self, filename):
-        """Save an image with ROI overlays and labels"""
+        """Save a side-by-side overlay of start and end frames with ROI information"""
         try:
-            import cv2
-            from PyQt5.QtGui import QColor
-            
-            # Get the frame to overlay ROIs on
-            if (hasattr(self.session, 'start_frame') and 
-                self.session.start_frame is not None and
-                hasattr(self.engine, 'cap') and 
-                self.engine.cap is not None):
+            start_frame = self.engine.get_frame(self.session.start_frame).copy()
+            end_frame = self.engine.get_frame(self.session.end_frame).copy()
+
+            # Burn ROI rectangles and names into each frame BEFORE composing
+            for name, roi in self.session.rois.items():
+                x, y, w, h = roi.rect
+                color = (0, 255, 0)  # Green for ROI
                 
-                frame = self.engine.get_frame(self.session.start_frame)
-                if frame is None:
-                    return
+                # Draw on start frame
+                cv2.rectangle(start_frame, (x, y), (x + w, y + h), color, 2)
+                cv2.putText(start_frame, name, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
                 
-                # Apply rotation if it exists
-                if hasattr(self.session, 'rotation_matrix') and self.session.rotation_matrix is not None:
-                    h, w = frame.shape[:2]
-                    cos = np.abs(self.session.rotation_matrix[0, 0])
-                    sin = np.abs(self.session.rotation_matrix[0, 1])
-                    new_w = int((h * sin) + (w * cos))
-                    new_h = int((h * cos) + (w * sin))
-                    frame = cv2.warpAffine(frame, self.session.rotation_matrix, (new_w, new_h))
-                
-                # Draw ROIs on the frame
-                overlay_frame = frame.copy()
-                
-                colors = [(0, 255, 0), (255, 0, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (0, 255, 255)]
-                color_idx = 0
-                
-                for name, roi in self.session.rois.items():
-                    x, y, w, h = roi.rect
-                    color = colors[color_idx % len(colors)]
-                    
-                    # Draw rectangle
-                    cv2.rectangle(overlay_frame, (x, y), (x + w, y + h), color, 2)
-                    
-                    # Draw label
-                    label_text = f"{name} ({roi.total_volume}µL)"
-                    font = cv2.FONT_HERSHEY_SIMPLEX
-                    font_scale = 0.7
-                    font_thickness = 2
-                    
-                    # Get text size for background rectangle
-                    (text_width, text_height), _ = cv2.getTextSize(label_text, font, font_scale, font_thickness)
-                    
-                    # Draw background rectangle for text
-                    cv2.rectangle(overlay_frame, (x, y - text_height - 10), 
-                                (x + text_width + 10, y), color, -1)
-                    
-                    # Draw text
-                    cv2.putText(overlay_frame, label_text, (x + 5, y - 5), 
-                              font, font_scale, (255, 255, 255), font_thickness)
-                    
-                    color_idx += 1
-                
-                # Save the overlay image
-                cv2.imwrite(filename, overlay_frame)
-                
+                # Draw on end frame
+                cv2.rectangle(end_frame, (x, y), (x + w, y + h), color, 2)
+                cv2.putText(end_frame, name, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+
+            # Create side-by-side image
+            h, w = start_frame.shape[:2]
+            combined_image = np.zeros((h, w * 2, 3), dtype=start_frame.dtype)
+            combined_image[:, :w] = start_frame
+            combined_image[:, w:] = end_frame
+
+            # Add labels for start and end frames
+            cv2.putText(combined_image, "Start Frame", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+            cv2.putText(combined_image, "End Frame", (w + 10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+
+            # Save the combined image
+            cv2.imwrite(filename, combined_image)
+            logging.info(f"Saved ROI overlay to {filename}")
         except Exception as e:
-            print(f"Failed to save ROI overlay: {e}")
+            logging.error(f"Failed to save ROI overlay: {e}")
 
     def initialize_step(self):
         """Initialize the step when it becomes active"""
@@ -401,3 +401,7 @@ class AnalysisController(QWidget):
         if hasattr(self.session, 'analysis_results') and self.session.analysis_results:
             status = f"Loaded results for {len(self.session.analysis_results)} ROIs"
         self.status_label.setText(status)
+
+        # Debugging: Log ROI parameters
+        for name, roi in self.session.rois.items():
+            logging.info(f"ROI {name}: start_frac={roi.start_frac}, end_frac={roi.end_frac}, total_volume={roi.total_volume}")
