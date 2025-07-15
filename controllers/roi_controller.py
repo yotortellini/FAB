@@ -400,6 +400,8 @@ class ROIController(QWidget):
                 self.end_frac_spin.setValue(roi.end_frac)
                 self.channel_combo.setCurrentText(roi.channel)
 
+        # Update frame to show selection highlighting
+        self._update_frame()
         self._update_buttons()
 
     def _on_add(self):
@@ -525,13 +527,17 @@ class ROIController(QWidget):
         """Delete the selected ROI"""
         current_row = self.roi_list.currentRow()
         if current_row >= 0:
+            # Remove item and extract ROI name (text formatted as 'Name (Vol:...')
             item = self.roi_list.takeItem(current_row)
             if item:
-                roi_name = item.text().split(' - ')[0]  # Extract name from display text
+                text = item.text()
+                roi_name = text.split(' (')[0]
+                # Delete from local and session rois
                 if roi_name in self.rois:
                     del self.rois[roi_name]
-                    if roi_name in self.session.rois:
-                        del self.session.rois[roi_name]
+                if hasattr(self.session, 'rois') and roi_name in self.session.rois:
+                    del self.session.rois[roi_name]
+                # Refresh display
                 self._update_frame()
                 self._update_buttons()
         else:
@@ -613,10 +619,21 @@ class ROIController(QWidget):
         painter = QPainter(pixmap)
         
         # Draw existing ROIs
-        pen = QPen(QColor(255, 0, 0))
-        pen.setWidth(4)  # Increased thickness from 2 to 4
-        painter.setPen(pen)
+        selected_roi_name = None
+        selected_item = self.roi_list.currentItem()
+        if selected_item:
+            selected_roi_name = selected_item.text().split(' ')[0]
+        
         for name, roi in self.rois.items():
+            # Use green for selected ROI, red for others
+            if name == selected_roi_name:
+                pen = QPen(QColor(0, 255, 0))  # Green for selected ROI
+                pen.setWidth(6)  # Thicker for selected
+            else:
+                pen = QPen(QColor(255, 0, 0))  # Red for unselected ROIs
+                pen.setWidth(4)
+            
+            painter.setPen(pen)
             x, y, w, h = roi.rect
             painter.drawRect(x, y, w, h)
             # Draw name above the ROI
@@ -673,14 +690,18 @@ class ROIController(QWidget):
             # Update the dictionary key
             del self.rois[roi_name]
             self.rois[new_name] = roi
-            
             # Update session rois if they exist
             if hasattr(self.session, 'rois') and roi_name in self.session.rois:
                 del self.session.rois[roi_name]
                 self.session.rois[new_name] = roi
-            
-            # Ensure UI reflects the change
-            self.redraw_preview()
+            # Refresh list and preview
+            self.roi_list.clear()
+            for name, r in self.rois.items():
+                vol_text = f" (Vol: {r.total_volume}µL)"
+                frac_text = f" (Start: {r.start_frac:.2f}, End: {r.end_frac:.2f})"
+                self.roi_list.addItem(f"{name}{vol_text}{frac_text}")
+            self._update_frame()
+            self._update_buttons()
         else:
             # Copy, rename, and delete original ROI
             if roi_name in self.rois:
