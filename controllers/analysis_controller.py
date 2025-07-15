@@ -9,6 +9,7 @@ from PyQt5.QtCore import Qt, QThread, pyqtSignal
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
+from matplotlib import rcParams
 import logging
 
 from models.video_session import VideoSession
@@ -96,23 +97,19 @@ class AnalysisWorker(QThread):
                     roi_progress = int((i+1)/len(frame_range)*100)
                     self.progress.emit(name, roi_progress, roi_num, total_rois)
 
-                # Debug: Log volume conversion process
+                # Debug: Log raw intensity samples
                 volume_raw = np.array(samples)
-                logging.info(f"ROI {name}: raw intensity samples (first 5): {samples[:5]}")
+                logging.info(f"ROI {name}: raw intensity samples (first 5): {volume_raw[:5]}")
 
-                # Calculate volume directly from raw intensity
-                volume = volume_raw
-
-                # Apply smoothing only to flow rate
-                if self.smooth_window > 1:
-                    flow_rate = np.convolve(flow_rate, 
-                        np.ones(self.smooth_window) / self.smooth_window, mode='same')
+                # Normalize raw intensities to 0-1 and scale to ROI total_volume
+                ptp = volume_raw.ptp()
+                if ptp > 0:
+                    norm = (volume_raw - volume_raw.min()) / ptp
                 else:
-                    flow_rate = flow_rate
-
-                # Debug: Log volume conversion process
-                logging.info(f"ROI {name}: final volume (first 5): {volume[:5]}")
-                logging.info(f"ROI {name}: start_volume={start_volume}, end_volume={end_volume}, total_volume={roi.total_volume}")
+                    norm = np.zeros_like(volume_raw)
+                volume = norm * roi.total_volume
+                # Debug: Log normalized volume samples
+                logging.info(f"ROI {name}: normalized volume (first 5): {volume[:5]}")
 
                 # Calculate time array like the original: frame_index * interval / fps
                 # Use actual sampling frequency for time calculation
@@ -125,7 +122,10 @@ class AnalysisWorker(QThread):
                 else:
                     logging.info("No time multiplier found. Using default time calculation.")
                     
+                # Calculate flow rate and apply smoothing if requested
                 flow = np.gradient(volume, times)  # Now in µL/s
+                if self.smooth_window > 1:
+                    flow = np.convolve(flow, np.ones(self.smooth_window)/self.smooth_window, mode='same')
                 
                 self.results[name] = (times, volume, flow)
                 
@@ -146,6 +146,9 @@ class AnalysisController(QWidget):
         self.on_complete = on_complete or (lambda: None)
         self.ui_controller = ui_controller
         self.results = {}
+        self.plot_lines = {}  # Store plot line references for highlighting
+        # Prepare a color cycle for ROI plots
+        self.colors = rcParams['axes.prop_cycle'].by_key()['color']
         
         self._build_ui()
         self._setup_plots()
@@ -202,6 +205,7 @@ class AnalysisController(QWidget):
 
         # ROI List
         self.roi_list = QListWidget()
+        self.roi_list.currentRowChanged.connect(self._on_roi_selected)
         layout.addWidget(self.roi_list)
 
     def _setup_plots(self):
@@ -276,12 +280,20 @@ class AnalysisController(QWidget):
 
         # Plot results
         plot_count = 0
-        for name, (times, volume, flow) in results.items():
+        self.plot_lines = {}  # Reset plot line references
+        # Plot each ROI with a unique color
+        for idx, (name, (times, volume, flow)) in enumerate(results.items()):
             # Ensure volume calculation matches original logic
             volume = np.array(volume)
 
-            self.ax_vol.plot(times, volume, label=name, color='red')
-            self.ax_flow.plot(times, flow, label=name, color='red')
+            # Cycle through predefined colors
+            color = self.colors[idx % len(self.colors)]
+            vol_line, = self.ax_vol.plot(times, volume, label=name, color=color)
+            flow_line, = self.ax_flow.plot(times, flow, label=name, color=color)
+            
+            # Store line references
+            self.plot_lines[name] = {'volume': vol_line, 'flow': flow_line}
+            
             plot_count += 1
 
         # Only add legends if there are plots
@@ -339,6 +351,13 @@ class AnalysisController(QWidget):
                         f.write(f"{vol[i]},{flow[i]},")
                     f.write("\n")
 
+            # Ensure all lines are uniform (reset any highlights)
+            for lines in self.plot_lines.values():
+                lines['volume'].set_linewidth(1)
+                lines['flow'].set_linewidth(1)
+            # Redraw canvases before saving to capture reset state
+            self.canvas_vol.draw()
+            self.canvas_flow.draw()
             # Save plots
             self.canvas_vol.figure.savefig(f"{base_name}_volume.png")
             self.canvas_flow.figure.savefig(f"{base_name}_flow.png")
@@ -405,3 +424,29 @@ class AnalysisController(QWidget):
         # Debugging: Log ROI parameters
         for name, roi in self.session.rois.items():
             logging.info(f"ROI {name}: start_frac={roi.start_frac}, end_frac={roi.end_frac}, total_volume={roi.total_volume}")
+
+    def _on_roi_selected(self, current_row):
+        """Handle ROI selection to highlight corresponding plot lines"""
+        # Reset all lines to normal weight
+        for roi_name, lines in self.plot_lines.items():
+            lines['volume'].set_linewidth(1)
+            lines['flow'].set_linewidth(1)
+        
+        # Highlight selected ROI lines
+        if current_row >= 0:
+            selected_item = self.roi_list.item(current_row)
+            if selected_item:
+                # Extract ROI name from the list item text, formatted as 'ROI: name, ...'
+                text = selected_item.text()
+                if text.startswith('ROI: '):
+                    roi_name = text.split('ROI: ')[1].split(',')[0]
+                else:
+                    roi_name = text.split(',')[0]
+                # Highlight selected ROI plot lines
+                if roi_name in self.plot_lines:
+                    self.plot_lines[roi_name]['volume'].set_linewidth(3)
+                    self.plot_lines[roi_name]['flow'].set_linewidth(3)
+        
+        # Refresh plots
+        self.canvas_vol.draw()
+        self.canvas_flow.draw()

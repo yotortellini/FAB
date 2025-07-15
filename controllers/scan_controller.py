@@ -114,11 +114,15 @@ class ScanController(QWidget):
         # Scan buttons side by side
         scan_buttons_layout = QHBoxLayout()
         self.quick_scan_btn = QPushButton("Quick Scan")
+        # Ensure button text is black
+        self.quick_scan_btn.setStyleSheet("color: black;")
         self.quick_scan_btn.clicked.connect(self._on_quick_scan)
         self.quick_scan_btn.setToolTip("Sample 100 frames from the video for faster analysis")
         scan_buttons_layout.addWidget(self.quick_scan_btn)
         
         self.detailed_scan_btn = QPushButton("Detailed Scan")
+        # Ensure button text is black
+        self.detailed_scan_btn.setStyleSheet("color: black;")
         self.detailed_scan_btn.clicked.connect(self._on_detailed_scan)
         self.detailed_scan_btn.setToolTip("Analyze every frame in the video (may take longer)")
         scan_buttons_layout.addWidget(self.detailed_scan_btn)
