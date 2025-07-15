@@ -195,9 +195,11 @@ class RotateController(QWidget):
     def _on_mouse_press(self, event):
         """Handle mouse press events on the preview"""
         if event.button() == Qt.LeftButton:
+            # Clear any previous line
+            self.line_points = None
             self.drawing = True
             self.start_pos = event.pos()  # Store widget coordinates for drawing
-            self.end_pos = None
+            self.end_pos = self.start_pos  # Initialize end position
             # Ensure we have the original frame loaded
             if self.original_frame is None:
                 self.original_frame = self.engine.get_frame(self.session.start_frame)
@@ -224,8 +226,13 @@ class RotateController(QWidget):
                 logging.info(f"Widget coords: ({self.start_pos.x()},{self.start_pos.y()}) → ({self.end_pos.x()},{self.end_pos.y()})")
                 logging.info(f"Image coords: ({start_img.x()},{start_img.y()}) → ({end_img.x()},{end_img.y()})")
                 self._calculate_angle()
+                # Automatically apply the rotation after drawing
+                self._update_preview()
                 
-            self._update_preview()
+            else:
+                # If coordinate conversion failed, clear the line
+                self.line_points = None
+                self._update_preview()
 
     def _calculate_angle(self):
         """Calculate rotation angle from the drawn line"""
@@ -325,23 +332,12 @@ class RotateController(QWidget):
             # If currently drawing, overlay the current line being drawn
             if self.drawing and self.start_pos and self.end_pos:
                 painter = QPainter(scaled_pixmap)
-                pen = QPen(QColor(255, 255, 0))  # Bright yellow for active drawing
-                pen.setWidth(5)  # Thick line
+                pen = QPen(QColor(255, 0, 0))  # Red line for active drawing
+                pen.setWidth(3)  # Visible but not too thick
                 painter.setPen(pen)
                 
-                # Convert the image coordinates back to scaled pixmap coordinates
-                if self.line_points:
-                    # If we have calculated line points, use those for consistency
-                    (x0, y0), (x1, y1) = self.line_points
-                    start_img = QPoint(x0, y0)
-                    end_img = QPoint(x1, y1)
-                    start_widget = self._get_widget_coordinates(start_img)
-                    end_widget = self._get_widget_coordinates(end_img)
-                    if start_widget and end_widget:
-                        painter.drawLine(start_widget, end_widget)
-                else:
-                    # During active drawing, use the widget coordinates directly
-                    painter.drawLine(self.start_pos, self.end_pos)
+                # Draw line directly using widget coordinates (they map to the scaled pixmap)
+                painter.drawLine(self.start_pos, self.end_pos)
                     
                 painter.end()
                 self.preview.setPixmap(scaled_pixmap)

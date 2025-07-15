@@ -245,7 +245,18 @@ class ROIController(QWidget):
 
     def initialize_step(self):
         """Initialize the step when it becomes active"""
+        # Sync any existing ROIs from session to local controller
+        self.rois.clear()
+        self.roi_list.clear()
+        
+        for name, roi in self.session.rois.items():
+            self.rois[name] = roi
+            volume_text = f" (Vol: {roi.total_volume}µL)"
+            frac_text = f" (Start: {roi.start_frac:.2f}, End: {roi.end_frac:.2f})"
+            self.roi_list.addItem(f"{name}{volume_text}{frac_text}")
+        
         self._update_frame()
+        self._update_buttons()
 
     def _on_start_frac_slider_changed(self, value):
         """Handle start fraction slider change"""
@@ -391,6 +402,7 @@ class ROIController(QWidget):
                 smoothing_window=5
             )
             self.rois[name] = roi
+            self.session.rois[name] = roi  # Also add to session
             
             # Update UI
             volume_text = f" (Vol: {volume}µL)"

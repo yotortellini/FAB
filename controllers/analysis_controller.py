@@ -172,11 +172,16 @@ class AnalysisController(QWidget):
         self.ax_flow.set_ylabel("Flow (a.u.)")
 
     def _on_run(self):
+        # Check if there are ROIs to analyze
+        if not hasattr(self.session, 'rois') or not self.session.rois:
+            QMessageBox.warning(self, "No ROIs", "Please define ROI regions before running analysis.")
+            return
+            
         self.run_btn.setEnabled(False)
         self.save_btn.setEnabled(False)
         self.progress.setValue(0)
         self.progress.show()
-        self.status_label.setText("Starting analysis...")
+        self.status_label.setText(f"Starting analysis of {len(self.session.rois)} ROI(s)...")
         
         # Clear previous plots
         self.ax_vol.clear()

@@ -295,3 +295,48 @@ RuntimeError: Video not loaded. Call load_video() first.
 2025-07-15 01:52:50,539 - root - INFO - Image coords: (660,548) → (1353,499)
 2025-07-15 01:52:50,539 - root - INFO - Line from (660,548) to (1353,499), angle: -4.0° → correction: 4.0°
 2025-07-15 01:52:56,307 - root - INFO - Saved rotation matrix for -2° rotation
+2025-07-15 08:18:42,102 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 08:18:42,343 - __main__ - INFO - Main window displayed
+2025-07-15 08:19:34,032 - root - INFO - Widget coords: (227,236) → (665,231)
+2025-07-15 08:19:34,033 - root - INFO - Image coords: (385,528) → (1366,517)
+2025-07-15 08:19:34,033 - root - INFO - Line from (385,528) to (1366,517), angle: -0.6° → correction: 0.6°
+2025-07-15 08:20:04,250 - root - INFO - Widget coords: (477,391) → (481,392)
+2025-07-15 08:20:04,250 - root - INFO - Image coords: (945,876) → (954,878)
+2025-07-15 08:20:04,269 - root - INFO - Line from (945,876) to (954,878), angle: 12.5° → correction: -12.5°
+2025-07-15 08:20:06,419 - root - INFO - Widget coords: (373,247) → (669,255)
+2025-07-15 08:20:06,419 - root - INFO - Image coords: (712,553) → (1375,571)
+2025-07-15 08:20:06,431 - root - INFO - Line from (712,553) to (1375,571), angle: 1.6° → correction: -1.6°
+2025-07-15 08:20:08,298 - root - INFO - Widget coords: (422,325) → (621,177)
+2025-07-15 08:20:08,298 - root - INFO - Image coords: (822,728) → (1268,396)
+2025-07-15 08:20:08,319 - root - INFO - Line from (822,728) to (1268,396), angle: -36.7° → correction: 36.7°
+2025-07-15 08:20:09,084 - root - INFO - Widget coords: (337,232) → (546,271)
+2025-07-15 08:20:09,084 - root - INFO - Image coords: (631,519) → (1100,607)
+2025-07-15 08:20:09,096 - root - INFO - Line from (631,519) to (1100,607), angle: 10.6° → correction: -10.6°
+2025-07-15 08:20:22,831 - root - INFO - Widget coords: (435,173) → (691,307)
+2025-07-15 08:20:22,832 - root - INFO - Image coords: (851,387) → (1424,687)
+2025-07-15 08:20:22,852 - root - INFO - Line from (851,387) to (1424,687), angle: 27.6° → correction: -27.6°
+2025-07-15 08:20:24,083 - root - INFO - Widget coords: (362,277) → (580,271)
+2025-07-15 08:20:24,083 - root - INFO - Image coords: (687,620) → (1176,607)
+2025-07-15 08:20:24,094 - root - INFO - Line from (687,620) to (1176,607), angle: -1.5° → correction: 1.5°
+2025-07-15 08:20:54,150 - root - INFO - Widget coords: (824,237) → (822,237)
+2025-07-15 08:20:54,150 - root - INFO - Image coords: (1722,531) → (1718,531)
+2025-07-15 08:20:54,163 - root - INFO - Line from (1722,531) to (1718,531), angle: 180.0° → correction: -180.0°
+2025-07-15 08:20:55,345 - root - INFO - Saved rotation matrix for -180° rotation
+2025-07-15 08:24:42,707 - __main__ - INFO - Starting Flow Analysis Lab application
+2025-07-15 08:24:42,931 - __main__ - INFO - Main window displayed
+2025-07-15 08:25:20,640 - root - INFO - Widget coords: (268,243) → (637,240)
+2025-07-15 08:25:20,641 - root - INFO - Image coords: (477,544) → (1303,537)
+2025-07-15 08:25:20,641 - root - INFO - Line from (477,544) to (1303,537), angle: -0.5° → correction: 0.5°
+2025-07-15 08:25:26,776 - root - INFO - Widget coords: (175,333) → (474,299)
+2025-07-15 08:25:26,776 - root - INFO - Image coords: (268,746) → (938,669)
+2025-07-15 08:25:26,793 - root - INFO - Line from (268,746) to (938,669), angle: -6.6° → correction: 6.6°
+2025-07-15 08:25:31,906 - root - INFO - Widget coords: (206,151) → (433,161)
+2025-07-15 08:25:31,906 - root - INFO - Image coords: (338,338) → (846,360)
+2025-07-15 08:25:31,923 - root - INFO - Line from (338,338) to (846,360), angle: 2.5° → correction: -2.5°
+2025-07-15 08:25:35,517 - root - INFO - Widget coords: (192,101) → (442,140)
+2025-07-15 08:25:35,517 - root - INFO - Image coords: (306,226) → (867,313)
+2025-07-15 08:25:35,535 - root - INFO - Line from (306,226) to (867,313), angle: 8.8° → correction: -8.8°
+2025-07-15 08:25:41,378 - root - INFO - Widget coords: (224,225) → (767,295)
+2025-07-15 08:25:41,379 - root - INFO - Image coords: (378,504) → (1595,660)
+2025-07-15 08:25:41,404 - root - INFO - Line from (378,504) to (1595,660), angle: 7.3° → correction: -7.3°
+2025-07-15 08:25:43,789 - root - INFO - Saved rotation matrix for -7° rotation
