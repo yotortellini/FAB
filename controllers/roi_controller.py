@@ -30,12 +30,19 @@ class ROIController(QWidget):
         self.engine = engine
         self.on_complete = on_complete or (lambda: None)
 
+        # Initialize UI controller reference
+        self.ui_controller = None
+
         self.drawing = False
         self.start_point = None
         self.current_point = None
         self.pending_roi = None  # Store the last drawn rectangle until it's added or replaced
         self.rois = {}  # name -> ROI
         self._build_ui()
+
+        # Initialize Next button
+        self.next_btn = QPushButton("Next")
+        self.next_btn.setEnabled(True)
 
     def _build_ui(self):
         layout = QVBoxLayout()
@@ -175,6 +182,28 @@ class ROIController(QWidget):
             }
         """)
         creation_layout.addWidget(self.add_btn)
+        
+        # Update ROI button
+        self.update_btn = QPushButton("Update ROI")
+        self.update_btn.clicked.connect(self._on_update)
+        self.update_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #2196F3; 
+                color: white; 
+                font-weight: bold; 
+                padding: 8px;
+                border: none;
+                border-radius: 4px;
+            }
+            QPushButton:hover {
+                background-color: #1976D2;
+            }
+            QPushButton:disabled {
+                background-color: #cccccc;
+                color: #666666;
+            }
+        """)
+        creation_layout.addWidget(self.update_btn)
         
         controls_container.addWidget(creation_group)
         
@@ -351,6 +380,17 @@ class ROIController(QWidget):
 
     def _on_roi_selected(self, current_row):
         """Handle ROI selection in the list"""
+        # Update ROI settings when an ROI is selected
+        selected_item = self.roi_list.currentItem()
+        if selected_item:
+            roi_name = selected_item.text().split(' ')[0]  # Extract name from display text
+            if roi_name in self.rois:
+                roi = self.rois[roi_name]
+                self.name_input.setText(roi.name)
+                self.volume_input.setText(str(roi.total_volume))
+                self.start_frac_spin.setValue(roi.start_frac)
+                self.end_frac_spin.setValue(roi.end_frac)
+
         self._update_buttons()
 
     def _on_add(self):
@@ -423,8 +463,49 @@ class ROIController(QWidget):
             self._update_buttons()
             
             self._update_frame()
+
+            # Notify UIController to enable the next button
+            if hasattr(self.ui_controller, 'update_next_button_state'):
+                self.ui_controller.update_next_button_state(len(self.rois) > 0)
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to create ROI: {str(e)}")
+
+    def _on_update(self):
+        """Update the selected ROI with new settings"""
+        current_row = self.roi_list.currentRow()
+        if current_row < 0:
+            QMessageBox.warning(self, "Error", "Please select an ROI to update.")
+            return
+
+        item = self.roi_list.item(current_row)
+        roi_name = item.text().split(" ")[0]  # Extract name from display text
+
+        if roi_name not in self.rois:
+            QMessageBox.warning(self, "Error", "Selected ROI not found.")
+            return
+
+        roi = self.rois[roi_name]
+
+        # Update ROI settings
+        try:
+            volume_text = self.volume_input.text().strip()
+            if volume_text:
+                roi.total_volume = float(volume_text)
+
+            roi.start_frac = self.start_frac_spin.value()
+            roi.end_frac = self.end_frac_spin.value()
+
+            self.rois[roi_name] = roi
+            self.session.rois[roi_name] = roi
+
+            # Update display text
+            volume_text = f" (Vol: {roi.total_volume}µL)"
+            frac_text = f" (Start: {roi.start_frac:.2f}, End: {roi.end_frac:.2f})"
+            item.setText(f"{roi_name}{volume_text}{frac_text}")
+
+            QMessageBox.information(self, "Success", "ROI updated successfully.")
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to update ROI: {str(e)}")
 
     def _on_delete(self):
         """Delete the selected ROI"""
@@ -565,3 +646,6 @@ class ROIController(QWidget):
         )
         self.frame_label.setPixmap(scaled_pixmap)
         self.frame_label.setAlignment(Qt.AlignCenter)
+
+        # Make Next button always available
+        self.next_btn.setEnabled(True)

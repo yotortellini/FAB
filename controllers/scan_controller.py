@@ -111,10 +111,19 @@ class ScanController(QWidget):
         instructions.setWordWrap(True)
         layout.addWidget(instructions)
 
-        # Run scan button
-        self.run_btn = QPushButton("Run Scan")
-        self.run_btn.clicked.connect(self._on_run)
-        layout.addWidget(self.run_btn)
+        # Scan buttons side by side
+        scan_buttons_layout = QHBoxLayout()
+        self.quick_scan_btn = QPushButton("Quick Scan")
+        self.quick_scan_btn.clicked.connect(self._on_quick_scan)
+        self.quick_scan_btn.setToolTip("Sample 100 frames from the video for faster analysis")
+        scan_buttons_layout.addWidget(self.quick_scan_btn)
+        
+        self.detailed_scan_btn = QPushButton("Detailed Scan")
+        self.detailed_scan_btn.clicked.connect(self._on_detailed_scan)
+        self.detailed_scan_btn.setToolTip("Analyze every frame in the video (may take longer)")
+        scan_buttons_layout.addWidget(self.detailed_scan_btn)
+        
+        layout.addLayout(scan_buttons_layout)
 
         # Progress bar
         self.progress_bar = QProgressBar()
@@ -170,24 +179,12 @@ class ScanController(QWidget):
         self.worker.error.connect(self._handle_error)
         self.worker.finished.connect(self._on_data_ready)
 
-    def _on_run(self):
-        self.run_btn.setEnabled(False)
-        self.progress_bar.setVisible(True)
-        if hasattr(self.session, 'start_frame') and hasattr(self.session, 'end_frame'):
-            total = self.session.end_frame - self.session.start_frame
-            if self.sample_interval and self.sample_interval > 1:
-                total = total // self.sample_interval
-            elif self.max_samples and self.max_samples < total:
-                total = self.max_samples
-            self.progress_bar.setMaximum(total)
-            self.progress_bar.setValue(0)
-        self.worker.start()
-
     def _update_progress(self, value):
         self.progress_bar.setValue(value)
 
     def _handle_error(self, message):
-        self.run_btn.setEnabled(True)
+        self.quick_scan_btn.setEnabled(True)
+        self.detailed_scan_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
         from PyQt5.QtWidgets import QMessageBox
         QMessageBox.critical(self, "Scan Error", f"Error during scan: {message}")
@@ -195,7 +192,8 @@ class ScanController(QWidget):
     def _on_data_ready(self, time, intensity):
         self.time = time
         self.intensity = intensity
-        self.run_btn.setEnabled(True)
+        self.quick_scan_btn.setEnabled(True)
+        self.detailed_scan_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
         self._plot_data()
         
@@ -332,3 +330,38 @@ class ScanController(QWidget):
             self.session.end_frame = self.worker.indices[end_idx]
             return True
         return False
+
+    def _on_quick_scan(self):
+        """Perform a quick scan with 100 frames sampled from the video"""
+        self._start_scan(max_samples=100)
+
+    def _on_detailed_scan(self):
+        """Perform a detailed scan with every frame in the video"""
+        self._start_scan(sample_interval=1)
+
+    def _start_scan(self, max_samples=None, sample_interval=None):
+        """Start scanning with the specified parameters"""
+        # Update worker parameters
+        self.worker.max_samples = max_samples
+        self.worker.sample_interval = sample_interval
+        
+        self.quick_scan_btn.setEnabled(False)
+        self.detailed_scan_btn.setEnabled(False)
+        self.progress_bar.setVisible(True)
+        
+        if hasattr(self.session, 'start_frame') and hasattr(self.session, 'end_frame'):
+            total = self.session.end_frame - self.session.start_frame
+            if sample_interval and sample_interval > 1:
+                total = total // sample_interval
+            elif max_samples and max_samples < total:
+                total = max_samples
+            self.progress_bar.setMaximum(total)
+            self.progress_bar.setValue(0)
+        self.worker.start()
+
+    def closeEvent(self, event):
+        """Handle the close event to stop the worker if it's running"""
+        # Ensure worker is stopped when navigating away
+        if hasattr(self.worker, 'isRunning') and self.worker.isRunning():
+            self.worker.terminate()
+            self.worker.wait()

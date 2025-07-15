@@ -203,7 +203,6 @@ class AnalysisController(QWidget):
             return
             
         self.run_btn.setEnabled(False)
-        self.save_btn.setEnabled(False)
         self.progress.setValue(0)
         self.progress.show()
         self.status_label.setText(f"Starting analysis of {len(self.session.rois)} ROI(s)...")
@@ -280,7 +279,6 @@ class AnalysisController(QWidget):
     def _on_error(self, error_msg):
         QMessageBox.critical(self, "Analysis Error", error_msg)
         self.run_btn.setEnabled(True)
-        self.save_btn.setEnabled(False)  # Don't enable save if there was an error
         self.progress.hide()
         self.status_label.setText("Analysis failed.")
 
@@ -316,13 +314,80 @@ class AnalysisController(QWidget):
             # Save plots
             self.canvas_vol.figure.savefig(f"{base_name}_volume.png")
             self.canvas_flow.figure.savefig(f"{base_name}_flow.png")
+            
+            # Save ROI overlay image
+            self._save_roi_overlay(f"{base_name}_roi_overlay.png")
 
             QMessageBox.information(self, "Save Complete", 
                                   f"Results saved as:\n{base_name}_results.csv\n"
-                                  f"{base_name}_volume.png\n{base_name}_flow.png")
+                                  f"{base_name}_volume.png\n{base_name}_flow.png\n"
+                                  f"{base_name}_roi_overlay.png")
 
         except Exception as e:
             QMessageBox.critical(self, "Save Error", str(e))
+
+    def _save_roi_overlay(self, filename):
+        """Save an image with ROI overlays and labels"""
+        try:
+            import cv2
+            from PyQt5.QtGui import QColor
+            
+            # Get the frame to overlay ROIs on
+            if (hasattr(self.session, 'start_frame') and 
+                self.session.start_frame is not None and
+                hasattr(self.engine, 'cap') and 
+                self.engine.cap is not None):
+                
+                frame = self.engine.get_frame(self.session.start_frame)
+                if frame is None:
+                    return
+                
+                # Apply rotation if it exists
+                if hasattr(self.session, 'rotation_matrix') and self.session.rotation_matrix is not None:
+                    h, w = frame.shape[:2]
+                    cos = np.abs(self.session.rotation_matrix[0, 0])
+                    sin = np.abs(self.session.rotation_matrix[0, 1])
+                    new_w = int((h * sin) + (w * cos))
+                    new_h = int((h * cos) + (w * sin))
+                    frame = cv2.warpAffine(frame, self.session.rotation_matrix, (new_w, new_h))
+                
+                # Draw ROIs on the frame
+                overlay_frame = frame.copy()
+                
+                colors = [(0, 255, 0), (255, 0, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (0, 255, 255)]
+                color_idx = 0
+                
+                for name, roi in self.session.rois.items():
+                    x, y, w, h = roi.rect
+                    color = colors[color_idx % len(colors)]
+                    
+                    # Draw rectangle
+                    cv2.rectangle(overlay_frame, (x, y), (x + w, y + h), color, 2)
+                    
+                    # Draw label
+                    label_text = f"{name} ({roi.total_volume}µL)"
+                    font = cv2.FONT_HERSHEY_SIMPLEX
+                    font_scale = 0.7
+                    font_thickness = 2
+                    
+                    # Get text size for background rectangle
+                    (text_width, text_height), _ = cv2.getTextSize(label_text, font, font_scale, font_thickness)
+                    
+                    # Draw background rectangle for text
+                    cv2.rectangle(overlay_frame, (x, y - text_height - 10), 
+                                (x + text_width + 10, y), color, -1)
+                    
+                    # Draw text
+                    cv2.putText(overlay_frame, label_text, (x + 5, y - 5), 
+                              font, font_scale, (255, 255, 255), font_thickness)
+                    
+                    color_idx += 1
+                
+                # Save the overlay image
+                cv2.imwrite(filename, overlay_frame)
+                
+        except Exception as e:
+            print(f"Failed to save ROI overlay: {e}")
 
     def initialize_step(self):
         """Initialize the step when it becomes active"""

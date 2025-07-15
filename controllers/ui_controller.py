@@ -158,7 +158,7 @@ class UIController(QMainWindow):
         elif step == 3:  # Rotate
             return True  # Rotation is optional
         elif step == 4:  # ROI Definition
-            return len(self.session.rois) > 0
+            return True  # Always allow proceeding - analysis will check for ROIs
         return False
 
     def _on_scan_complete(self):
