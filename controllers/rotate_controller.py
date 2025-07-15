@@ -2,11 +2,12 @@
 
 import cv2
 import numpy as np
-from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
-                            QLabel, QSpinBox, QSlider, QGroupBox)
+import math
+import logging
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QSpinBox, QSlider, QGroupBox
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QPixmap, QImage, QPainter, QPen, QColor
-from typing import Optional, Callable
+from typing import Optional, Callable, Tuple
 
 from models.video_session import VideoSession
 from engine.video_engine import VideoEngine
@@ -32,18 +33,16 @@ class RotateController(QWidget):
         self.on_complete = on_complete or (lambda: None)
         
         self.angle = 0
-        self.base_frame = None  # Store the original frame
-        self.rotated_frame = None
-        
-        # Line drawing state
+        self.current_frame = None
+        self.original_frame = None  # Store the clean original frame
+        # Store line endpoints in original image coordinates
+        self.line_points: Optional[Tuple[Tuple[int, int], Tuple[int, int]]] = None
         self.drawing = False
-        self.start_point = None
-        self.end_point = None
-        self.display_to_image_ratio = 1.0  # Track scaling ratio
+        self.start_pos = None
+        self.end_pos = None
         
         self._build_ui()
-        self._load_base_frame()
-        self._update_preview()
+        # Don't update preview on init - wait for video to be loaded
 
     def _build_ui(self):
         layout = QVBoxLayout()
@@ -98,204 +97,162 @@ class RotateController(QWidget):
         
         controls_layout.addLayout(angle_layout)
 
-        # Buttons
+        # Reset button
         button_layout = QHBoxLayout()
-        
-        self.reset_btn = QPushButton("Reset")
+        self.reset_btn = QPushButton("Reset Rotation")
         self.reset_btn.clicked.connect(self._on_reset)
         button_layout.addWidget(self.reset_btn)
-
-        button_layout.addStretch()
-
-        self.confirm_btn = QPushButton("Confirm Rotation")
-        self.confirm_btn.clicked.connect(self._on_confirm)
-        button_layout.addWidget(self.confirm_btn)
-        
         controls_layout.addLayout(button_layout)
+        
         layout.addWidget(controls_group)
 
-    def _load_base_frame(self):
-        """Load and store the base frame"""
-        if self.engine.cap:
-            self.base_frame = self.engine.get_frame(self.session.start_frame)
-
-    def _get_image_position(self, pos):
-        """Convert display coordinates to image coordinates"""
-        if not self.preview.pixmap():
-            return None
-
-        # Get the geometry of the displayed image
-        label_rect = self.preview.rect()
-        pixmap = self.preview.pixmap()
-        image_rect = pixmap.rect()
-        
-        # Calculate the actual display rectangle (maintaining aspect ratio)
-        display_rect = image_rect
-        display_rect.moveCenter(label_rect.center())
-        
-        # Check if click is within the image area
-        if not display_rect.contains(pos):
-            return None
-
-        # Calculate scaling ratios
-        scale_x = image_rect.width() / display_rect.width()
-        scale_y = image_rect.height() / display_rect.height()
-        self.display_to_image_ratio = scale_x  # Store for later use
-
-        # Convert to image coordinates
-        image_x = (pos.x() - display_rect.left()) * scale_x
-        image_y = (pos.y() - display_rect.top()) * scale_y
-
-        return QPoint(int(image_x), int(image_y))
-
     def _on_mouse_press(self, event):
+        """Handle mouse press events on the preview"""
         if event.button() == Qt.LeftButton:
-            # Convert to image coordinates
-            pos = self._get_image_position(event.pos())
-            if pos:
-                self.drawing = True
-                self.start_point = pos
-                self.end_point = pos
-                self._update_preview()
+            self.drawing = True
+            self.start_pos = event.pos()
+            self.end_pos = None
 
     def _on_mouse_move(self, event):
+        """Handle mouse move events on the preview"""
         if self.drawing:
-            pos = self._get_image_position(event.pos())
-            if pos:
-                self.end_point = pos
-                self._update_preview()
+            self.end_pos = event.pos()
+            self._update_preview()
 
     def _on_mouse_release(self, event):
+        """Handle mouse release events on the preview"""
         if event.button() == Qt.LeftButton and self.drawing:
             self.drawing = False
-            pos = self._get_image_position(event.pos())
-            if pos:
-                self.end_point = pos
-                self._calculate_and_apply_angle()
+            self.end_pos = event.pos()
+            # Convert drawn widget coordinates to original image coordinates
+            if self.original_frame is None:
+                self.original_frame = self.engine.get_frame(self.session.start_frame)
+                if self.original_frame is None:
+                    return
+            img_h, img_w = self.original_frame.shape[:2]
+            preview_size = self.preview.size()
+            scale = min(preview_size.width() / img_w, preview_size.height() / img_h)
+            offset_x = (preview_size.width() - img_w * scale) / 2
+            offset_y = (preview_size.height() - img_h * scale) / 2
+            x0 = int((self.start_pos.x() - offset_x) / scale)
+            y0 = int((self.start_pos.y() - offset_y) / scale)
+            x1 = int((self.end_pos.x() - offset_x) / scale)
+            y1 = int((self.end_pos.y() - offset_y) / scale)
+            x0 = max(0, min(img_w - 1, x0))
+            y0 = max(0, min(img_h - 1, y0))
+            x1 = max(0, min(img_w - 1, x1))
+            y1 = max(0, min(img_h - 1, y1))
+            self.line_points = ((x0, y0), (x1, y1))
+            self._calculate_angle()
+            self._update_preview()
 
-    def _calculate_and_apply_angle(self):
-        """Calculate and apply rotation angle from the drawn line"""
-        if not (self.start_point and self.end_point):
-            return
-
-        # Calculate angle relative to horizontal
-        dx = self.end_point.x() - self.start_point.x()
-        dy = self.end_point.y() - self.start_point.y()
-        angle = np.degrees(np.arctan2(dy, dx))
-        
-        # Update the angle control
-        self.angle_spin.setValue(-angle)  # Negative because we want to rotate to horizontal
-
-    def _update_preview(self):
-        if self.base_frame is None:
-            return
-
-        # Make a copy of the base frame
-        frame = self.base_frame.copy()
-
-        # Apply rotation if needed
-        if self.angle != 0:
-            h, w = frame.shape[:2]
-            center = (w // 2, h // 2)
-            M = cv2.getRotationMatrix2D(center, self.angle, 1.0)
-            frame = cv2.warpAffine(frame, M, (w, h),
-                                 flags=cv2.INTER_LINEAR,
-                                 borderMode=cv2.BORDER_CONSTANT,
-                                 borderValue=(128, 128, 128))
-
-        # Convert to Qt image
-        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        h, w, ch = rgb.shape
-        image = QImage(rgb.data, w, h, w * ch, QImage.Format_RGB888)
-        pixmap = QPixmap.fromImage(image)
-
-        # Draw the line if we have points
-        if self.start_point and self.end_point:
-            painter = QPainter(pixmap)
-            
-            # Set up pen for line drawing
-            pen = QPen(QColor(255, 0, 0))
-            pen.setWidth(3)  # Thicker line
-            painter.setPen(pen)
-
-            # Draw the line
-            if self.angle != 0:
-                # Rotate points with the image
-                center = QPoint(w // 2, h // 2)
-                angle_rad = np.radians(self.angle)
-                rot_matrix = np.array([
-                    [np.cos(angle_rad), -np.sin(angle_rad)],
-                    [np.sin(angle_rad), np.cos(angle_rad)]
-                ])
-                
-                # Rotate start point
-                start_vec = np.array([self.start_point.x() - center.x(),
-                                    self.start_point.y() - center.y()])
-                rotated_start = np.dot(rot_matrix, start_vec)
-                start_point = QPoint(int(rotated_start[0] + center.x()),
-                                   int(rotated_start[1] + center.y()))
-                
-                # Rotate end point
-                end_vec = np.array([self.end_point.x() - center.x(),
-                                  self.end_point.y() - center.y()])
-                rotated_end = np.dot(rot_matrix, end_vec)
-                end_point = QPoint(int(rotated_end[0] + center.x()),
-                                 int(rotated_end[1] + center.y()))
-            else:
-                start_point = self.start_point
-                end_point = self.end_point
-
-            # Draw line and endpoint dots
-            painter.drawLine(start_point, end_point)
-            
-            # Draw dots at endpoints
-            painter.setBrush(QColor(255, 0, 0))
-            painter.drawEllipse(start_point, 5, 5)
-            painter.drawEllipse(end_point, 5, 5)
-            
-            painter.end()
-
-        # Scale the pixmap to fit the preview label
-        scaled_pixmap = pixmap.scaled(
-            self.preview.size(),
-            Qt.KeepAspectRatio,
-            Qt.SmoothTransformation
-        )
-        self.preview.setPixmap(scaled_pixmap)
+    def _calculate_angle(self):
+        """Calculate rotation angle from the drawn line"""
+        if self.line_points:
+            (x0, y0), (x1, y1) = self.line_points
+            dx = x1 - x0
+            dy = y1 - y0
+            angle_rad = math.atan2(dy, dx)
+            angle_deg = math.degrees(angle_rad)
+            self.angle_spin.setValue(int(angle_deg))
+            self.angle_slider.setValue(int(angle_deg))
+            logging.info(f"Line drawn, angle: {angle_deg:.1f}°")
 
     def _on_angle_changed(self, value):
-        """Handle angle changes from spinbox"""
-        self.angle = value
+        """Handle angle spinbox changes"""
         self.angle_slider.setValue(value)
         self._update_preview()
 
     def _on_slider_changed(self, value):
-        """Handle angle changes from slider"""
-        self.angle = value
+        """Handle angle slider changes"""
         self.angle_spin.setValue(value)
         self._update_preview()
 
     def _on_reset(self):
-        """Reset rotation and clear line"""
-        self.angle = 0
+        """Reset rotation to zero"""
         self.angle_spin.setValue(0)
         self.angle_slider.setValue(0)
-        self.start_point = None
-        self.end_point = None
+        self.start_pos = None
+        self.end_pos = None
+        # Reset the original frame so a new line can be drawn
+        self.original_frame = None
+        self.line_points = None
         self._update_preview()
 
-    def _on_confirm(self):
-        """Save rotation and proceed"""
-        # Store rotation matrix in session if needed
-        if self.angle != 0:
-            h, w = self.base_frame.shape[:2]
+    def _update_preview(self):
+        """Update the preview with the current frame and rotation using baked line approach"""
+        # Check if video is loaded and session has a start frame
+        if (hasattr(self.session, 'start_frame') and 
+            self.session.start_frame is not None and 
+            hasattr(self.engine, 'cap') and 
+            self.engine.cap is not None):
+            
+            # Get the original frame if we don't have it yet
+            if self.original_frame is None:
+                self.original_frame = self.engine.get_frame(self.session.start_frame)
+                if self.original_frame is None:
+                    return
+            
+            # Start with the original clean frame
+            frame = self.original_frame.copy()
+
+            # Apply rotation transform (even if angle is zero)
+            current_angle = self.angle_spin.value() if hasattr(self, 'angle_spin') else 0
+            # Get original dimensions and compute center
+            h, w = frame.shape[:2]
             center = (w // 2, h // 2)
-            M = cv2.getRotationMatrix2D(center, self.angle, 1.0)
-            self.session.rotation_matrix = M
-        
-        if self.on_complete:
-            self.on_complete()
+            # Build rotation matrix
+            M = cv2.getRotationMatrix2D(center, current_angle, 1.0)
+            # Compute new bounds
+            cos = np.abs(M[0, 0])
+            sin = np.abs(M[0, 1])
+            new_w = int((h * sin) + (w * cos))
+            new_h = int((h * cos) + (w * sin))
+            # Adjust translation to keep image centered
+            M[0, 2] += (new_w / 2) - center[0]
+            M[1, 2] += (new_h / 2) - center[1]
+            # Warp original into rotated frame
+            frame = cv2.warpAffine(frame, M, (new_w, new_h))
+            # Draw line (rotated) if present
+            if self.line_points is not None:
+                (x0, y0), (x1, y1) = self.line_points
+                pt0 = np.dot(M, np.array([x0, y0, 1]))
+                pt1 = np.dot(M, np.array([x1, y1, 1]))
+                p0 = (int(pt0[0]), int(pt0[1]))
+                p1 = (int(pt1[0]), int(pt1[1]))
+                cv2.line(frame, p0, p1, (0, 0, 255), 3)
+                cv2.circle(frame, p0, 5, (0, 0, 255), -1)
+                cv2.circle(frame, p1, 5, (0, 0, 255), -1)
+            
+            self.current_frame = frame.copy()
+            
+            # Convert to RGB for Qt
+            rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            
+            # Convert to QImage and then QPixmap
+            h, w = rgb_frame.shape[:2]
+            bytes_per_line = 3 * w
+            qt_image = QImage(rgb_frame.data, w, h, bytes_per_line, QImage.Format_RGB888)
+            pixmap = QPixmap.fromImage(qt_image)
+            
+            # Scale pixmap to fit preview while maintaining aspect ratio
+            preview_size = self.preview.size()
+            scaled_pixmap = pixmap.scaled(preview_size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            
+            # Set the pixmap - no need for additional drawing since line is baked in
+            self.preview.setPixmap(scaled_pixmap)
 
-    def resizeEvent(self, event):
-        super().resizeEvent(event)
+    def initialize_step(self):
+        """Initialize the step when it becomes active"""
         self._update_preview()
+
+    def save_rotation(self):
+        """Save the current rotation angle to the session"""
+        current_angle = self.angle_spin.value() if hasattr(self, 'angle_spin') else 0
+        if current_angle != 0:
+            if self.current_frame is not None:
+                h, w = self.current_frame.shape[:2]
+                center = (w // 2, h // 2)
+                M = cv2.getRotationMatrix2D(center, current_angle, 1.0)
+                self.session.rotation_matrix = M
+        return True  # Always return True since rotation is optional

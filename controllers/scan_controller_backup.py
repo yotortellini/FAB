@@ -128,7 +128,6 @@ class ScanController(QWidget):
 
         # Controls group
         controls_group = QGroupBox("Time Range Selection")
-        controls_group.setStyleSheet("QGroupBox { color: black; }")
         controls_layout = QVBoxLayout()
         controls_group.setLayout(controls_layout)
 
@@ -198,10 +197,6 @@ class ScanController(QWidget):
         self.run_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
         self._plot_data()
-        
-        # Call on_complete callback to notify UI that step is done
-        if hasattr(self, 'on_complete') and self.on_complete:
-            self.on_complete()
         self._setup_sliders()
 
     def _plot_data(self):
@@ -210,17 +205,15 @@ class ScanController(QWidget):
         ax.plot(self.time, self.intensity, 'b-', linewidth=1)
         ax.set_xlabel('Time')
         ax.set_ylabel('Intensity')
-        
-        # Remove title, legend, and simplify axes
-        ax.set_xticks([])  # Remove x-axis ticks and numbers
-        ax.set_yticks([])  # Remove y-axis ticks and numbers
+        ax.set_title('Temporal Intensity Profile')
         ax.grid(True, alpha=0.3)
         
         # Store references for interactive elements
-        self.start_line = ax.axvline(self.time[0], color='red', linewidth=2)
-        self.end_line = ax.axvline(self.time[-1], color='red', linewidth=2)
+        self.start_line = ax.axvline(self.time[0], color='red', linewidth=2, label='Start')
+        self.end_line = ax.axvline(self.time[-1], color='red', linewidth=2, label='End')
         self.shade = ax.axvspan(self.time[0], self.time[-1], alpha=0.2, color='gray')
         
+        ax.legend()
         self.canvas.draw()
 
     def _setup_sliders(self):

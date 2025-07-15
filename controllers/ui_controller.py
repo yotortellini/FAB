@@ -1,4 +1,3 @@
-# controllers/ui_controller.py
 
 from PyQt5.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                             QPushButton, QStackedWidget, QLabel, QFileDialog,
@@ -64,7 +63,7 @@ class UIController(QMainWindow):
         self.back_button = QPushButton("Back")
         self.back_button.clicked.connect(self._on_back)
         self.next_button = QPushButton("Next")
-        self.next_button.clicked.connect(self._on_next)
+        self.next_button.clicked.connect(self.next_step)
         
         nav_layout.addWidget(self.back_button)
         nav_layout.addStretch()
@@ -78,7 +77,7 @@ class UIController(QMainWindow):
         )
         self.scan_ctrl = ScanController(
             self.stack, self.session, self.engine,
-            on_complete=lambda: self.show_step(3)
+            on_complete=self._on_scan_complete
         )
         self.rotate_ctrl = RotateController(
             self.stack, self.session, self.engine,
@@ -149,15 +148,38 @@ class UIController(QMainWindow):
             return len(self.session.rois) > 0
         return False
 
+    def _on_scan_complete(self):
+        """Handle scan completion - enable Next button"""
+        self.next_button.setEnabled(True)
+
     def _on_back(self):
         """Handle back button click"""
         if self.current_step > 1:
             self.show_step(self.current_step - 1)
 
-    def _on_next(self):
-        """Handle next button click"""
-        if self.current_step < self.total_steps:
-            self.show_step(self.current_step + 1)
+    def next_step(self):
+        """Navigate to the next step if validation passes"""
+        current_index = self.stack.currentIndex()
+        current_widget = self.stack.currentWidget()
+
+        # Save step data if needed
+        if hasattr(current_widget, "save_rotation"):
+            if not current_widget.save_rotation():
+                return
+        elif hasattr(current_widget, "save_data"):
+            if not current_widget.save_data():
+                return
+
+        # Move to next step
+        next_index = current_index + 1
+        if next_index < self.stack.count():
+            self.stack.setCurrentIndex(next_index)
+            self._update_navigation()
+            
+        # Initialize next controller if needed
+        next_widget = self.stack.currentWidget()
+        if hasattr(next_widget, "initialize_step"):
+            next_widget.initialize_step()
 
     def browse_video(self):
         """Open file dialog to select a video file"""
